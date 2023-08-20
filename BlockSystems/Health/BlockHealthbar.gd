@@ -7,7 +7,7 @@ extends Control
 # FIELDS ----------------------------------------------------------------------
 
 
-onready var progress_bar = $MarginContainer/TextureProgress
+@onready var progress_bar = $MarginContainer/TextureProgressBar
 
 
 # CALLBACKS --------------------------------------------------------------------

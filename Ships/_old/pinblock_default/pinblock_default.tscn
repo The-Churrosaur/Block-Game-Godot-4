@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://icon.png" type="Texture2D" id=1]
 [ext_resource path="res://ShipBase/ShipBody.gd" type="Script" id=2]
 [ext_resource path="res://ShipBase/Depreciated/ShipInfo.tscn" type="PackedScene" id=5]
 [ext_resource path="res://ShipBase/Depreciated/ShipBase_Storage.tscn" type="PackedScene" id=6]
@@ -19,7 +19,7 @@ given_name = "pinblock_default"
 
 [node name="ShipInfo" parent="." instance=ExtResource( 5 )]
 
-[node name="COM Sprite" type="Sprite" parent="."]
+[node name="COM Sprite2D" type="Sprite2D" parent="."]
 rotation = 0.785398
 texture = ExtResource( 1 )
 

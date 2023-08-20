@@ -2,12 +2,12 @@ extends StaticBody2D
 
 # simple test turret don't duplicate architecture
 
-export var target_manager_path : NodePath = "../TargetManager"
-export var teleport_distance = 1000
+@export var target_manager_path : NodePath = "../TargetManager"
+@export var teleport_distance = 1000
 
-onready var rng = RandomNumberGenerator.new()
-onready var weapon = $Weapon
-onready var target_manager = get_node(target_manager_path)
+@onready var rng = RandomNumberGenerator.new()
+@onready var weapon = $Weapon
+@onready var target_manager = get_node(target_manager_path)
 
 var player
 

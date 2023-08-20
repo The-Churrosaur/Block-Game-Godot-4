@@ -12,7 +12,7 @@ extends Node
 
 
 
-export (Array, NodePath) var tool_paths
+@export (Array, NodePath) var tool_paths
 
 
 # id -> tool, populated from paths on ready

@@ -1,25 +1,25 @@
 class_name KinematicCharacter
-extends KinematicBody2D
+extends CharacterBody2D
 
 # params
 
-export var rotational_velocity = 0
-export var rotational_speed = PI/64
-export var magwalk_velocity = 100 # pixels/tick
-export var magwalk_gravity = 10 # velocity towards surface
-export var magwalk_ang_lerp = 0.2
-export var jump_impulse = 300
-export var gravity_ang_lerp = 0.05
-export var dodge_distance = 100
-export var maneuver_strength = 10
+@export var rotational_velocity = 0
+@export var rotational_speed = PI/64
+@export var magwalk_velocity = 100 # pixels/tick
+@export var magwalk_gravity = 10 # velocity towards surface
+@export var magwalk_ang_lerp = 0.2
+@export var jump_impulse = 300
+@export var gravity_ang_lerp = 0.05
+@export var dodge_distance = 100
+@export var maneuver_strength = 10
 
-export var boost_limited = true # boost as double jump
-export var boost_number = 3
-export var boost_invul_time = 0.3
-export var maneuver_enabled = true # move around with WASD
+@export var boost_limited = true # boost as double jump
+@export var boost_number = 3
+@export var boost_invul_time = 0.3
+@export var maneuver_enabled = true # move around with WASD
 
-export var hit_area_path : NodePath
-export var animator_path : NodePath = "Rig/AnimationTree"
+@export var hit_area_path : NodePath
+@export var animator_path : NodePath = "Rig/AnimationTree"
 
 # control flags - write from player/ai controller 
 
@@ -34,8 +34,8 @@ var teleport_to = null
 
 # platform information
 
-onready var normal_raycast = $NormalRaycast
-onready var normal_detector = $NormalDetector
+@onready var normal_raycast = $NormalRaycast
+@onready var normal_detector = $NormalDetector
 
 var on_platform = false
 var platform = null
@@ -45,7 +45,7 @@ var just_landed = false # auto resets
 
 # physics dummy
 
-onready var physics_dummy_preload = preload("res://Scenes/character/CharacterPhysicsDummy.tscn")
+@onready var physics_dummy_preload = preload("res://Scenes/character/CharacterPhysicsDummy.tscn")
 var physics_dummy_instance : RigidBody2D = null
 var physics_dummy_spawned = false
 
@@ -70,11 +70,11 @@ var snap_vector_length = 100
 
 # hitbox / combat
 
-onready var hit_area : Area2D = get_node(hit_area_path)
+@onready var hit_area : Area2D = get_node(hit_area_path)
 
 # animation
 
-onready var animator = get_node(animator_path)
+@onready var animator = get_node(animator_path)
 var face_velocity = true
 
 # signals
@@ -96,7 +96,7 @@ func _ready():
 	
 	# register hitbox impacts
 	assert(hit_area != null)
-	hit_area.connect("body_shape_entered", self, "on_hitbox_hit")
+	hit_area.connect("body_shape_entered", Callable(self, "on_hitbox_hit"))
 
 func _physics_process(delta):
 	
@@ -157,7 +157,7 @@ func _physics_process(delta):
 #		displacement += -platform_normal * magwalk_gravity
 		
 		# add displacement from magwalking
-		displacement += platform_normal.tangent() * magwalk_velocity * -magwalk_dir.x
+		displacement += platform_normal.orthogonal() * magwalk_velocity * -magwalk_dir.x
 #		displacement += Vector2.RIGHT * magwalk_velocity * magwalk_dir
 		
 		# for rotating platforms, calculates surface velocity and matches --
@@ -209,7 +209,7 @@ func rotate_towards_grav():
 			target = gravity_area.global_position - position
 		# if linear
 		else:
-			target = gravity_area.gravity_vec
+			target = gravity_area.gravity_direction
 		# rotate
 		rotation = lerp_angle(rotation, target.angle() - PI/2, gravity_ang_lerp)
 
@@ -227,7 +227,7 @@ func match_surface_velocity() -> bool:
 		return false
 	
 	# sv = r * radians/sec
-	var tangent_normal = radius.tangent().normalized()
+	var tangent_normal = radius.orthogonal().normalized()
 	var surface_vel = - radius.length() * angular_velocity * tangent_normal
 	displacement += surface_vel
 	
@@ -251,7 +251,7 @@ func update_normal():
 	
 	# raycast fuckery
 	# to last impact + a bit into the floor
-	normal_raycast.cast_to = normal_raycast.to_local(platform_contact) * 2
+	normal_raycast.target_position = normal_raycast.to_local(platform_contact) * 2
 	platform_contact = normal_raycast.get_collision_point()
 	
 	# update platform
@@ -342,7 +342,7 @@ func enter_platform(collider, normal, pos = null):
 	platform = collider
 	platform_normal = normal
 	platform_contact = pos
-	normal_raycast.cast_to = normal_raycast.to_local(platform_contact)
+	normal_raycast.target_position = normal_raycast.to_local(platform_contact)
 	
 	just_landed = true
 	on_platform = true
@@ -355,7 +355,9 @@ func enter_platform(collider, normal, pos = null):
 
 func leave_platform(microyeet = 0):
 	
-	move_and_slide(platform_normal * microyeet, platform_normal)
+	set_velocity(platform_normal * microyeet)
+	set_up_direction(platform_normal)
+	move_and_slide()
 	print("leaving platform")
 #	platform_normal = Vector2(0,0)
 	platform_contact = global_position
@@ -380,8 +382,8 @@ func spawn_physics_dummy(init_velocity = velocity):
 	physics_dummy_instance.global_position = global_position
 	physics_dummy_spawned = true
 	
-	physics_dummy_instance.connect("gravity_area_entered", self, "on_dummy_enter_grav")
-	physics_dummy_instance.connect("gravity_area_left", self, "on_dummy_leave_grav")
+	physics_dummy_instance.connect("gravity_area_entered", Callable(self, "on_dummy_enter_grav"))
+	physics_dummy_instance.connect("gravity_area_left", Callable(self, "on_dummy_leave_grav"))
 	physics_dummy_instance.apply_central_impulse(init_velocity/physics_dummy_instance.mass)
 
 func despawn_physics_dummy():

@@ -7,8 +7,8 @@ extends PortBlockBase
 # FIELDS ----------------------------------------------------------------------
 
 
-onready var line_edit = $Node2D/VBoxContainer/LineEdit
-onready var fuel_tank = $BlockSystems/FuelTankManager/FuelTank
+@onready var line_edit = $Node2D/VBoxContainer/LineEdit
+@onready var fuel_tank = $BlockSystems/FuelTankManager/FuelTank
 
 
 # CALLBACKS --------------------------------------------------------------------

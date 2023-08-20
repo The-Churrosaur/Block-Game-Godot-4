@@ -1,7 +1,7 @@
 class_name EnemyShotgunController
 extends EnemyController
 
-export var shoot_distance = 400
+@export var shoot_distance = 400
 
 func process_logic():
 	

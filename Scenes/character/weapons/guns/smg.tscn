@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/character/weapons/weapon.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Blue/f24_rifle.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Blue/f24_rifle.png" type="Texture2D" id=2]
 [ext_resource path="res://Scenes/character/weapons/ammo/smg_bullet.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/character/muzzle_light.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/character/JetLight.tscn" type="PackedScene" id=5]
@@ -18,7 +18,7 @@ spread = 0.15
 inherit_velocity = true
 velocity_minimum = true
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2( -0.2, -0.2 )
 texture = ExtResource( 2 )
 

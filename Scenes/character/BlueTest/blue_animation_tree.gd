@@ -1,7 +1,7 @@
 extends AnimationTree
 
-onready var rig = get_parent()
-onready var tween = $Tween
+@onready var rig = get_parent()
+@onready var tween = $Tween
 
 signal flipping_rig()
 

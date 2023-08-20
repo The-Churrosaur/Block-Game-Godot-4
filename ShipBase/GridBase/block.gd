@@ -12,16 +12,16 @@ extends Node2D
 enum block_facing_direction {UP = 0, RIGHT = 1, DOWN = 2, LEFT = 3}
 
 # relative grid of block positions
-export(Array, Vector2) var size_grid = [Vector2(0,0)] 
+@export var size_grid = [Vector2(0,0)]  # (Array, Vector2)
 # ie. a 1x2 spire would be [0,0 , 0,-1] (y values increase going down vvv)
 # I would like this to be a const but it needs to be inherited
 # injected into by editor helper
 # IMPORTANT: relative to 0 rotation/facing, will rotate this
 
-export var mass = 10
-export var cost = 100
+@export var mass = 10
+@export var cost = 100
 
-export var description = "A block, for building!"
+@export var description = "A block, for building!"
 
 
 # -- COLLISION AND DAMAGE
@@ -29,25 +29,25 @@ export var description = "A block, for building!"
 
 # velocity at which impact kablooie
 # probably naiive think about this more later
-export var destruction_velocity = 5
-export var destructable = true
+@export var destruction_velocity = 5
+@export var destructable = true
 
 # health
-export var health = 100
+@export var health = 100
 # damage threshold, velocity/physics tick
-export var acceleration_limit = 1
+@export var acceleration_limit = 1
 # damage/tick multiplied by acceleration over limit
-export var acceleration_damage_mult = 1
+@export var acceleration_damage_mult = 1
 
 
 # unique identifier
-export var class_type = "Block"
-export(String) var display_name
-export var tile_id = 0
+@export var class_type = "Block"
+@export var display_name: String
+@export var tile_id = 0
 
-export var enabled = true
+@export var enabled = true
 
-export var popup_path : NodePath = "BlockPopup"
+@export var popup_path : NodePath = "BlockPopup"
 
 
 var block_facing : int = block_facing_direction.RIGHT
@@ -61,7 +61,7 @@ var block_facing : int = block_facing_direction.RIGHT
 var hitbox_collision_shapes = [] 
 
 # for populating the array
-export (Array, NodePath) var hitbox_colliders
+@export var hitbox_colliders : Array[CollisionShape2D]
 
 # keeping this for forwards compatibility I guess
 # (legacy: populates hitbox array by name)
@@ -73,8 +73,8 @@ var saved_name
 # -- BLOCK SYSTEMS
 
 
-export var block_systems_manager_path : NodePath
-onready var block_systems_manager = get_node_or_null(block_systems_manager_path)
+@export var block_systems_manager_path : NodePath
+@onready var block_systems_manager = get_node_or_null(block_systems_manager_path)
 
 
 # -- INJECTED PARAMETERS
@@ -91,12 +91,12 @@ var block_id : int = 0
 # -- UI
 
 
-onready var popup : Popup = get_node(popup_path)
+@onready var popup : Popup = get_node(popup_path)
 
 
 # overloads default to return specific block type 
 # for serialization etc.
-func get_class():
+func get_block_type():
 	return class_type
 
 
@@ -151,7 +151,7 @@ func on_added_to_grid(center_coord, block, grid):
 	shipBody = grid.shipBody
 #	print("block added: shipbody: ", shipBody, " grid: ", self.grid)
 	# grid signals
-	grid.connect("save_blocks", self, "on_save_blocks")
+	grid.connect("save_blocks", Callable(self, "on_save_blocks"))
 
 
 func on_removed_from_grid(center_coord, block, grid):
@@ -210,7 +210,7 @@ func ship_body_entered(body : CollisionObject2D, pos):
 	
 	if body is StaticBody2D: 
 		relative_vel = shipBody.linear_velocity
-	elif body is KinematicBody2D or body is RigidBody2D:	
+	elif body is CharacterBody2D or body is RigidBody2D:	
 		relative_vel = shipBody.linear_velocity - body.linear_velocity
 	
 	if abs(relative_vel.length()) > destruction_velocity : 
@@ -244,7 +244,7 @@ func get_save_data() -> Dictionary :
 	dict["type"] = class_type # special name key for resource
 	dict["pos"] = center_grid_coord # special name key for resource
 	dict["facing"] = block_facing  # special name key for resource
-	dict["address"] = filename # for loading
+	dict["address"] = scene_file_path # for loading
 	dict["block_id"] = block_id
 	
 	# get data from system manager 
@@ -281,8 +281,7 @@ func _sanitize_name():
 func _set_hitbox_collision_shapes():
 	
 	# append from export list
-	for path in hitbox_colliders:
-		var node = get_node(path)
+	for node in hitbox_colliders:
 		if node is CollisionShape2D:
 			hitbox_collision_shapes.append(node)
 	

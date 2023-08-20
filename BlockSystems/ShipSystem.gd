@@ -4,7 +4,7 @@ class_name ShipSystem
 extends Node
 
 
-export var system_id : String = "default"
+@export var system_id : String = "default"
 
 
 # injected by manager

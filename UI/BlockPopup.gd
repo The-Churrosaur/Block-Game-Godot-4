@@ -13,8 +13,8 @@ extends PopupPanel
 
 
 # -- UI
-onready var block_name_label = $MarginContainer/MarginContainer/VBoxContainer/MarginContainer2/LabelTitle
-onready var block_desc_label = $MarginContainer/MarginContainer/VBoxContainer/LabelDesc
+@onready var block_name_label = $MarginContainer/MarginContainer/VBoxContainer/MarginContainer2/LabelTitle
+@onready var block_desc_label = $MarginContainer/MarginContainer/VBoxContainer/LabelDesc
 
 
 var block

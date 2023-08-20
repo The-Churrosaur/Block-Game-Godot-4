@@ -1,29 +1,29 @@
 class_name EnemyController
 extends Node
 
-export var character_path : NodePath = "../KinematicCharacter"
-export var weapon_path : NodePath = "../KinematicCharacter/Weapon" # temp, work out a better way
-export var anim_path : NodePath = "../KinematicCharacter/Rig/AnimationPlayer"
-export var target_manager_path : NodePath = "../../TargetManager"
-export var detection_area_path : NodePath = "../KinematicCharacter/DetectionArea"
-export var health_path : NodePath = "../CharacterHealth"
-export var loot_spawner_path : NodePath = "../KinematicCharacter/LootSpawner"
-export var raycast_path : NodePath = "../KinematicCharacter/Raycast2D"
+@export var character_path : NodePath = "../KinematicCharacter"
+@export var weapon_path : NodePath = "../KinematicCharacter/Weapon" # temp, work out a better way
+@export var anim_path : NodePath = "../KinematicCharacter/Rig/AnimationPlayer"
+@export var target_manager_path : NodePath = "../../TargetManager"
+@export var detection_area_path : NodePath = "../KinematicCharacter/DetectionArea"
+@export var health_path : NodePath = "../CharacterHealth"
+@export var loot_spawner_path : NodePath = "../KinematicCharacter/LootSpawner"
+@export var raycast_path : NodePath = "../KinematicCharacter/Raycast2D"
 
-export var teleport_distance = 500
+@export var teleport_distance = 500
 
-onready var character = get_node(character_path)
-onready var weapon = get_node(weapon_path)
-onready var animator : AnimationTree = get_node(anim_path)
-onready var target_manager = get_node(target_manager_path)
-onready var detection_area : Area2D = get_node(detection_area_path)
-onready var health = get_node(health_path)
-onready var loot_spawner = get_node(loot_spawner_path)
-onready var raycast : RayCast2D = get_node(raycast_path)
+@onready var character = get_node(character_path)
+@onready var weapon = get_node(weapon_path)
+@onready var animator : AnimationTree = get_node(anim_path)
+@onready var target_manager = get_node(target_manager_path)
+@onready var detection_area : Area2D = get_node(detection_area_path)
+@onready var health = get_node(health_path)
+@onready var loot_spawner = get_node(loot_spawner_path)
+@onready var raycast : RayCast2D = get_node(raycast_path)
 
 # logic
 # ai ponders action every firing
-onready var decision_timer = $DecisionTimer
+@onready var decision_timer = $DecisionTimer
 
 # ai
 var target = null
@@ -32,19 +32,19 @@ var rng = RandomNumberGenerator.new()
 func _ready():
 	
 	# connect to detection area
-	detection_area.connect("body_entered", self, "on_area_detected")
-	detection_area.connect("body_exited", self, "on_area_lost")
+	detection_area.connect("body_entered", Callable(self, "on_area_detected"))
+	detection_area.connect("body_exited", Callable(self, "on_area_lost"))
 	
 	# connect to player
-	character.connect("player_hit", self, "on_player_hit")
-	character.connect("platform_entered", self, "char_landed")
+	character.connect("player_hit", Callable(self, "on_player_hit"))
+	character.connect("platform_entered", Callable(self, "char_landed"))
 	
 	# decision timer
-	decision_timer.connect("timeout", self, "on_decision_timer")
+	decision_timer.connect("timeout", Callable(self, "on_decision_timer"))
 	decision_timer.start(decision_timer.wait_time)
 	
 	# health
-	health.connect("health_zero", self, "on_health_zero")
+	health.connect("health_zero", Callable(self, "on_health_zero"))
 
 func _process(delta):
 	process_logic()
@@ -111,7 +111,7 @@ func on_player_hit(body):
 
 func target_obstructed(target) -> bool : 
 
-	raycast.cast_to = (target.global_position - character.global_position).rotated(-character.rotation)
+	raycast.target_position = (target.global_position - character.global_position).rotated(-character.rotation)
 	
 	var collider = raycast.get_collider()
 	if collider != null && collider != target:
@@ -138,7 +138,7 @@ func acquire_target(body):
 func temp_hitflash():
 	var sprite = get_node("../KinematicCharacter/Sprite2")
 	sprite.visible = true
-	yield(get_tree().create_timer(0.2), "timeout")
+	await get_tree().create_timer(0.2).timeout
 	sprite.visible = false
 
 func teleport():

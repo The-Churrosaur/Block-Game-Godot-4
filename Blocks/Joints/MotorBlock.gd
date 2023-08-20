@@ -7,12 +7,12 @@ extends PinBlockBase
 # FIELDS ----------------------------------------------------------------------
 
 
-export var torque_impulse = 10000
-export var subship_damp = 10
-export var damping = true
+@export var torque_impulse = 10000
+@export var subship_damp = 10
+@export var damping = true
 
-onready var throttle_port : IOPort = $BlockSystems/PortManager/ThrottlePort
-onready var reverse_port : IOPort = $BlockSystems/PortManager/ReversePort
+@onready var throttle_port : IOPort = $BlockSystems/PortManager/ThrottlePort
+@onready var reverse_port : IOPort = $BlockSystems/PortManager/ReversePort
 
 
 # CALLBACKS --------------------------------------------------------------------

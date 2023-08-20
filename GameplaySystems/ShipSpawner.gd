@@ -10,9 +10,9 @@ extends Node2D
 # FIELDS ----------------------------------------------------------------------
 
 
-export(Resource) var ship_resource
+@export var ship_resource: Resource
 
-onready var ship_loader = get_node("/root/ShipLoader")
+@onready var ship_loader = get_node("/root/ShipLoader")
 
 
 # CALLBACKS --------------------------------------------------------------------

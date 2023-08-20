@@ -12,13 +12,13 @@ extends ShipBuilderTool
 
 
 # asks blocksystem manger for port system
-export var port_system_id = "port_manager"
+@export var port_system_id = "port_manager"
 
 # asks shipsystem manager for cable system
-export var cable_system_id = "io_cable_manager"
+@export var cable_system_id = "io_cable_manager"
 
 # for drawing
-onready var line = $Line2D
+@onready var line = $Line2D
 
 # a port has previously been selected, this is that port
 var selected_port = null
@@ -49,7 +49,9 @@ func _process(delta):
 
 # when ship clicked, see if block is io block and activate/listen
 func on_ship_reported_clicked(ship, block):
-	.on_ship_reported_clicked(ship, block)
+	super.on_ship_reported_clicked(ship, block)
+	
+	print("CABLETOOL REGISTERING CLICK")
 	
 	if !active: return
 	
@@ -63,7 +65,7 @@ func on_ship_reported_clicked(ship, block):
 	print("CABLETOOL ACTIVATING BLOCK PORTS: ", block)
 	
 	# listen for ports on this block	
-	port_manager.connect("port_button_pressed", self, "_on_listening_pressed")
+	port_manager.connect("port_button_pressed", Callable(self, "_on_listening_pressed"))
 	
 	# tell block it's been clicked by the cable tool
 	port_manager.tool_selected()

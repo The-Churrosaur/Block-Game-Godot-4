@@ -3,14 +3,14 @@ extends Node
 
 # this is kind of bad, use noise or smth
 
-export var camera_path : NodePath = "../"
-export var shake_lerp = 0.4
-export var shake_falloff = 0.9
+@export var camera_path : NodePath = "../"
+@export var shake_lerp = 0.4
+@export var shake_falloff = 0.9
 
-onready var camera : Camera2D = get_node(camera_path)
-onready var frequency_timer : Timer = $FrequencyTimer
-onready var tween : Tween = $Tween
-onready var rand : RandomNumberGenerator = RandomNumberGenerator.new()
+@onready var camera : Camera2D = get_node(camera_path)
+@onready var frequency_timer : Timer = $FrequencyTimer
+@onready var tween : Tween = $Tween
+@onready var rand : RandomNumberGenerator = RandomNumberGenerator.new()
 
 # reads flag then lerps between amp target
 # amp target resets on freq timer
@@ -22,7 +22,7 @@ var pos_amp_center = Vector2(0,0)
 var pos_amp_target = Vector2(0,0)
 
 func _ready():
-	frequency_timer.connect("timeout", self, "on_frequency")
+	frequency_timer.connect("timeout", Callable(self, "on_frequency"))
 
 func _physics_process(delta):
 	shake_camera(shaking_rot, shaking_pos)
@@ -46,7 +46,7 @@ func shake_rot(amplitude, frequency, duration):
 	frequency_timer.start(frequency)
 	
 	shaking_rot = true
-	yield(get_tree().create_timer(duration), "timeout")
+	await get_tree().create_timer(duration).timeout
 	shaking_rot = false
 
 func shake_pos(amplitude, frequency, duration):
@@ -55,7 +55,7 @@ func shake_pos(amplitude, frequency, duration):
 	frequency_timer.start(frequency)
 	
 	shaking_pos = true
-	yield(get_tree().create_timer(duration), "timeout")
+	await get_tree().create_timer(duration).timeout
 	shaking_pos = false
 	
 

@@ -11,7 +11,7 @@ extends PinBlockBase
 # FIELDS ----------------------------------------------------------------------
 
 
-export var lock_enabled  = true
+@export var lock_enabled  = true
 
 
 # CALLBACKS --------------------------------------------------------------------
@@ -37,8 +37,8 @@ func set_subShip(ship : RigidBody2D, block : Block):
 	subShip = ship
 	
 	# connect signals
-	pinHead.grid.connect("block_added", self, "on_grid_changed")
-	pinHead.grid.connect("block_removed", self, "on_grid_changed")
+	pinHead.grid.connect("block_added", Callable(self, "on_grid_changed"))
+	pinHead.grid.connect("block_removed", Callable(self, "on_grid_changed"))
 	
 	attach(pinHead, false)
 
@@ -52,7 +52,7 @@ func drop_subShip():
 
 # override collision
 func ship_body_entered(body, pos):
-	.ship_body_entered(body, pos)
+	super.ship_body_entered(body, pos)
 	
 	if body.is_in_group("ShipBody"):
 		_try_lock_subShip(body, pos)

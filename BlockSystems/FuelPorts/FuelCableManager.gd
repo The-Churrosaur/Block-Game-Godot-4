@@ -21,13 +21,13 @@ extends IOCableManager
 
 
 func save_data():
-	var dict = .save_data()
+	var dict = super.save_data()
 	print("FUELCABLEMANAGER SAVING: ", dict)
 	return dict
 
 func load_data(dict):
 	print("FUELCABLEMANAGER LOADING: ", dict)
-	.load_data(dict)
+	super.load_data(dict)
 
 
 # PRIVATE ----------------------------------------------------------------------

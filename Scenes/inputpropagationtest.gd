@@ -1,4 +1,4 @@
-extends Viewport
+extends SubViewport
 
 
 func _unhandled_input(event):

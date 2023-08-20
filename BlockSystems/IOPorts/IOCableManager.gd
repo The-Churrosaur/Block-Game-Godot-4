@@ -9,15 +9,15 @@ extends ShipSystem
 
 
 # resource for instantiation
-export var cable_scene : PackedScene
+@export var cable_scene : PackedScene
 
 # asks blocksystems for port manager
-export var port_system_id = "port_manager"
+@export var port_system_id = "port_manager"
 
 
 # holds the cable objects
 # cable -> bool
-onready var cables = {}
+@onready var cables = {}
 
 
 # CALLBACKS --------------------------------------------------------------------
@@ -38,7 +38,7 @@ func _physics_process(delta):
 # ["cables"] -> array of cables, each element is : {sender_port, receiver_port} 
 # each port is {"ship" -> name, "block" -> coord, "port" -> id}
 func save_data() -> Dictionary:
-	.save_data()
+	super.save_data()
 	
 	var save_cables = []
 	
@@ -56,7 +56,7 @@ func save_data() -> Dictionary:
 # load cables from dictionary
 # called by manager -> ship
 func load_data(dict):
-	.load_data(dict)
+	super.load_data(dict)
 	
 	for cable in dict["cables"]:
 		print("CABLE MANAGER LOADING CABLE: ", cable)
@@ -73,7 +73,7 @@ func new_cable(sender_port, receiver_port):
 		print("CABLEMANAGER, INVALID CABLE")
 		return 
 	
-	var cable = cable_scene.instance()
+	var cable = cable_scene.instantiate()
 	
 	# TODO should this be somewhere better in the nodetree? 
 	add_child(cable)
@@ -85,7 +85,7 @@ func new_cable(sender_port, receiver_port):
 	receiver_port.cable = cable
 	
 	# listen for deletion
-	cable.connect("_cable_cut", self, "_on_cable_cut")
+	cable.connect("_cable_cut", Callable(self, "_on_cable_cut"))
 	
 	# check for overlap before adding self to dict
 	var nudge = Vector2.ZERO
@@ -206,7 +206,7 @@ func _compare_port_overlap(port1: IOPort, port2: IOPort, offset_width) -> bool:
 	return false
 
 
-func _cable_elbow_nudge(var cable0, var cable1) -> Vector2:
+func _cable_elbow_nudge(cable0, cable1) -> Vector2:
 	
 	var nudge = Vector2.ZERO
 	

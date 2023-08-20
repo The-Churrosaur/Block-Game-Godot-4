@@ -7,7 +7,7 @@
 [ext_resource path="res://Scenes/character/BlueTest/Rig.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/character/kinematic_character.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/character/weapons/guns/battle_rifle.tscn" type="PackedScene" id=7]
-[ext_resource path="res://icon.png" type="Texture" id=8]
+[ext_resource path="res://icon.png" type="Texture2D" id=8]
 [ext_resource path="res://Scenes/character/JetLight.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/character/player_base.gd" type="Script" id=10]
 [ext_resource path="res://Scenes/character/weapons/grapple_gun.tscn" type="PackedScene" id=11]
@@ -62,7 +62,7 @@ visible = false
 position = Vector2( 0, -7.821 )
 scale = Vector2( 0.25, 0.25 )
 
-[node name="Sprite2" type="Sprite" parent="KinematicCharacter"]
+[node name="Sprite2" type="Sprite2D" parent="KinematicCharacter"]
 visible = false
 position = Vector2( 0, -18.4026 )
 scale = Vector2( 0.4, 0.4 )

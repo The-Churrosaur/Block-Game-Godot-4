@@ -1,21 +1,21 @@
 class_name GrappleGun
 extends Weapon
 
-export var player_path : NodePath = ".."
-export var controller_path : NodePath = "../../PlayerController"
+@export var player_path : NodePath = ".."
+@export var controller_path : NodePath = "../../PlayerController"
 # force increases with scale by distance^2 beyond length
-export var grapple_length = 30.0
-export var grapple_impulse = 10.0
-export var impulse_scale = 0.02
-export var grapple_max_impulse = 20
-export var reel_velocity = 1
-export var min_length = 20.0 # cuts off 
-export var max_distance = 1000
-export var invul_time = 0.7
+@export var grapple_length = 30.0
+@export var grapple_impulse = 10.0
+@export var impulse_scale = 0.02
+@export var grapple_max_impulse = 20
+@export var reel_velocity = 1
+@export var min_length = 20.0 # cuts off 
+@export var max_distance = 1000
+@export var invul_time = 0.7
 
-onready var player = get_node(player_path)
-onready var controller = get_node(controller_path)
-onready var line = $Line2D
+@onready var player = get_node(player_path)
+@onready var controller = get_node(controller_path)
+@onready var line = $Line2D
 var player_dummy : RigidBody2D
 var grapple_body : PhysicsBody2D
 var grapple_point : Vector2 = Vector2.ZERO
@@ -25,11 +25,11 @@ var is_grappling = false
 var is_reeling = true
 
 # test visuals
-onready var sprite = $Sprite
+@onready var sprite = $Sprite2D
 
 func _ready():
 	print(player_path)
-	player.connect("entered_platform", self, "on_player_landed")
+	player.connect("entered_platform", Callable(self, "on_player_landed"))
 
 func _physics_process(delta):
 	if is_grappling: 
@@ -98,7 +98,7 @@ func start_grapple():
 
 
 func on_bullet_impact(bullet, body):
-	.on_bullet_impact(bullet, body)
+	super.on_bullet_impact(bullet, body)
 	
 	# yank player if on platform
 	if player.on_platform:
@@ -118,7 +118,7 @@ func pull_trigger():
 	if is_grappling:
 		end_grapple()
 	else:
-		.pull_trigger()
+		super.pull_trigger()
 
 # also cut grapple if hitting platform
 func on_player_landed(platform, normal):

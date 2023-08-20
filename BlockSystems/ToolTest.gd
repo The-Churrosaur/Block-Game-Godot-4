@@ -1,5 +1,5 @@
-tool
-extends Sprite
+@tool
+extends Sprite2D
 
 func _process(delta):
 	rotation_degrees += 180 * delta

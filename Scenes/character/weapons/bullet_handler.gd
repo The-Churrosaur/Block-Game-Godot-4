@@ -4,7 +4,7 @@ extends Node2D
 
 # the base level node
 # TODO make level loader singleton
-var level setget set_level, get_level
+var level : get = get_level, set = set_level
 
 # currently dicts, can think about data structures if becomes issue
 # registers each by id -> node, currently passing name as id
@@ -18,13 +18,13 @@ func register_gun(weapon, id):
 	
 	print("weapon registered: ", weapon)
 	weapons[weapon.name] = weapon
-	weapon.connect("bullet_spawned", self, "on_bullet_spawned")
+	weapon.connect("bullet_spawned", Callable(self, "on_bullet_spawned"))
 
 func on_bullet_spawned(weapon, bullet, id):
 	
 	#print("handler: bullet spawned: ", bullet)
 	bullets[id] = bullet
-	bullet.connect("bullet_removed", self, "on_bullet_removed")
+	bullet.connect("bullet_removed", Callable(self, "on_bullet_removed"))
 	level.add_child(bullet)
 
 func on_bullet_removed(bullet, id):

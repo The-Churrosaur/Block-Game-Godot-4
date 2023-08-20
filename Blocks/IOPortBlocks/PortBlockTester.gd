@@ -7,12 +7,12 @@ extends PortBlockBase
 # FIELDS ----------------------------------------------------------------------
 
 
-onready var out_port = $BlockSystems/PortManager/IOPortOUT
-onready var in_port = $BlockSystems/PortManager/IOPortIN
+@onready var out_port = $BlockSystems/PortManager/IOPortOUT
+@onready var in_port = $BlockSystems/PortManager/IOPortIN
 
-onready var output_label = $VBoxContainer/Label
-onready var slider = $VBoxContainer/HSlider
-onready var input_label = $Inlabel
+@onready var output_label = $VBoxContainer/Label
+@onready var slider = $VBoxContainer/HSlider
+@onready var input_label = $Inlabel
 
 
 # CALLBACKS --------------------------------------------------------------------

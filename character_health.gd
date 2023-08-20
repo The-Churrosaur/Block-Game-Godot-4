@@ -1,12 +1,12 @@
 class_name CharacterHealth
 extends Node
 
-export var starting_health  : int
+@export var starting_health  : int
 
 signal health_changed(health)
 signal health_zero()
 
-onready var health : int = starting_health
+@onready var health : int = starting_health
 var health_bar = null
 
 func _ready():

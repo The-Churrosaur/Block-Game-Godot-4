@@ -3,12 +3,12 @@ class_name Projectile
 extends RigidBody2D
 
 
-onready var trail = $Line2D
-onready var timer = $Timer
+@onready var trail = $Line2D
+@onready var timer = $Timer
 
 var firing_point
 
-export var damage = 50
+@export var damage = 50
 
 
 # injected by shooter, no touch

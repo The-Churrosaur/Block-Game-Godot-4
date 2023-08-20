@@ -1,16 +1,16 @@
+@tool
 
 # tool helper for block grid sizing
 # injects the tilemap into the block size_grid
 
 class_name BlockSizeHelper
-tool
 extends TileMap
 
 
 # FIELDS ----------------------------------------------------------------------
 
 
-export var block_path : NodePath = ".."
+@export var block_path : NodePath = ".."
 
 var block
 
@@ -21,7 +21,7 @@ var block
 func _ready():
 	
 	# delete self on ingame run
-	if !Engine.editor_hint:
+	if !Engine.is_editor_hint():
 		queue_free()
 	
 	pass
@@ -63,7 +63,7 @@ func _on_tilemap_changed():
 #		print("no size grid")
 #		return
 	
-	block.size_grid = get_used_cells()
+	block.size_grid = get_used_cells(0)
 	
 #	print("cells: ", get_used_cells())
 #	print("size grid: ", block.size_grid)

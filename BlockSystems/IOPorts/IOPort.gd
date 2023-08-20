@@ -16,31 +16,31 @@ signal port_button_pressed(port)
 
 
 # unique name
-export var port_id : String
+@export var port_id : String
 
 # display name 
-export var port_display_name : String = port_id
+@export var port_display_name : String = port_id
 
 # input or output
 # allow reading, writing or both
-export var is_input = false
-export var is_output = false
+@export var is_input = false
+@export var is_output = false
 
 # port is functional
-export var is_active = true 
+@export var is_active = true 
 
 # maximum level this port can transmit
-export var max_data = 100
+@export var max_data = 100
 
 # the data associated with this port
-onready var data = 0.0
+@onready var data = 0.0
 
 # occupying cable (injected by cable)
 # also used for determing availability
-onready var cable = null
+@onready var cable = null
 
 # dict of cables (injected) cable->bool
-onready var cables = {}
+@onready var cables = {}
 
 # this port's manager (injected by manager)
 var manager= null 
@@ -50,14 +50,14 @@ var manager= null
 
 
 # area for registering selection DEPREC
-onready var select_area = $Area2D
+@onready var select_area = $Area2D
 
 # selection button
-onready var select_button = $Button
+@onready var select_button = $Button
 
 # label
-onready var label = $Label
-onready var label2 = $Label2
+@onready var label = $Label
+@onready var label2 = $Label2
 
 
 # CALLBACKS --------------------------------------------------------------------
@@ -65,7 +65,7 @@ onready var label2 = $Label2
 
 func _ready():
 	label.text = port_display_name
-	select_button.connect("pressed", self, "_on_button_pressed")
+	select_button.connect("pressed", Callable(self, "_on_button_pressed"))
 	
 	visible = false
 

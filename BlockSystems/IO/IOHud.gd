@@ -1,18 +1,18 @@
 extends MarginContainer
 
 
-export var io_box_path : NodePath
-export var port_hud_scene : PackedScene
-export var inputs_path : NodePath
-export var outputs_path : NodePath
-export var inputs_container_path : NodePath
-export var outputs_container_path :NodePath
+@export var io_box_path : NodePath
+@export var port_hud_scene : PackedScene
+@export var inputs_path : NodePath
+@export var outputs_path : NodePath
+@export var inputs_container_path : NodePath
+@export var outputs_container_path :NodePath
 
-onready var io_box = get_node_or_null(io_box_path)
-onready var inputs = get_node(inputs_path)
-onready var outputs = get_node(outputs_path)
-onready var inputs_container = get_node(inputs_container_path)
-onready var outputs_container = get_node(outputs_container_path)
+@onready var io_box = get_node_or_null(io_box_path)
+@onready var inputs = get_node(inputs_path)
+@onready var outputs = get_node(outputs_path)
+@onready var inputs_container = get_node(inputs_container_path)
+@onready var outputs_container = get_node(outputs_container_path)
 
 signal port_selected(port, state, is_input)
 
@@ -51,18 +51,18 @@ func set_input_huds():
 	# TODO I renamed something formerly called 'box'
 	for i in io_box.inputs.size():
 		var input = io_box.inputs[i]
-		var port_hud = port_hud_scene.instance()
+		var port_hud = port_hud_scene.instantiate()
 		inputs.add_child(port_hud)
 		port_hud.set_port(i, input["name"], true)
-		port_hud.connect("button", self, "button_pressed")
+		port_hud.connect("button", Callable(self, "button_pressed"))
 
 func set_output_huds():
 	for i in io_box.outputs.size():
 		var output = io_box.outputs[i]
-		var port_hud = port_hud_scene.instance()
+		var port_hud = port_hud_scene.instantiate()
 		outputs.add_child(port_hud)
 		port_hud.set_port(i, output["name"], false)
-		port_hud.connect("button", self, "button_pressed")
+		port_hud.connect("button", Callable(self, "button_pressed"))
 
 func button_pressed(port, state, is_input):
 	print("iohud button pressed: ", port, state, " is input? ", is_input)

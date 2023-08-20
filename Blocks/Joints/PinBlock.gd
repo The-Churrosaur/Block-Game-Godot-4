@@ -8,10 +8,10 @@ extends PinBlockBase
 # FIELDS ----------------------------------------------------------------------
 
 
-export var torque_impulse = 1000
-export var braking_impulse = 400
+@export var torque_impulse = 1000
+@export var braking_impulse = 400
 
-onready var throttle_port : IOPort = $BlockSystems/PortManager/ThrottlePort
+@onready var throttle_port : IOPort = $BlockSystems/PortManager/ThrottlePort
 
 
 # CALLBACKS --------------------------------------------------------------------

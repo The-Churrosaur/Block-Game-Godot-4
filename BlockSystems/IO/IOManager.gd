@@ -5,15 +5,15 @@
 class_name IOManager
 extends Node
 
-export var ship_path : NodePath
-export var propagate_every_frame = true
+@export var ship_path : NodePath
+@export var propagate_every_frame = true
 #TODO variable timer for propagation
-onready var ship = get_node_or_null(ship_path)
+@onready var ship = get_node_or_null(ship_path)
 
 # dictionary of connections
 # output -> input
 # outputs and inputs are arrays of form [coordinate, port, subship]
-onready var connections = {}
+@onready var connections = {}
 
 
 func _ready():
@@ -27,8 +27,8 @@ func _process(delta):
 func setup(this_ship):
 	if ship == null:
 		ship = this_ship
-	ship.grid.connect("block_added", self, "block_added")
-	ship.grid.connect("block_removed", self, "block_removed")
+	ship.grid.connect("block_added", Callable(self, "block_added"))
+	ship.grid.connect("block_removed", Callable(self, "block_removed"))
 
 
 # manager goes through connections - retrieving outputs and injecting to inputs
@@ -124,7 +124,7 @@ func block_removed(coord, block, grid, update_com):
 # bleaudasughdaf
 
 
-export var string_template : PackedScene
+@export var string_template : PackedScene
 
 
 # generate strings and buttons from connection list
@@ -133,7 +133,7 @@ func spawn_strings():
 	var string
 	for connection in connections.keys():
 		
-		string = string_template.instance()
+		string = string_template.instantiate()
 		
 		string.manager = self
 		string.out_coord = connection[0]

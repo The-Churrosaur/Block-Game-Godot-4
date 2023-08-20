@@ -13,19 +13,19 @@ extends Node
 
 
 # unique string
-export var system_id : String
+@export var system_id : String
 
 # name of element ID's ie. port_id, tank_id
 # for dictionary keying
-export var element_id_field : String
+@export var element_id_field : String
 
 # paths to all elements
 # TODO update other managers (shipsystem, blocksystem manager to do this)
-export (Array, NodePath) var element_paths
+@export var element_paths : Array[Node]
 
 
 # holds all managed elements (ports, fuel tanks etc)
-onready var elements = {}
+@onready var elements = {}
 
 
 # injected by manager
@@ -38,8 +38,7 @@ var block = null
 func _ready():
 	
 	# get elements from path, put into dict by id
-	for path in element_paths:
-		var element = get_node(path)
+	for element in element_paths:
 		var element_id = element.get(element_id_field)
 		elements[element_id] = element
 

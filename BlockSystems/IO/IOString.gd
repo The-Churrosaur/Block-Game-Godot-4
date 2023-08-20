@@ -3,9 +3,9 @@
 class_name IOString
 extends Node2D
 
-onready var line = $Line2D
-onready var button = $VBoxContainer/Button
-onready var label = $VBoxContainer/Label
+@onready var line = $Line2D
+@onready var button = $VBoxContainer/Button
+@onready var label = $VBoxContainer/Label
 
 # all below should be injected by manager on startup
 

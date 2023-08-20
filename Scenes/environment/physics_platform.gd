@@ -1,11 +1,11 @@
 class_name PhysicsPlatform
-extends KinematicBody2D
+extends CharacterBody2D
 
-export var colliders_group = "PhysicsPlatformCollider"
-export var initial_velocity : Vector2
-export var initial_velocity_angular : float
+@export var colliders_group = "PhysicsPlatformCollider"
+@export var initial_velocity : Vector2
+@export var initial_velocity_angular : float
 
-onready var phyics_dummy_preload = preload("res://Scenes/environment/physics_platform_dummy.tscn")
+@onready var phyics_dummy_preload = preload("res://Scenes/environment/physics_platform_dummy.tscn")
 
 var physics_dummy_instance : RigidBody2D = null
 var colliders = []

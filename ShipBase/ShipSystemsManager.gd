@@ -8,8 +8,8 @@ extends Node
 
 
 # parent shipbody
-export var shipBody_path : NodePath
-onready var shipBody = get_node(shipBody_path)
+@export var shipBody_path : NodePath
+@onready var shipBody = get_node(shipBody_path)
 
 
 # systems, id -> system

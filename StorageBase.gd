@@ -7,8 +7,8 @@ class_name StorageBase
 extends Node2D
 
 var parent
-export var parent_path = ""
-export var data_saved = false
+@export var parent_path = ""
+@export var data_saved = false
 
 # gets parent data and saves to file
 func save(parent, folder):

@@ -8,21 +8,21 @@ extends Node2D
 
 
 
-export var block_path : NodePath
-export var muzzle_path : NodePath
-export var add_velocity = true # adds ship's current velocity to projectile
-export var deviate = true
-export var deviation = 0.1 # radians
-export var shot_impulse = 1000
-export var projectile_resource : PackedScene
-export var semi_auto = true
-export var gun_loaded = true # one in the chamber?
+@export var block_path : NodePath
+@export var muzzle_path : NodePath
+@export var add_velocity = true # adds ship's current velocity to projectile
+@export var deviate = true
+@export var deviation = 0.1 # radians
+@export var shot_impulse = 1000
+@export var projectile_resource : PackedScene
+@export var semi_auto = true
+@export var gun_loaded = true # one in the chamber?
 # todo - magazines feed projectile resources
 
-onready var block = get_node(block_path)
+@onready var block = get_node(block_path)
 
-onready var muzzle_node = get_node(muzzle_path)
-onready var muzzle_pos : Vector2 = muzzle_node.position 
+@onready var muzzle_node = get_node(muzzle_path)
+@onready var muzzle_pos : Vector2 = muzzle_node.position 
 
 var current_projectile
 
@@ -59,7 +59,7 @@ func release_trigger():
 
 func fire():
 	
-	var projectile : RigidBody2D = projectile_resource.instance()
+	var projectile : RigidBody2D = projectile_resource.instantiate()
 	
 	# TODO make this a scene-level child
 	add_child(projectile)

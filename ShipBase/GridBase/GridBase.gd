@@ -3,22 +3,22 @@
 class_name GridBase
 extends Node2D
 
-export var grid_size = 64 # base
+@export var grid_size = 64 # base
 
 # TODO do these by path exports?
-onready var shipBody = get_parent()
+@onready var shipBody = get_parent()
 var shipInfo
-onready var anchor = $GridAnchor
-onready var tilemap : TileMap = get_parent().get_node("ShipTileMap")
-onready var tilemap_remote : RemoteTransform2D = $TileMapRemote
+@onready var anchor = $GridAnchor
+@onready var tilemap : TileMap = get_parent().get_node("ShipTileMap")
+@onready var tilemap_remote : RemoteTransform2D = $TileMapRemote
 
 # defunct
-onready var storage = $GridBase_Storage
+@onready var storage = $GridBase_Storage
 
-export var test_dict = {}
+@export var test_dict = {}
 
-onready var num_blocks : int = 0
-onready var gross_blocks : int = 0 # just for bad uid for now
+@onready var num_blocks : int = 0
+@onready var gross_blocks : int = 0 # just for bad uid for now
 var block_dict = {} # master dictionary of grid
 # blocks are organized in a dict of vector2 -> node
 # hashes all given positions as references to given block
@@ -30,7 +30,7 @@ var blocks_id = {}
 signal block_added(coord, block, grid, update_com)
 signal block_removed(coord, block, grid, update_com) 
 signal grid_empty(grid)
-signal superShip_moved(super)
+signal superShip_moved(superShip)
 # be wary of holding the reference to a dying block
 
 func _ready():
@@ -41,7 +41,7 @@ func _ready():
 	# to upper corner of 0,0 block : ergo tile pos == block pos
 	tilemap_remote.position -= Vector2(grid_size/2, grid_size/2)
 	
-	shipBody.connect("on_clicked", self, "on_ship_clicked")
+	shipBody.connect("on_clicked", Callable(self, "on_ship_clicked"))
 
 func _enter_tree():
 	print("GRID ENTERED TREE")
@@ -76,8 +76,12 @@ func add_block(block, center_coord, facing, check_blocked = true, update_com = t
 		# rotate coords based on facing
 		# (I could do vector math but this is more legible maybe)
 		
+		
+#		center_coord = Vector2i(center_coord)
+	
+		
 		if facing == Block.block_facing_direction.RIGHT:
-			vec_coord = center_coord + vec
+			vec_coord = center_coord + Vector2(vec)
 		
 		elif facing == Block.block_facing_direction.DOWN:
 			vec_coord = center_coord + Vector2(-vec.y, vec.x)
@@ -148,7 +152,7 @@ func remove_block(pos : Vector2) -> bool:
 		# calls cleanup on block, can abort here
 		var cancel = block.on_removed_from_grid(pos, block, self)
 		if cancel:
-			print("block cancelled removal")
+			print("block canceled removal")
 			return false
 		
 		block_dict.erase(pos)
@@ -217,8 +221,8 @@ func post_load_block_setup():
 
 
 # called by ship
-func on_superShip_moved(super):
-	emit_signal("superShip_moved", super)
+func on_superShip_moved(superShip):
+	emit_signal("superShip_moved", superShip)
 
 
 func on_ship_clicked(ship, block, event):
@@ -240,8 +244,7 @@ func save(folder):
 	# -> save blocks
 	
 	# make new folder for blocks
-	var directory = Directory.new()
-	directory.open(folder)
+	var directory = DirAccess.open(folder)
 	directory.make_dir("Blocks")
 	directory.change_dir("Blocks")
 	var new_folder = directory.get_current_dir()
@@ -286,8 +289,7 @@ func load_in(folder, ship):
 	# load blocks
 	
 	# navigate to blocks directory
-	var directory = Directory.new()
-	directory.open(folder)
+	var directory = DirAccess.open(folder)
 	directory.change_dir("Blocks")
 	var address = directory.get_current_dir()
 	
@@ -297,7 +299,7 @@ func load_in(folder, ship):
 	var block
 	var block_folder
 	
-	directory.list_dir_begin(true, false)
+	directory.list_dir_begin() # TODOGODOT4 fill missing arguments https://github.com/godotengine/godot/pull/40547
 	bname = directory.get_next()
 	
 #	print ("bname:" + bname)
@@ -307,7 +309,7 @@ func load_in(folder, ship):
 		# instantiate block
 		block_folder = address + "/" + bname
 		block_preload = load(block_folder + "/" + bname + ".tscn")
-		block = block_preload.instance()
+		block = block_preload.instantiate()
 		add_child(block)
 		
 		# tell block to load in
@@ -334,7 +336,7 @@ func load_in(folder, ship):
 	
 	# load storage
 	var storage_packed = load(folder + "/" + name + "_storage.tscn")
-	storage = storage_packed.instance()
+	storage = storage_packed.instantiate()
 	add_child(storage)
 	print("grid storage: " + storage.name)
 	

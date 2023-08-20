@@ -1,7 +1,7 @@
 class_name GridBase_Storage
 extends StorageBase
 
-export var shipBody_address = ""
+@export var shipBody_address = ""
 
 # TODO serialize block dict
 

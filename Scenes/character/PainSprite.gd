@@ -1,14 +1,14 @@
-extends Sprite
+extends Sprite2D
 
 # temp hitindicator, use animations for this
 
-onready var player = get_parent()
+@onready var player = get_parent()
 
 func _ready():
-	player.connect("player_hit", self, "on_hit")
+	player.connect("player_hit", Callable(self, "on_hit"))
 	visible = false
 
 func on_hit(body):
 	visible = true
-	yield(get_tree().create_timer(0.2), "timeout")
+	await get_tree().create_timer(0.2).timeout
 	visible = false

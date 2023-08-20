@@ -13,14 +13,14 @@ extends IOCable
 # FIELDS -----------------------------------------------------------------------
 
 
-export var resistance = 3
+@export var resistance = 3
 
 
 # CALLBACKS --------------------------------------------------------------------
 
 
 func _ready():
-	._ready()
+	super._ready()
 	
 	# double check ports are fuelports
 	# should hopefully be caught by tool already

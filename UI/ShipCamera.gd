@@ -7,15 +7,15 @@ extends Node2D
 # FIELDS ----------------------------------------------------------------------
 
 
-export var camera_path : NodePath = "Camera2D"
-export var lerp_weight = 0.5
-export var zoom_mult = 1.2
-export var zoom_time = 1
+@export var camera_path : NodePath = "Camera2D"
+@export var lerp_weight = 0.5
+@export var zoom_mult = 1.2
+@export var zoom_time = 1
 
-onready var camera = get_node(camera_path)
-onready var zoom_tween = $Zoomtween
+@onready var camera = get_node(camera_path)
+@onready var zoom_tween = $Zoomtween
 
-onready var target : Node2D = null
+@onready var target : Node2D = null
 
 
 # CALLBACKS --------------------------------------------------------------------

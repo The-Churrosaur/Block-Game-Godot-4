@@ -8,8 +8,8 @@ extends PortBlockBase
 # used for wheel currently
 # TODO make pinblockbase extend this
 
-export var pin_target_path : NodePath
-onready var pin_target : PhysicsBody2D = get_node(pin_target_path)
+@export var pin_target_path : NodePath
+@onready var pin_target : PhysicsBody2D = get_node(pin_target_path)
 
 # where block will attempt to keep target
 # block -> target
@@ -22,7 +22,7 @@ var queue_pin = false
 
 
 func _ready():
-	._ready()
+	super._ready()
 	
 	pinJoint = $PinJoint2D
 	
@@ -43,17 +43,17 @@ func _input(event):
 	pass
 
 func post_load_setup():
-	.post_load_setup()
+	super.post_load_setup()
 	# wow I hate this so much but it works for now TODO TODO
 #	yield(get_tree().create_timer(0.0001), "timeout")
 #	setup_load_subship()
 
 func on_added_to_grid(center_coord, block, grid):
-	.on_added_to_grid(center_coord, block, grid)
+	super.on_added_to_grid(center_coord, block, grid)
 
 
 func on_removed_from_grid(center_coord, block, grid):
-	.on_removed_from_grid(center_coord, block, grid)
+	super.on_removed_from_grid(center_coord, block, grid)
 	
 	# TODO are you sure you want to delete this subship?
 	# can return false here
@@ -125,7 +125,7 @@ func shift_target_pos_to_offset(target):
 
 
 func get_save_data() -> Dictionary:
-	var dict = .get_save_data()
+	var dict = super.get_save_data()
 	
 	
 	

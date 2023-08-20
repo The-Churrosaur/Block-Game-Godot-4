@@ -12,9 +12,9 @@ extends Node2D
 # FIELDS -----------------------------------------------------------------------
 
 
-onready var shape = $CollisionShape2D
-onready var body = $RigidBody2D
-onready var holder = $KinematicBody2D
+@onready var shape = $CollisionShape2D
+@onready var body = $RigidBody2D
+@onready var holder = $CharacterBody2D
 
 
 # CALLBACKS --------------------------------------------------------------------
@@ -61,7 +61,7 @@ func move_shape_to(col_shape : CollisionShape2D,
 	
 	var shape = col_shape.shape
 	var new_shape = RectangleShape2D.new()
-	new_shape.extents = Vector2(10,5)
+	new_shape.size = Vector2(10,5)
 	var id = body.create_shape_owner(body)
 	body.shape_owner_add_shape(id, new_shape)
 	

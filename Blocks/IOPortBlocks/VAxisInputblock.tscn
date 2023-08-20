@@ -1,84 +1,90 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=7 format=3 uid="uid://dxrlxalhneim2"]
 
-[ext_resource path="res://Blocks/IOPortBlocks/PortInputBlock.gd" type="Script" id=1]
-[ext_resource path="res://Blocks/IOPortBlocks/PortBlockBase.tscn" type="PackedScene" id=2]
-[ext_resource path="res://BlockSystems/IOPorts/IOPort.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/Corridor.png" type="Texture" id=4]
-[ext_resource path="res://Assets/puter.png" type="Texture" id=6]
+[ext_resource type="Script" path="res://Blocks/IOPortBlocks/PortInputBlock.gd" id="1"]
+[ext_resource type="PackedScene" path="res://Blocks/IOPortBlocks/PortBlockBase.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://2t3bkom3e7bj" path="res://BlockSystems/IOPorts/IOPort.tscn" id="3"]
+[ext_resource type="Texture2D" uid="uid://b5lgsowf3x5oc" path="res://Assets/Corridor.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://72drysw0o6c" path="res://Assets/puter.png" id="6"]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 64 )
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(32, 64)
 
-[node name="VAxisInputBlock" instance=ExtResource( 2 )]
-script = ExtResource( 1 )
-size_grid = [ Vector2( 0, 0 ), Vector2( 0, 1 ) ]
+[node name="VAxisInputBlock" node_paths=PackedStringArray("port_paths", "hitbox_colliders") instance=ExtResource("2")]
+script = ExtResource("1")
+input_strings = ["ui_up", "ui_down"]
+port_paths = [NodePath("BlockSystems/PortManager/IOPortUp"), NodePath("BlockSystems/PortManager/IOPortDown")]
+port_manager_path = NodePath("BlockSystems/PortManager")
+size_grid = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
+mass = 10
+cost = 100
 description = "Outputs a signal from the up/down input to ports"
+destruction_velocity = 5
+destructable = true
+health = 100
+acceleration_limit = 1
+acceleration_damage_mult = 1
 class_type = "v_axis_input_block"
 display_name = "Vertical Input"
-popup_path = NodePath("")
-hitbox_colliders = [ NodePath("CollisionShape2D") ]
-input_strings = [ "ui_up", "ui_down" ]
-port_paths = [ NodePath("BlockSystems/PortManager/IOPortUp"), NodePath("BlockSystems/PortManager/IOPortDown") ]
+tile_id = 0
+enabled = true
+popup_path = NodePath("BlockPopup")
+hitbox_colliders = [NodePath("CollisionShape2D")]
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite2D" parent="." index="0"]
 visible = false
-position = Vector2( 0, 32 )
-scale = Vector2( 1, 2 )
+position = Vector2(0, 32)
+scale = Vector2(1, 2)
 
-[node name="IOPortUp" parent="BlockSystems/PortManager" index="0" instance=ExtResource( 3 )]
-position = Vector2( 0, -9.12756 )
+[node name="IOPortUp" parent="BlockSystems/PortManager" index="0" instance=ExtResource("3")]
+position = Vector2(0, -9.12756)
 port_id = "up_out"
 port_display_name = "UP"
 is_output = true
 
-[node name="IOPortDown" parent="BlockSystems/PortManager" index="1" instance=ExtResource( 3 )]
-position = Vector2( 0, 75.5087 )
+[node name="IOPortDown" parent="BlockSystems/PortManager" index="1" instance=ExtResource("3")]
+position = Vector2(0, 75.5087)
 port_id = "down_out"
 port_display_name = "DOWN"
 is_output = true
 
 [node name="SizeHelper" parent="." index="2"]
-tile_data = PoolIntArray( 0, 0, 0, 65536, 0, 0 )
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 0)
 
 [node name="Node2D" type="Node2D" parent="." index="3"]
-position = Vector2( 0, 32 )
 z_index = 2
+position = Vector2(0, 32)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Node2D" index="0"]
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -29.0
-margin_top = -21.0
-margin_right = 29.0
-margin_bottom = 21.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_left = -29.0
+offset_top = -21.0
+offset_right = 29.0
+offset_bottom = 21.0
 
 [node name="Label" type="Label" parent="Node2D/VBoxContainer" index="0"]
-margin_right = 58.0
-margin_bottom = 48.0
+layout_mode = 2
 text = "^
 INPUT
 V"
-align = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
-position = Vector2( 0, 32 )
-shape = SubResource( 1 )
+position = Vector2(0, 32)
+shape = SubResource("1")
 
-[node name="Sprite4" type="Sprite" parent="." index="6"]
-position = Vector2( 0, -32.4347 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 6 )
+[node name="Sprite4" type="Sprite2D" parent="." index="6"]
+position = Vector2(0, -32.4347)
+scale = Vector2(2, 2)
+texture = ExtResource("6")
 
-[node name="Sprite2" type="Sprite" parent="." index="7"]
-scale = Vector2( 2, 2 )
-texture = ExtResource( 4 )
+[node name="Sprite2" type="Sprite2D" parent="." index="7"]
+scale = Vector2(2, 2)
+texture = ExtResource("4")
 
-[node name="Sprite3" type="Sprite" parent="." index="8"]
-position = Vector2( 0, 64 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 4 )
+[node name="Sprite3" type="Sprite2D" parent="." index="8"]
+position = Vector2(0, 64)
+scale = Vector2(2, 2)
+texture = ExtResource("4")

@@ -1,22 +1,22 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://cagtbjm3sr0m5"]
 
-[ext_resource path="res://Blocks/Thrusters/ThrusterBlock.gd" type="Script" id=1]
-[ext_resource path="res://Assets/LaserTurret.png" type="Texture" id=2]
-[ext_resource path="res://ShipBase/GridBase/Block_Storage.tscn" type="PackedScene" id=3]
+[ext_resource type="Script" path="res://Blocks/Thrusters/ThrusterBlock.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://b8sk86mhwa0ve" path="res://Assets/LaserTurret.png" id="2"]
+[ext_resource type="PackedScene" path="res://ShipBase/GridBase/Block_Storage.tscn" id="3"]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 32 )
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(32, 32)
 
 [node name="ThrusterBlockBase" type="Node2D"]
-script = ExtResource( 1 )
+script = ExtResource("1")
 class_type = "ThrusterBlock"
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 4.71239
-scale = Vector2( 2, 2 )
-texture = ExtResource( 2 )
+scale = Vector2(2, 2)
+texture = ExtResource("2")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource("1")
 
-[node name="Block_Storage" parent="." instance=ExtResource( 3 )]
+[node name="Block_Storage" parent="." instance=ExtResource("3")]

@@ -1,15 +1,15 @@
 extends LineEdit
 
 
-export var spawn_owner_path : NodePath
+@export var spawn_owner_path : NodePath
 
-onready var spawn_owner = get_node(spawn_owner_path)
+@onready var spawn_owner = get_node(spawn_owner_path)
 
 var loader
 
 func _ready():
 	
-	connect("text_entered",self,"on_text_entered")
+	connect("text_submitted", Callable(self, "on_text_entered"))
 	
 	loader = get_node("/root/ShipLoader")
 
@@ -28,7 +28,7 @@ func _input(event):
 signal change_ship(ship)
 
 
-func on_text_entered(var text):
+func on_text_entered(text):
 #	var address = "res://Ships/" + text + "/"
 #	var packed_scene = load(address + "/" + text + ".tscn")
 #	var new_ship = packed_scene.instance()

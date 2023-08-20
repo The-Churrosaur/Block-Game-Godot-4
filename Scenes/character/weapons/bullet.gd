@@ -1,16 +1,16 @@
 class_name Bullet
 extends RigidBody2D
 
-export var impact_impulse = 100000
-export var life_time = 5.0
-export var activation_time = 0.2 # dead time before bullet activates
-export var damage = 1
+@export var impact_impulse = 100000
+@export var life_time = 5.0
+@export var activation_time = 0.2 # dead time before bullet activates
+@export var damage = 1
 
 signal bullet_removed(bullet, id)
 signal bullet_impacted(bullet, body)
 
-onready var life_timer = $LifeTimer
-onready var activation_timer = $ActivationTimer
+@onready var life_timer = $LifeTimer
+@onready var activation_timer = $ActivationTimer
 
 var temp_collision_layer = collision_layer
 var temp_collision_mask = collision_mask
@@ -20,21 +20,21 @@ func _ready():
 	# setup contacts for impact, disable to start
 	
 	contact_monitor = false # set on by activation timer
-	contacts_reported = 2
+	max_contacts_reported = 2
 
 	collision_layer = 0
 	collision_mask = 0
 	
-	connect("body_entered", self, "on_body_entered")
+	connect("body_entered", Callable(self, "on_body_entered"))
 	
-	$Particles2D.emitting = true
+	$GPUParticles2D.emitting = true
 	
 	# setup timers
 	
-	life_timer.connect("timeout", self, "on_life_timer")
+	life_timer.connect("timeout", Callable(self, "on_life_timer"))
 	life_timer.start(life_time)
 	
-	yield(get_tree().create_timer(activation_time), "timeout")
+	await get_tree().create_timer(activation_time).timeout
 	on_activation_timer()
 	
 

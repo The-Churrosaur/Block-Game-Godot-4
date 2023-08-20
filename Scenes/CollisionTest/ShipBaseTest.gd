@@ -24,8 +24,8 @@ func _ready():
 	collision_shape2.position += Vector2(0,400)
 	
 	contact_monitor = true
-	contacts_reported = 1
-	connect("body_shape_entered", self, "_on_body_shape_entered")
+	max_contacts_reported = 1
+	connect("body_shape_entered", Callable(self, "_on_body_shape_entered"))
 	
 	pass
 

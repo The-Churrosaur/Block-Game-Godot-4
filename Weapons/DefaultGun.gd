@@ -2,8 +2,8 @@ class_name DefaultGun
 extends GunBase 
 
 
-onready var muzzleFX = $MuzzleFX
-onready var timer = $Timer
+@onready var muzzleFX = $MuzzleFX
+@onready var timer = $Timer
 
 
 func _ready():
@@ -11,7 +11,7 @@ func _ready():
 
 
 func fire():
-	.fire()
+	super.fire()
 	_show_muzzleFX()
 	timer.start()
 

@@ -11,7 +11,7 @@ class_name Ship_SaverLoader_GDS
 extends Node2D
 
 # default filepath to load blocks
-export var blocks_directory = "res://Blocks/"
+@export var blocks_directory = "res://Blocks/"
 
 # returns file
 func save(ship : Node2D, name : String, directory : String) -> String:
@@ -33,8 +33,7 @@ func save(ship : Node2D, name : String, directory : String) -> String:
 	# NAVIGATE TO DIRECTORY
 	
 	# navigate directory
-	var dir = Directory.new()
-	dir.open(directory)
+	var dir = DirAccess.open(directory)
 
 	# check if file already exists, append name
 	if dir.dir_exists(name):
@@ -92,7 +91,7 @@ func save_subShips(ship : Node2D, directory : String):
 	
 	# get dict
 	var subShip_dict = ship.subShips
-	if subShip_dict.empty():
+	if subShip_dict.is_empty():
 		print("Ship saver: no subships")
 		return
 	
@@ -117,7 +116,7 @@ func load_ship(	ship_base : RigidBody2D,
 				) -> Node2D:
 	
 	# just for safety
-	ship_base.mode = RigidBody2D.MODE_STATIC
+	ship_base.freeze = true
 	
 	# populate dict with loaded block scenes, will instantiate from dict later
 	var block_factory = {}
@@ -167,7 +166,7 @@ func load_ship(	ship_base : RigidBody2D,
 		
 		assert(block_name != "Block", "Block subtype is default, rename block")
 		
-		var block = block_factory[block_name].instance()
+		var block = block_factory[block_name].instantiate()
 		
 		# add all keys as fields back to block 
 		# if applicable field exists
@@ -205,7 +204,7 @@ func load_ship(	ship_base : RigidBody2D,
 	ship_base.load_saved_data(save_resource.ship_data)
 	
 	# unfreeze
-	ship_base.mode = RigidBody2D.MODE_RIGID
+	ship_base.freeze = false
 	
 	# return built ship
 	return ship_base

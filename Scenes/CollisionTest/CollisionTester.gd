@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-onready var ship = get_parent().get_node("ShipBase")
+@onready var ship = get_parent().get_node("ShipBase")
 var collision_shape
 
 func _ready():
@@ -24,4 +24,4 @@ func stealshape():
 
 func push():
 	print("pushing")
-	add_central_force(Vector2(0,-200))
+	apply_central_force(Vector2(0,-200))

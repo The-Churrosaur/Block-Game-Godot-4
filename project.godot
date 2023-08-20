@@ -6,574 +6,13 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
-
-_global_script_classes=[ {
-"base": "Node2D",
-"class": "Block",
-"language": "GDScript",
-"path": "res://ShipBase/GridBase/block.gd"
-}, {
-"base": "Control",
-"class": "BlockHealthBar",
-"language": "GDScript",
-"path": "res://BlockSystems/Health/BlockHealthbar.gd"
-}, {
-"base": "ShipBuilderTool",
-"class": "BlockPlacer",
-"language": "GDScript",
-"path": "res://ControlSystems/BlockPlacer.gd"
-}, {
-"base": "TileMap",
-"class": "BlockSizeHelper",
-"language": "GDScript",
-"path": "res://Blocks/BlockSizeHelper.gd"
-}, {
-"base": "Node",
-"class": "BlockSystem",
-"language": "GDScript",
-"path": "res://BlockSystems/BlockSystem.gd"
-}, {
-"base": "Node2D",
-"class": "BlockSystemsManager",
-"language": "GDScript",
-"path": "res://BlockSystems/BlockSystems_Manager.gd"
-}, {
-"base": "StorageBase",
-"class": "Block_Storage",
-"language": "GDScript",
-"path": "res://ShipBase/GridBase/Block_Storage.gd"
-}, {
-"base": "PortBlockBase",
-"class": "BodyPinBase",
-"language": "GDScript",
-"path": "res://ShipBase/GridBase/PinBlock/BodyPinBase.gd"
-}, {
-"base": "Reference",
-"class": "BouncingBullet",
-"language": "GDScript",
-"path": "res://Scenes/character/weapons/bouncing_bullet.gd"
-}, {
-"base": "Reference",
-"class": "Bullet",
-"language": "GDScript",
-"path": "res://Scenes/character/weapons/bullet.gd"
-}, {
-"base": "Node2D",
-"class": "BumpDetector",
-"language": "GDScript",
-"path": "res://ShipBase/BumpDetector.gd"
-}, {
-"base": "Reference",
-"class": "CharacterHealth",
-"language": "GDScript",
-"path": "res://character_health.gd"
-}, {
-"base": "Reference",
-"class": "CharacterRig",
-"language": "GDScript",
-"path": "res://Scenes/character/BlueTest/blue_rig.gd"
-}, {
-"base": "Reference",
-"class": "EnemyController",
-"language": "GDScript",
-"path": "res://Scenes/environment/enemy/enemy_controller.gd"
-}, {
-"base": "Reference",
-"class": "EnemyGrenadierController",
-"language": "GDScript",
-"path": "res://Scenes/environment/enemy/enemy_grenadier_controller.gd"
-}, {
-"base": "Reference",
-"class": "EnemyShotgunController",
-"language": "GDScript",
-"path": "res://Scenes/environment/enemy/enemy_shotgun_controller.gd"
-}, {
-"base": "Reference",
-"class": "EnemyTurretController",
-"language": "GDScript",
-"path": "res://Scenes/environment/enemy/enemy_turret_controller.gd"
-}, {
-"base": "IOCable",
-"class": "FuelCable",
-"language": "GDScript",
-"path": "res://BlockSystems/FuelPorts/FuelCable.gd"
-}, {
-"base": "IOCableManager",
-"class": "FuelCableManager",
-"language": "GDScript",
-"path": "res://BlockSystems/FuelPorts/FuelCableManager.gd"
-}, {
-"base": "IOCableTool",
-"class": "FuelCabletool",
-"language": "GDScript",
-"path": "res://ControlSystems/FuelCableTool.gd"
-}, {
-"base": "IOPort",
-"class": "FuelPort",
-"language": "GDScript",
-"path": "res://BlockSystems/FuelPorts/FuelPort.gd"
-}, {
-"base": "PortManager",
-"class": "FuelPortManager",
-"language": "GDScript",
-"path": "res://BlockSystems/FuelPorts/FuelPortManager.gd"
-}, {
-"base": "Node2D",
-"class": "FuelTank",
-"language": "GDScript",
-"path": "res://BlockSystems/FuelPorts/FuelTank.gd"
-}, {
-"base": "Node2D",
-"class": "FuelTankGauge",
-"language": "GDScript",
-"path": "res://BlockSystems/FuelPorts/FuelTankGauge.gd"
-}, {
-"base": "BlockSystem",
-"class": "FuelTankManager",
-"language": "GDScript",
-"path": "res://BlockSystems/FuelPorts/FuelTankManager.gd"
-}, {
-"base": "PortBlockBase",
-"class": "FuelTestBlock",
-"language": "GDScript",
-"path": "res://Blocks/FuelTestBlock.gd"
-}, {
-"base": "Area2D",
-"class": "GetAreaTest",
-"language": "GDScript",
-"path": "res://Scenes/testgetarea.gd"
-}, {
-"base": "Reference",
-"class": "GrappleGun",
-"language": "GDScript",
-"path": "res://Scenes/character/weapons/grapple_gun.gd"
-}, {
-"base": "Reference",
-"class": "GravityArea",
-"language": "GDScript",
-"path": "res://Scenes/environment/gravity_area.gd"
-}, {
-"base": "Reference",
-"class": "Grenade",
-"language": "GDScript",
-"path": "res://Scenes/character/weapons/grenade.gd"
-}, {
-"base": "Node2D",
-"class": "GridBase",
-"language": "GDScript",
-"path": "res://ShipBase/GridBase/GridBase.gd"
-}, {
-"base": "StorageBase",
-"class": "GridBase_Storage",
-"language": "GDScript",
-"path": "res://ShipBase/GridBase/GridBase_Storage.gd"
-}, {
-"base": "Block",
-"class": "GunBlock",
-"language": "GDScript",
-"path": "res://Blocks/GunBlock.gd"
-}, {
-"base": "PortBlockBase",
-"class": "GunPortBlock",
-"language": "GDScript",
-"path": "res://Blocks/IOPortBlocks/GunPortBlock.gd"
-}, {
-"base": "Reference",
-"class": "HealthBar",
-"language": "GDScript",
-"path": "res://Scenes/character/hud/health_bar.gd"
-}, {
-"base": "Reference",
-"class": "HealthPickup",
-"language": "GDScript",
-"path": "res://Scenes/environment/health_pickup.gd"
-}, {
-"base": "Node2D",
-"class": "HoverNotif",
-"language": "GDScript",
-"path": "res://ControlSystems/HoverNotif.gd"
-}, {
-"base": "Reference",
-"class": "IOBlock",
-"language": "GDScript",
-"path": "res://Blocks/_oldIO/IOBlock.gd"
-}, {
-"base": "Node",
-"class": "IOBox",
-"language": "GDScript",
-"path": "res://BlockSystems/IO/IOBox.gd"
-}, {
-"base": "Node2D",
-"class": "IOCable",
-"language": "GDScript",
-"path": "res://BlockSystems/IOPorts/IOCable.gd"
-}, {
-"base": "ShipSystem",
-"class": "IOCableManager",
-"language": "GDScript",
-"path": "res://BlockSystems/IOPorts/IOCableManager.gd"
-}, {
-"base": "ShipBuilderTool",
-"class": "IOCableTool",
-"language": "GDScript",
-"path": "res://ControlSystems/IOCableTool.gd"
-}, {
-"base": "ShipBuilderTool",
-"class": "IOConnector",
-"language": "GDScript",
-"path": "res://ControlSystems/IOConnector.gd"
-}, {
-"base": "Node",
-"class": "IOManager",
-"language": "GDScript",
-"path": "res://BlockSystems/IO/IOManager.gd"
-}, {
-"base": "Node2D",
-"class": "IOPort",
-"language": "GDScript",
-"path": "res://BlockSystems/IOPorts/IOPort.gd"
-}, {
-"base": "Node2D",
-"class": "IOString",
-"language": "GDScript",
-"path": "res://BlockSystems/IO/IOString.gd"
-}, {
-"base": "Block",
-"class": "JointBlock",
-"language": "GDScript",
-"path": "res://Blocks/_old/JointBlock.gd"
-}, {
-"base": "Reference",
-"class": "KinematicCharacter",
-"language": "GDScript",
-"path": "res://Scenes/character/kinematic_character.gd"
-}, {
-"base": "Reference",
-"class": "LootSpawner",
-"language": "GDScript",
-"path": "res://Scenes/environment/loot_spawner.gd"
-}, {
-"base": "PinBlockBase",
-"class": "MagLock",
-"language": "GDScript",
-"path": "res://Blocks/Joints/MagLock.gd"
-}, {
-"base": "PinBlockBase",
-"class": "MotorBlock",
-"language": "GDScript",
-"path": "res://Blocks/Joints/MotorBlock.gd"
-}, {
-"base": "MotorBlock",
-"class": "MotorWheel",
-"language": "GDScript",
-"path": "res://Blocks/LandingBlocks/MotorWheel.gd"
-}, {
-"base": "Reference",
-"class": "PhysicsPlatform",
-"language": "GDScript",
-"path": "res://Scenes/environment/physics_platform.gd"
-}, {
-"base": "Reference",
-"class": "Pickup",
-"language": "GDScript",
-"path": "res://Scenes/environment/pickup.gd"
-}, {
-"base": "Reference",
-"class": "PinBlock",
-"language": "GDScript",
-"path": "res://Blocks/Joints/PinBlock.gd"
-}, {
-"base": "PortBlockBase",
-"class": "PinBlockBase",
-"language": "GDScript",
-"path": "res://ShipBase/GridBase/PinBlock/PinBlockBase.gd"
-}, {
-"base": "PinHeadBase",
-"class": "PinHead",
-"language": "GDScript",
-"path": "res://Blocks/Joints/PinHead.gd"
-}, {
-"base": "Block",
-"class": "PinHeadBase",
-"language": "GDScript",
-"path": "res://ShipBase/GridBase/PinBlock/PinHeadBase.gd"
-}, {
-"base": "Reference",
-"class": "PlayerBase",
-"language": "GDScript",
-"path": "res://Scenes/character/player_base.gd"
-}, {
-"base": "Reference",
-"class": "PlayerCamera",
-"language": "GDScript",
-"path": "res://Scenes/environment/player_camera.gd"
-}, {
-"base": "Reference",
-"class": "PlayerController",
-"language": "GDScript",
-"path": "res://Scenes/character/player_controller.gd"
-}, {
-"base": "Block",
-"class": "PortBlockBase",
-"language": "GDScript",
-"path": "res://Blocks/IOPortBlocks/PortBlockBase.gd"
-}, {
-"base": "Reference",
-"class": "PortBlockTester",
-"language": "GDScript",
-"path": "res://Blocks/IOPortBlocks/PortBlockTester.gd"
-}, {
-"base": "PortBlockBase",
-"class": "PortInputBlock",
-"language": "GDScript",
-"path": "res://Blocks/IOPortBlocks/PortInputBlock.gd"
-}, {
-"base": "BlockSystem",
-"class": "PortManager",
-"language": "GDScript",
-"path": "res://BlockSystems/IOPorts/PortManager.gd"
-}, {
-"base": "Reference",
-"class": "PortSplitterBlock",
-"language": "GDScript",
-"path": "res://Blocks/IOPortBlocks/PortSplitterBlock.gd"
-}, {
-"base": "Reference",
-"class": "Rig",
-"language": "GDScript",
-"path": "res://Scenes/character/BlueTest/rig.gd"
-}, {
-"base": "Button",
-"class": "SceneSwitcher",
-"language": "GDScript",
-"path": "res://Scenes/SceneSwitcher.gd"
-}, {
-"base": "Reference",
-"class": "ScreenShaker",
-"language": "GDScript",
-"path": "res://Scenes/character/hud/screen_shaker.gd"
-}, {
-"base": "Reference",
-"class": "ShipBase_Storage",
-"language": "GDScript",
-"path": "res://ShipBase/Depreciated/ShipBase_Storage.gd"
-}, {
-"base": "RigidBody2D",
-"class": "ShipBody",
-"language": "GDScript",
-"path": "res://ShipBase/ShipBody.gd"
-}, {
-"base": "Node2D",
-"class": "ShipBuilderTool",
-"language": "GDScript",
-"path": "res://ControlSystems/ShipBuilderTool.gd"
-}, {
-"base": "Node2D",
-"class": "ShipInfo",
-"language": "GDScript",
-"path": "res://ShipBase/Depreciated/ShipInfo.gd"
-}, {
-"base": "Reference",
-"class": "ShipLoadSave",
-"language": "GDScript",
-"path": "res://ShipBase/Depreciated/ShipLoadSave.gd"
-}, {
-"base": "Resource",
-"class": "ShipSaveResource",
-"language": "GDScript",
-"path": "res://ShipBase/ShipSave_Resource.gd"
-}, {
-"base": "ShipBuilderTool",
-"class": "ShipSelector",
-"language": "GDScript",
-"path": "res://ControlSystems/ShipSelector.gd"
-}, {
-"base": "Node2D",
-"class": "ShipSpawner",
-"language": "GDScript",
-"path": "res://GameplaySystems/ShipSpawner.gd"
-}, {
-"base": "Reference",
-"class": "ShipStorage",
-"language": "GDScript",
-"path": "res://ShipBase/Depreciated/ShipStorage.gd"
-}, {
-"base": "Node",
-"class": "ShipSystem",
-"language": "GDScript",
-"path": "res://BlockSystems/ShipSystem.gd"
-}, {
-"base": "Node",
-"class": "ShipSystemsManager",
-"language": "GDScript",
-"path": "res://ShipBase/ShipSystemsManager.gd"
-}, {
-"base": "TileMap",
-"class": "ShipTileMap",
-"language": "GDScript",
-"path": "res://ShipBase/ShipTileMap.gd"
-}, {
-"base": "Node2D",
-"class": "Ship_SaverLoader_GDS",
-"language": "GDScript",
-"path": "res://ShipBase/Ship_SaverLoader_GDS.gd"
-}, {
-"base": "Node2D",
-"class": "StorageBase",
-"language": "GDScript",
-"path": "res://StorageBase.gd"
-}, {
-"base": "Block",
-"class": "TestBlock",
-"language": "GDScript",
-"path": "res://Blocks/TestBlock.gd"
-}, {
-"base": "Node2D",
-"class": "TestScene",
-"language": "GDScript",
-"path": "res://Scenes/TestScene.gd"
-}, {
-"base": "Block",
-"class": "ThrusterBlock",
-"language": "GDScript",
-"path": "res://Blocks/Thrusters/ThrusterBlock.gd"
-}, {
-"base": "Reference",
-"class": "ThrusterBlockIO",
-"language": "GDScript",
-"path": "res://Blocks/_oldIO/ThrusterBlockIO.gd"
-}, {
-"base": "PortBlockBase",
-"class": "ThrusterBlockPorts",
-"language": "GDScript",
-"path": "res://Blocks/Thrusters/ThrusterBlockPorts.gd"
-}, {
-"base": "Node",
-"class": "ToolManager",
-"language": "GDScript",
-"path": "res://ControlSystems/ToolManager.gd"
-}, {
-"base": "Reference",
-"class": "Weapon",
-"language": "GDScript",
-"path": "res://Scenes/character/weapons/weapon.gd"
-}, {
-"base": "PinHeadBase",
-"class": "WheelHead",
-"language": "GDScript",
-"path": "res://Blocks/LandingBlocks/WheelHead.gd"
-}, {
-"base": "Reference",
-"class": "ik_2d",
-"language": "GDScript",
-"path": "res://Scenes/utils/ik_2d.gd"
-}, {
-"base": "Node2D",
-"class": "shapemover",
-"language": "GDScript",
-"path": "res://Scenes/Hitboxtester/shapemover.gd"
-} ]
-_global_script_class_icons={
-"Block": "",
-"BlockHealthBar": "",
-"BlockPlacer": "",
-"BlockSizeHelper": "",
-"BlockSystem": "",
-"BlockSystemsManager": "",
-"Block_Storage": "",
-"BodyPinBase": "",
-"BouncingBullet": "",
-"Bullet": "",
-"BumpDetector": "",
-"CharacterHealth": "",
-"CharacterRig": "",
-"EnemyController": "",
-"EnemyGrenadierController": "",
-"EnemyShotgunController": "",
-"EnemyTurretController": "",
-"FuelCable": "",
-"FuelCableManager": "",
-"FuelCabletool": "",
-"FuelPort": "",
-"FuelPortManager": "",
-"FuelTank": "",
-"FuelTankGauge": "",
-"FuelTankManager": "",
-"FuelTestBlock": "",
-"GetAreaTest": "",
-"GrappleGun": "",
-"GravityArea": "",
-"Grenade": "",
-"GridBase": "",
-"GridBase_Storage": "",
-"GunBlock": "",
-"GunPortBlock": "",
-"HealthBar": "",
-"HealthPickup": "",
-"HoverNotif": "",
-"IOBlock": "",
-"IOBox": "",
-"IOCable": "",
-"IOCableManager": "",
-"IOCableTool": "",
-"IOConnector": "",
-"IOManager": "",
-"IOPort": "",
-"IOString": "",
-"JointBlock": "",
-"KinematicCharacter": "",
-"LootSpawner": "",
-"MagLock": "",
-"MotorBlock": "",
-"MotorWheel": "",
-"PhysicsPlatform": "",
-"Pickup": "",
-"PinBlock": "",
-"PinBlockBase": "",
-"PinHead": "",
-"PinHeadBase": "",
-"PlayerBase": "",
-"PlayerCamera": "",
-"PlayerController": "",
-"PortBlockBase": "",
-"PortBlockTester": "",
-"PortInputBlock": "",
-"PortManager": "",
-"PortSplitterBlock": "",
-"Rig": "",
-"SceneSwitcher": "",
-"ScreenShaker": "",
-"ShipBase_Storage": "",
-"ShipBody": "",
-"ShipBuilderTool": "",
-"ShipInfo": "",
-"ShipLoadSave": "",
-"ShipSaveResource": "",
-"ShipSelector": "",
-"ShipSpawner": "",
-"ShipStorage": "",
-"ShipSystem": "",
-"ShipSystemsManager": "",
-"ShipTileMap": "",
-"Ship_SaverLoader_GDS": "",
-"StorageBase": "",
-"TestBlock": "",
-"TestScene": "",
-"ThrusterBlock": "",
-"ThrusterBlockIO": "",
-"ThrusterBlockPorts": "",
-"ToolManager": "",
-"Weapon": "",
-"WheelHead": "",
-"ik_2d": "",
-"shapemover": ""
-}
+config_version=5
 
 [application]
 
 config/name="BlockVania"
 run/main_scene="res://Scenes/Main.tscn"
+config/features=PackedStringArray("4.1")
 config/icon="res://icon.png"
 
 [autoload]
@@ -583,8 +22,8 @@ CompanyData="*res://GameplaySystems/CompanyData.tscn"
 
 [display]
 
-window/size/width=1920
-window/size/height=1200
+window/size/viewport_width=1920
+window/size/viewport_height=1200
 window/size/fullscreen=true
 
 [global]
@@ -596,71 +35,71 @@ console=false
 
 ui_left={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"unicode":0,"echo":false,"script":null)
-, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":14,"pressure":0.0,"pressed":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194319,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":13,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":65,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
 }
 ui_right={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"unicode":0,"echo":false,"script":null)
-, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":15,"pressure":0.0,"pressed":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194321,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":14,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":68,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
 }
 ui_up={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"unicode":0,"echo":false,"script":null)
-, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":12,"pressure":0.0,"pressed":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194320,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":11,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":87,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
 }
 ui_down={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"unicode":0,"echo":false,"script":null)
-, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":13,"pressure":0.0,"pressed":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194322,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":12,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":83,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
 }
 ui_lclick={
 "deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
- ]
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
 }
 ui_rclick={
 "deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
- ]
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":2,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
 }
 ui_mclick={
 "deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":3,"pressed":false,"doubleclick":false,"script":null)
- ]
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":3,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
 }
 ui_alt_select={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":69,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
 }
 ui_rotate_left={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":81,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":81,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
 }
 ui_rotate_right={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":69,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
 }
 ui_scroll_up={
 "deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":4,"pressed":false,"doubleclick":false,"script":null)
- ]
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":4,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
 }
 ui_scroll_down={
 "deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":5,"pressed":false,"doubleclick":false,"script":null)
- ]
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":5,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
 }
 
 [memory]
@@ -669,7 +108,7 @@ limits/message_queue/max_size_kb=8000
 
 [network]
 
-limits/debugger_stdout/max_chars_per_second=4096
+limits/debugger/max_chars_per_second=4096
 
 [physics]
 
@@ -677,5 +116,5 @@ limits/debugger_stdout/max_chars_per_second=4096
 
 [rendering]
 
+environment/defaults/default_environment="res://default_env.tres"
 quality/driver/driver_name="GLES2"
-environment/default_environment="res://default_env.tres"

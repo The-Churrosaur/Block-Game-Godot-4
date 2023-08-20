@@ -1,7 +1,7 @@
 class_name EnemyTurretController
 extends EnemyController
 
-export var shoot_distance = 2000
+@export var shoot_distance = 2000
 
 func on_area_detected(body):
 	if body == target_manager.get_target_node(target_manager.PLAYER):
@@ -12,7 +12,7 @@ func on_area_lost(body):
 		acquire_target(body)
 
 func on_player_hit(body):
-	.on_player_hit(body)
+	super.on_player_hit(body)
 	print("TURRET HIT")
 
 func process_logic():

@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var camera = $CameraBase
+@onready var camera = $CameraBase
 var current_ship
 
 

@@ -7,20 +7,20 @@ extends Node2D
 # FIELDS ----------------------------------------------------------------------
 
 
-export var ship_path : NodePath
+@export var ship_path : NodePath
 
-onready var shipBody = get_node(ship_path)
+@onready var shipBody = get_node(ship_path)
 
-onready var label = $Label
-onready var particles = $CPUParticles2D
+@onready var label = $Label
+@onready var particles = $CPUParticles2D
 
 
 # CALLBACKS --------------------------------------------------------------------
 
 
 func _ready():
-	shipBody.connect("body_shape_entered", self, "_on_ship_body_entered")
-	shipBody.connect("body_shape_exited", self, "_on_ship_body_exited")
+	shipBody.connect("body_shape_entered", Callable(self, "_on_ship_body_entered"))
+	shipBody.connect("body_shape_exited", Callable(self, "_on_ship_body_exited"))
 	
 
 
@@ -50,7 +50,7 @@ func _on_hit():
 	label.visible = true
 	particles.emitting = true	
 	
-	yield(get_tree().create_timer(2), "timeout")
+	await get_tree().create_timer(2).timeout
 	
 	label.visible = false
 

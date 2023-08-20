@@ -2,11 +2,11 @@ extends LineEdit
 
 func _ready():
 	
-	connect("text_entered",self,"on_text_entered")
+	connect("text_submitted", Callable(self, "on_text_entered"))
 	
 	pass
 
-func on_text_entered(var text):
+func on_text_entered(text):
 	owner.current_ship.save_root(text)
 #
 #	var ship = owner.main_ship.ship_save.loadShip("res://ShipBase/ShipBody.tscn", "res://Blocks/")

@@ -3,11 +3,11 @@
 [ext_resource path="res://Blocks/TestBlock.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Blocks/Joints/MagLock.gd" type="Script" id=2]
 [ext_resource path="res://BlockSystems/IOPorts/PortManager.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/frame2.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Corridor.png" type="Texture" id=5]
+[ext_resource path="res://Assets/frame2.png" type="Texture2D" id=4]
+[ext_resource path="res://Assets/Corridor.png" type="Texture2D" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 32 )
+size = Vector2( 32, 32 )
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 64.0
@@ -19,7 +19,7 @@ class_type = "MagLockBlock"
 display_name = "Magnetic grabber"
 use_subShip_resource = false
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite2D" parent="." index="0"]
 visible = false
 
 [node name="PortManager" parent="BlockSystems" index="0" instance=ExtResource( 3 )]
@@ -29,10 +29,10 @@ visible = false
 [node name="Button" type="Button" parent="." index="5"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -20.5
-margin_top = 0.529732
-margin_right = 20.5
-margin_bottom = 20.5297
+offset_left = -20.5
+offset_top = 0.529732
+offset_right = 20.5
+offset_bottom = 20.5297
 text = "Lock"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -46,12 +46,12 @@ shape = SubResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 shape = SubResource( 2 )
 
-[node name="Sprite2" type="Sprite" parent="." index="9"]
+[node name="Sprite2" type="Sprite2D" parent="." index="9"]
 position = Vector2( 0, 16 )
 scale = Vector2( 3, 1 )
 texture = ExtResource( 5 )
 
-[node name="Sprite3" type="Sprite" parent="." index="10"]
+[node name="Sprite3" type="Sprite2D" parent="." index="10"]
 texture = ExtResource( 4 )
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

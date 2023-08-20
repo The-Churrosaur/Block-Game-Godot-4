@@ -24,7 +24,7 @@ func _input(event):
 	pass
 
 func post_load_setup():
-	.post_load_setup()
+	super.post_load_setup()
 	# test load times
 	# result is negligible
 #	selfblock = grid.get_block(center_grid_coord)

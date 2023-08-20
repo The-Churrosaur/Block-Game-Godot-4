@@ -13,5 +13,5 @@ func _process(delta):
 		emit_signal("emit_force", position, force, false)
 
 func on_added_to_grid(center_coord, block, grid):
-	.on_added_to_grid(center_coord, block, grid)
-	connect("emit_force", shipBody, "on_force_requested")
+	super.on_added_to_grid(center_coord, block, grid)
+	connect("emit_force", Callable(shipBody, "on_force_requested"))

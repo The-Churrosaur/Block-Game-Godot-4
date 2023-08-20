@@ -17,13 +17,13 @@ signal fuel_amount_changed(new_amount, new_pressure)
 
 
 # system id
-export var fuel_tank_id : String
+@export var fuel_tank_id : String
 
-export var volume : float
-export var max_pressure : float
+@export var volume : float
+@export var max_pressure : float
 
-export var initial_amount : float
-export var initial_pressure : float
+@export var initial_amount : float
+@export var initial_pressure : float
 
 # 'amount of gas' - can be thought of as NRT, or mass of gass
 # gass mass ass

@@ -10,14 +10,14 @@ extends Node2D
 # FIELDS ----------------------------------------------------------------------
 
 
-export var fuel_tank_path : NodePath
+@export var fuel_tank_path : NodePath
 
-export var pressure_bar_path : NodePath
-export var mass_display_path : NodePath 
+@export var pressure_bar_path : NodePath
+@export var mass_display_path : NodePath 
 
-onready var fuel_tank = get_node(fuel_tank_path)
-onready var pressure_bar = get_node(pressure_bar_path)
-onready var mass_display = get_node(mass_display_path)
+@onready var fuel_tank = get_node(fuel_tank_path)
+@onready var pressure_bar = get_node(pressure_bar_path)
+@onready var mass_display = get_node(mass_display_path)
 
 
 # CALLBACKS --------------------------------------------------------------------
@@ -26,7 +26,7 @@ onready var mass_display = get_node(mass_display_path)
 func _ready():
 	
 	# listen for tank changes
-	fuel_tank.connect("fuel_amount_changed", self, "_on_fuel_amount_changed")
+	fuel_tank.connect("fuel_amount_changed", Callable(self, "_on_fuel_amount_changed"))
 	
 	# set bar
 	pressure_bar.max_value = fuel_tank.max_pressure

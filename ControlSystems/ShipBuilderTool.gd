@@ -2,16 +2,16 @@ class_name ShipBuilderTool
 extends Node2D
 
 # unique identifier
-export var tool_id = "default_tool"
+@export var tool_id = "default_tool"
 
-export var active = false
+@export var active = false
 
 var scene = null
 
 # call me ;)
 func setup(current_scene):
 	scene = current_scene
-	scene.connect("ship_clicked", self, "on_ship_reported_clicked")
+	scene.connect("ship_clicked", Callable(self, "on_ship_reported_clicked"))
 
 func on_toggle_input(state):
 	set_active(state)
@@ -29,7 +29,9 @@ func on_ship_reported_clicked(ship, block):
 func find_ships_at(global_pos) -> Array: 
 	var hits = []
 	var state = get_world_2d().direct_space_state
-	var intersections = state.intersect_point(global_pos)
+	var query_params = PhysicsPointQueryParameters2D.new()
+	query_params.position = global_pos
+	var intersections = state.intersect_point(query_params)
 	for hit in intersections:
-		if hit.collider is ShipBody: hits.append(hit.collider)
+		if hit["collider"] is ShipBody: hits.append(hit["collider"])
 	return hits

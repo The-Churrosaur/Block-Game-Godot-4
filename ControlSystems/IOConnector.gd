@@ -1,8 +1,8 @@
 class_name IOConnector
 extends ShipBuilderTool
 
-onready var hud = $CanvasLayer/HudDolly/IOHud
-onready var hud_dolly = $CanvasLayer/HudDolly
+@onready var hud = $CanvasLayer/HudDolly/IOHud
+@onready var hud_dolly = $CanvasLayer/HudDolly
 
 var current_ship = null
 var waiting = false # for signal from button
@@ -20,7 +20,7 @@ var ship_two = null
 signal end_waiting_for_port(port, flag)
 
 func _ready():
-	hud.connect("port_selected", self, "on_port_selected")
+	hud.connect("port_selected", Callable(self, "on_port_selected"))
 
 func _unhandled_input(event):
 	
@@ -38,7 +38,7 @@ func _unhandled_input(event):
 
 # signal hooks into ship -> scene
 func on_ship_reported_clicked(ship, block):
-	.on_ship_reported_clicked(ship, block)
+	super.on_ship_reported_clicked(ship, block)
 	
 	#set_io(ship, block)
 
@@ -75,7 +75,7 @@ func set_output(ship, block):
 		# wait until button is pressed
 		# get signal args in port_data
 		waiting = true
-		var port_data = yield(self, "end_waiting_for_port")
+		var port_data = await self.end_waiting_for_port
 		waiting = false
 		
 		# set input info or cancel
@@ -106,7 +106,7 @@ func set_input(ship, block):
 		# wait until button is pressed
 		# get signal ags in port_data
 		waiting = true
-		var port_data = yield(self, "end_waiting_for_port")
+		var port_data = await self.end_waiting_for_port
 		waiting = false
 		
 		# set input info

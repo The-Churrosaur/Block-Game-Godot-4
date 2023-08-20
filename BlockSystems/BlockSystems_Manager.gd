@@ -8,12 +8,12 @@ extends Node2D
 
 
 # parent block
-export var block_path : NodePath = "../"
+@export var block_path : NodePath = "../"
 
-onready var block = get_node(block_path)
+@onready var block = get_node(block_path)
 
 # dict of systems
-onready var systems = {}
+@onready var systems = {}
 
 
 # CALLBACKS --------------------------------------------------------------------

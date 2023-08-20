@@ -1,16 +1,16 @@
 class_name CharacterRig
 extends Node2D
 
-onready var animator : AnimationTree = $AnimationTree
-onready var dolly : Node2D = $Dolly
-onready var hand_l_remote : RemoteTransform2D = $Dolly/Skeleton2D/hip/chest/shoulderL/elbowL/handL/HandLRemote
-onready var hand_r_remote : RemoteTransform2D = $Dolly/Skeleton2D/hip/chest/shoulderR/elbowR/handR/HandRRemote
-onready var hand_r_ik = $Dolly/Skeleton2D/hip/chest/shoulderR/elbowR/handR/IK2D
-onready var hand_l_ik = $Dolly/Skeleton2D/hip/chest/shoulderL/elbowL/handL/IK2D
+@onready var animator : AnimationTree = $AnimationTree
+@onready var dolly : Node2D = $Dolly
+@onready var hand_l_remote : RemoteTransform2D = $Dolly/Skeleton2D/hip/chest/shoulderL/elbowL/handL/HandLRemote
+@onready var hand_r_remote : RemoteTransform2D = $Dolly/Skeleton2D/hip/chest/shoulderR/elbowR/handR/HandRRemote
+@onready var hand_r_ik = $Dolly/Skeleton2D/hip/chest/shoulderR/elbowR/handR/IK2D
+@onready var hand_l_ik = $Dolly/Skeleton2D/hip/chest/shoulderL/elbowL/handL/IK2D
 
-onready var left_shoulder : Bone2D = $Dolly/Skeleton2D/hip/chest/shoulderL
-onready var right_shoulder : Bone2D = $Dolly/Skeleton2D/hip/chest/shoulderR
-onready var right_elbow : Bone2D = $Dolly/Skeleton2D/hip/chest/shoulderR/elbowR
+@onready var left_shoulder : Bone2D = $Dolly/Skeleton2D/hip/chest/shoulderL
+@onready var right_shoulder : Bone2D = $Dolly/Skeleton2D/hip/chest/shoulderR
+@onready var right_elbow : Bone2D = $Dolly/Skeleton2D/hip/chest/shoulderR/elbowR
 
 # parent things to hand
 func parent_to_left_hand(path : NodePath):

@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=2]
 
-[ext_resource path="res://Scenes/character/BlueTest/Bluestronaut_uv_normal.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/character/BlueTest/Bluestronaut_uv_normal.png" type="Texture2D" id=1]
 
 [sub_resource type="Shader" id=1]
 code = "// Mandatory line to define 2D shaders

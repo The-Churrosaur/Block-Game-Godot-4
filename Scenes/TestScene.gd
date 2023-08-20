@@ -1,19 +1,19 @@
 class_name TestScene
 extends Node2D
 
-onready var current_ship
-onready var test_grid
+@onready var current_ship
+@onready var test_grid
 
-onready var io_tool = $IOPicker
-onready var selector_tool = $ShipSelector
-onready var cable_tool = $IOCableTool
-onready var fuel_tool = $FuelCableTool
+@onready var io_tool = $IOPicker
+@onready var selector_tool = $ShipSelector
+@onready var cable_tool = $IOCableTool
+@onready var fuel_tool = $FuelCableTool
 
-onready var io_tool_button = $CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/IOToolButton
-onready var selector_tool_button = $CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/SelectorButton
-onready var cable_tool_button = $CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/CableToolButton
+@onready var io_tool_button = $CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/IOToolButton
+@onready var selector_tool_button = $CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/SelectorButton
+@onready var cable_tool_button = $CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/CableToolButton
 
-onready var camera = $CameraBase
+@onready var camera = $CameraBase
 
 var subShip = 0
 var block_facing = 0
@@ -28,7 +28,7 @@ func _ready():
 	
 	# initial ship
 	var packed = load("res://ShipBase/ShipBody.tscn")
-	var ship = packed.instance()
+	var ship = packed.instantiate()
 	on_new_ship(ship)
 	select_ship(ship)
 	
@@ -38,8 +38,8 @@ func _ready():
 	setup_tools()
 	
 	# connect buttons
-	io_tool_button.connect("toggled", io_tool, "on_toggle_input")
-	selector_tool_button.connect("toggled", selector_tool, "on_toggle_input")
+	io_tool_button.connect("toggled", Callable(io_tool, "on_toggle_input"))
+	selector_tool_button.connect("toggled", Callable(selector_tool, "on_toggle_input"))
 
 func select_ship(ship):
 	
@@ -66,8 +66,8 @@ func on_new_ship(ship : RigidBody2D, select = true):
 	
 	add_child(ship)
 	print("CONNECTING SIGNALS ", ship)
-	ship.connect("on_clicked", self, "on_ship_clicked")
-	ship.connect("new_subShip", self, "on_new_subShip")
+	ship.connect("on_clicked", Callable(self, "on_ship_clicked"))
+	ship.connect("new_subShip", Callable(self, "on_new_subShip"))
 	ship.input_pickable = true
 	ship.editor_mode = true
 	
@@ -78,7 +78,7 @@ func on_new_ship(ship : RigidBody2D, select = true):
 	
 #	ship.rotation = PI
 	
-	yield(get_tree().create_timer(0.5), "timeout")
+	await get_tree().create_timer(0.5).timeout
 
 func on_new_subShip(ship, subShip, pinBlock):
 	print("TESTSCENE NEW SUBSHIP")
@@ -89,7 +89,7 @@ func setup_tools():
 	# TODO some tool manager?
 	io_tool.setup(self)
 	selector_tool.setup(self)
-	selector_tool.connect("new_ship_selected", self, "on_selector_new_ship")
+	selector_tool.connect("new_ship_selected", Callable(self, "on_selector_new_ship"))
 	cable_tool.setup(self)
 	cable_tool.active = true
 	fuel_tool.setup(self)
@@ -112,7 +112,7 @@ func on_block_select_button_pressed(block):
 		block_template = block
 		if display_block is Block:
 			display_block.queue_free()
-		display_block = block_template.instance()
+		display_block = block_template.instantiate()
 		add_child(display_block)
 
 func _process(delta):
@@ -143,7 +143,7 @@ func _unhandled_input(event):
 	if (event.is_action_pressed("ui_lclick")):
 		
 		if block_template is PackedScene:
-			var block = block_template.instance()
+			var block = block_template.instantiate()
 			var facing = 1
 			if display_block != null: facing = display_block.block_facing
 			test_grid.add_block_at_point(block, get_global_mouse_position(), facing)

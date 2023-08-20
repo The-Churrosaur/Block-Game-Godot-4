@@ -7,7 +7,7 @@ extends Area2D
 # FIELDS ----------------------------------------------------------------------
 
 
-onready var raycast = $RayCast2D
+@onready var raycast = $RayCast2D
 
 
 # CALLBACKS --------------------------------------------------------------------

@@ -5,28 +5,28 @@ extends Node
 
 
 # sorry I'll automate this later
-export var initial_inputs = [{"name":"","value":0.0},
+@export var initial_inputs = [{"name":"","value":0.0},
 							 {"name":"","value":0.0},
 							 {"name":"","value":0.0},
 							 {"name":"","value":0.0},
 							 {"name":"","value":0.0}]
 
-export var initial_outputs = [{"name":"","value":0.0},
+@export var initial_outputs = [{"name":"","value":0.0},
 							  {"name":"","value":0.0},
 							  {"name":"","value":0.0},
 							  {"name":"","value":0.0},
 							  {"name":"","value":0.0}]
 
-export var block_path : NodePath
+@export var block_path : NodePath
 
 # port-indexed arrays
 # contain dictionaries with name, value, activated this tick etc.
 # deep copy copies dict (so we don't just reference the static export dict)
-onready var inputs = initial_inputs.duplicate(true)
-onready var outputs = initial_outputs.duplicate(true)
+@onready var inputs = initial_inputs.duplicate(true)
+@onready var outputs = initial_outputs.duplicate(true)
 
-onready var block = get_node_or_null(block_path)
-onready var manager = null
+@onready var block = get_node_or_null(block_path)
+@onready var manager = null
 
 func _ready():
 	# tool

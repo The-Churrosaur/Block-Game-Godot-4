@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://ControlSystems/HoverNotif.gd" type="Script" id=1]
-[ext_resource path="res://Assets/info_box.png" type="Texture" id=2]
+[ext_resource path="res://Assets/info_box.png" type="Texture2D" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -18,31 +18,31 @@ position = Vector2( 16.5707, -17.1992 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HoverArea"]
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2( 16.5707, -17.1992 )
 texture = ExtResource( 2 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="ColorRect" type="ColorRect" parent="MarginContainer"]
-margin_right = 209.0
-margin_bottom = 40.0
+offset_right = 209.0
+offset_bottom = 40.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
-margin_right = 209.0
-margin_bottom = 40.0
+offset_right = 209.0
+offset_bottom = 40.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
-margin_right = 209.0
-margin_bottom = 40.0
+offset_right = 209.0
+offset_bottom = 40.0
 theme = SubResource( 2 )
 
 [node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer"]
-margin_right = 209.0
-margin_bottom = 31.0
+offset_right = 209.0
+offset_bottom = 31.0
 text = "HELLO!
 HERE IS SOME INTERESTING TEXT"

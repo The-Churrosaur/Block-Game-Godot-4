@@ -12,7 +12,7 @@ extends BlockSystem
 signal port_button_pressed(port, block)
 
 # ports, filled from children on ready
-onready var ports = {}
+@onready var ports = {}
 
 
 # CALLBACKS --------------------------------------------------------------------
@@ -26,7 +26,7 @@ func _ready():
 			ports[child.port_id] = child
 			
 			# setup
-			child.connect("port_button_pressed", self, "_on_port_button")
+			child.connect("port_button_pressed", Callable(self, "_on_port_button"))
 			child.manager = self
 		
 			# FORWARDS COMPATIBILITY: also puts ports into elements{} and paths

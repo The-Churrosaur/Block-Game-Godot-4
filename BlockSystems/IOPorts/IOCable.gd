@@ -7,23 +7,23 @@ extends Node2D
 
 
 # distance the elbows move to avoid overlapping lines
-export var offset_width = 10
+@export var offset_width = 10
 
 # to request removal from the manager
 signal _cable_cut(cable)
 
 # visual line
-onready var line = $Line2D
+@onready var line = $Line2D
 
 # line overlap detection
-onready var collider_1 = $Area2D/CollisionShape2D
-onready var collider_2 = $Area2D/CollisionShape2D2
-onready var area = $Area2D
-onready var raycast_1 = $Area2D/RayCast2D
-onready var raycast_2 = $Area2D/RayCast2D2
+@onready var collider_1 = $Area2D/CollisionShape2D
+@onready var collider_2 = $Area2D/CollisionShape2D2
+@onready var area = $Area2D
+@onready var raycast_1 = $Area2D/RayCast2D
+@onready var raycast_2 = $Area2D/RayCast2D2
 
 # temp
-onready var button = $Button
+@onready var button = $Button
 
 # block reference
 # injected by manager
@@ -40,7 +40,7 @@ var nudge = Vector2.ZERO
 func _ready():
 	
 	# connect button
-	button.connect("button_down", self, "_on_button")
+	button.connect("button_down", Callable(self, "_on_button"))
 	
 	# why not
 	line.default_color = Color(randf(), randf(), randf())

@@ -5,18 +5,18 @@ extends Node2D
 # adjust rotation of two given nodes to hit target node
 # assumes nodes are parented shoulder -> elbow -> hand
 
-export var shoulder_path : NodePath
-export var elbow_path : NodePath
-export var hand_path : NodePath
-export var target_path : NodePath
+@export var shoulder_path : NodePath
+@export var elbow_path : NodePath
+@export var hand_path : NodePath
+@export var target_path : NodePath
 
-export var lengths_on_startup = false
-export var calculate_ik = true
+@export var lengths_on_startup = false
+@export var calculate_ik = true
 
-onready var shoulder : Node2D = get_node(shoulder_path)
-onready var elbow : Node2D = get_node(elbow_path)
-onready var hand : Node2D = get_node(hand_path)
-onready var target : Node2D = get_node(target_path)
+@onready var shoulder : Node2D = get_node(shoulder_path)
+@onready var elbow : Node2D = get_node(elbow_path)
+@onready var hand : Node2D = get_node(hand_path)
+@onready var target : Node2D = get_node(target_path)
 
 var length_a : float # shoulder to elbow
 var length_b : float # elbow to hand

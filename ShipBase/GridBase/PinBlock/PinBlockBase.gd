@@ -6,12 +6,12 @@ extends PortBlockBase
 # maybe TODO have the loader initiate loading subships idk
 
 # if false, doesn't spawn a subship
-export var use_subShip_resource = true
+@export var use_subShip_resource = true
 
-export var default_subShip_resource : Resource
-export var default_pinHead_coord = Vector2(0,0)
+@export var default_subShip_resource : Resource
+@export var default_pinHead_coord = Vector2(0,0)
 
-onready var ship_loader = get_node("/root/ShipLoader")
+@onready var ship_loader = get_node("/root/ShipLoader")
 
 var pinHead_coord = null
 var subShip_resource = null
@@ -31,7 +31,7 @@ signal subShip_removed(subShip, pinBlock, pinHead)
 
 
 func _ready():
-	._ready()
+	super._ready()
 	
 	pinJoint = $PinJoint2D
 	
@@ -57,24 +57,24 @@ func _input(event):
 	pass
 
 func post_load_setup():
-	.post_load_setup()
+	super.post_load_setup()
 	# wow I hate this so much but it works for now TODO TODO
 #	yield(get_tree().create_timer(0.0001), "timeout")
 #	setup_load_subship()
 
 func on_added_to_grid(center_coord, block, grid):
-	.on_added_to_grid(center_coord, block, grid)
+	super.on_added_to_grid(center_coord, block, grid)
 	
-	connect("subShip_pinned", shipBody, "on_new_subShip")
-	connect("subShip_removed", shipBody, "on_subShip_removed")
-	shipBody.connect("ship_com_shifted", self, "on_ship_com_shifted")
+	connect("subShip_pinned", Callable(shipBody, "on_new_subShip"))
+	connect("subShip_removed", Callable(shipBody, "on_subShip_removed"))
+	shipBody.connect("ship_com_shifted", Callable(self, "on_ship_com_shifted"))
 	
 	
 	print("PINBLOCK ADDED TO GRID: USE SUBSHIP? ", use_subShip_resource)
 	if use_subShip_resource: setup_load_subship()
 
 func on_removed_from_grid(center_coord, block, grid):
-	.on_removed_from_grid(center_coord, block, grid)
+	super.on_removed_from_grid(center_coord, block, grid)
 	
 	# TODO are you sure you want to delete this subship?
 	# can return false here
@@ -97,7 +97,7 @@ func setup_load_subship():
 	attach(pinHead)
 	
 	# listen for subship grid changes
-	pinHead.connect("pin_grid_changed", self, "on_pin_grid_changed")
+	pinHead.connect("pin_grid_changed", Callable(self, "on_pin_grid_changed"))
 
 
 # spawns and sets up subship
@@ -111,7 +111,7 @@ func create_subship_pinhead() -> Node2D: # returns pinhead
 	# setup
 	subShip_id = ship.ship_id
 	ship.superShip = shipBody
-	ship.connect("shipBody_saved", self, "on_subShip_saved")
+	ship.connect("shipBody_saved", Callable(self, "on_subShip_saved"))
 	
 	# pinhead
 	var pinHead = ship.get_block(pinHead_coord)
@@ -261,7 +261,7 @@ func on_subShip_saved(ship, id, file):
 	subShip_resource_path = file
 
 func get_save_data() -> Dictionary:
-	var dict = .get_save_data()
+	var dict = super.get_save_data()
 	
 	dict["subShip_id"] = subShip_id
 	dict["pinHead_coord"] = pinHead_coord

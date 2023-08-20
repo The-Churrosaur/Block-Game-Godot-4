@@ -9,7 +9,7 @@
 [ext_resource path="res://BlockSystems/FuelPorts/FuelTankManager.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 96, 96 )
+size = Vector2( 96, 96 )
 
 [node name="FuelTestBlock" instance=ExtResource( 2 )]
 script = ExtResource( 3 )
@@ -17,7 +17,7 @@ size_grid = [ Vector2( -1, -1 ), Vector2( 0, -1 ), Vector2( 1, -1 ), Vector2( -1
 class_type = "FuelTestBlock"
 hitbox_colliders = [ NodePath("CollisionShape2D") ]
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite2D" parent="." index="0"]
 scale = Vector2( 3, 3 )
 
 [node name="BlockSystems" parent="." index="1"]
@@ -44,7 +44,7 @@ position = Vector2( 0, 39.6451 )
 fuel_tank_path = NodePath("..")
 
 [node name="SizeHelper" parent="." index="2"]
-tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 0, -65535, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0 )
+tile_data = PackedInt32Array( -1, 0, 0, -65536, 0, 0, -65535, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0 )
 
 [node name="Node2D" type="Node2D" parent="." index="4"]
 z_index = 2
@@ -52,18 +52,18 @@ z_index = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="Node2D" index="0"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -29.0
-margin_right = 29.0
-margin_bottom = 40.0
+offset_left = -29.0
+offset_right = 29.0
+offset_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="LineEdit" type="LineEdit" parent="Node2D/VBoxContainer" index="0"]
-margin_right = 58.0
-margin_bottom = 24.0
+offset_right = 58.0
+offset_bottom = 24.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
 shape = SubResource( 1 )
 
-[connection signal="text_entered" from="Node2D/VBoxContainer/LineEdit" to="." method="_on_LineEdit_text_entered"]
+[connection signal="text_submitted" from="Node2D/VBoxContainer/LineEdit" to="." method="_on_LineEdit_text_entered"]

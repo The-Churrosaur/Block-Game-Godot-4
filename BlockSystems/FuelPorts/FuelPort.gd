@@ -13,10 +13,10 @@ extends IOPort
 # -- SIGNALS
 
 
-export var fuel_tank_path : NodePath
+@export var fuel_tank_path : NodePath
 
 
-onready var fuel_tank : FuelTank = get_node(fuel_tank_path)
+@onready var fuel_tank : FuelTank = get_node(fuel_tank_path)
 
 
 # CALLBACKS --------------------------------------------------------------------
@@ -44,7 +44,7 @@ func get_tank_pressure() -> float:
 # -- called by manager
 
 func get_saved_data() -> Dictionary:
-	return .get_saved_data()
+	return super.get_save_data()
 
 
 # PRIVATE ----------------------------------------------------------------------

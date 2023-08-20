@@ -1,7 +1,7 @@
 class_name Rig
 extends Node2D
 
-onready var left_shoulder : Node2D = $Dolly/Skeleton2D/hip/chest/shoulderL
+@onready var left_shoulder : Node2D = $Dolly/Skeleton2D/hip/chest/shoulderL
 
 func _process(delta):
 #	var x = parent.velocity.rotated(parent.rotation).x

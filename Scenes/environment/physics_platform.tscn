@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/frame2.png" type="Texture" id=1]
+[ext_resource path="res://assets/frame2.png" type="Texture2D" id=1]
 [ext_resource path="res://Scenes/environment/physics_platform.gd" type="Script" id=2]
 
-[node name="PhysicsPlatform" type="KinematicBody2D" groups=[
+[node name="PhysicsPlatform" type="CharacterBody2D" groups=[
 "Platform",
 "WalkableSurface",
 ]]
@@ -11,6 +11,6 @@ collision_layer = 9
 collision_mask = 9
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2( 4.25, 4.25 )
 texture = ExtResource( 1 )

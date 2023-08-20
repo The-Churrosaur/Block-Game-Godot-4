@@ -1,61 +1,50 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=3 uid="uid://c6qc8s1tp1xrb"]
 
-[ext_resource path="res://ShipBase/ShipBody.gd" type="Script" id=1]
-[ext_resource path="res://ShipBase/GridBase/GridBase.tscn" type="PackedScene" id=2]
-[ext_resource path="res://ShipBase/Depreciated/ShipInfo.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/COM.png" type="Texture" id=4]
-[ext_resource path="res://ShipBase/Depreciated/ShipBase_Storage.tscn" type="PackedScene" id=5]
-[ext_resource path="res://ShipBase/ShipTileMap.tscn" type="PackedScene" id=6]
-[ext_resource path="res://BlockSystems/IO/IOManager.tscn" type="PackedScene" id=7]
-[ext_resource path="res://ShipBase/ShipSystemsManager.tscn" type="PackedScene" id=8]
-[ext_resource path="res://BlockSystems/IOPorts/IOCableManager.tscn" type="PackedScene" id=9]
-[ext_resource path="res://ShipBase/BumpDetector.tscn" type="PackedScene" id=10]
-[ext_resource path="res://BlockSystems/FuelPorts/FuelCableManager.tscn" type="PackedScene" id=11]
+[ext_resource type="Script" path="res://ShipBase/ShipBody.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://ct85vp0kwufxy" path="res://ShipBase/GridBase/GridBase.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://c8kijcuyeen0h" path="res://Assets/COM.png" id="4"]
+[ext_resource type="PackedScene" path="res://ShipBase/ShipTileMap.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://BlockSystems/IO/IOManager.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://ShipBase/ShipSystemsManager.tscn" id="8"]
+[ext_resource type="PackedScene" path="res://BlockSystems/IOPorts/IOCableManager.tscn" id="9"]
+[ext_resource type="PackedScene" path="res://ShipBase/BumpDetector.tscn" id="10"]
+[ext_resource type="PackedScene" path="res://BlockSystems/FuelPorts/FuelCableManager.tscn" id="11"]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id="1"]
 
-[node name="ShipBody" type="RigidBody2D" groups=[
-"Platform",
-"ShipBody",
-]]
-input_pickable = true
+[node name="ShipBody" type="RigidBody2D" groups=["Platform", "ShipBody"]]
 collision_layer = 7
-contacts_reported = 5
+input_pickable = true
+max_contacts_reported = 5
 contact_monitor = true
-linear_damp = 0.0
-angular_damp = 0.0
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="GridBase" parent="." instance=ExtResource( 2 )]
+[node name="GridBase" parent="." instance=ExtResource("2")]
 
 [node name="icon" parent="GridBase" index="0"]
 visible = false
 
-[node name="ShipTileMap" parent="." instance=ExtResource( 6 )]
+[node name="ShipTileMap" parent="." instance=ExtResource("6")]
 visible = false
-collision_use_parent = false
+format = 2
 
-[node name="ShipInfo" parent="." instance=ExtResource( 3 )]
+[node name="COM Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4")
 
-[node name="ShipBase_Storage" parent="." instance=ExtResource( 5 )]
-
-[node name="COM Sprite" type="Sprite" parent="."]
-texture = ExtResource( 4 )
-
-[node name="IOManager" parent="." instance=ExtResource( 7 )]
+[node name="IOManager" parent="." instance=ExtResource("7")]
 ship_path = NodePath("..")
 
 [node name="GravityCollider" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource("1")
 
-[node name="ShipSystems" parent="." instance=ExtResource( 8 )]
+[node name="ShipSystems" parent="." instance=ExtResource("8")]
 shipBody_path = NodePath("..")
 
-[node name="IOCableManager" parent="ShipSystems" instance=ExtResource( 9 )]
+[node name="IOCableManager" parent="ShipSystems" instance=ExtResource("9")]
 
-[node name="FuelCableManager" parent="ShipSystems" instance=ExtResource( 11 )]
+[node name="FuelCableManager" parent="ShipSystems" instance=ExtResource("11")]
 
-[node name="BumpDetector" parent="." instance=ExtResource( 10 )]
+[node name="BumpDetector" parent="." instance=ExtResource("10")]
 ship_path = NodePath("..")
 
 [connection signal="input_event" from="." to="." method="_on_ShipBody_input_event"]

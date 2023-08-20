@@ -13,7 +13,7 @@ extends PortManager
 # CALLBACKS --------------------------------------------------------------------
 
 func _ready():
-	._ready()
+	super._ready()
 	
 	print("fuelports: ", ports)
 
@@ -22,7 +22,7 @@ func _ready():
 
 
 func tool_selected():
-	.tool_selected()
+	super.tool_selected()
 	
 	print("fuelport: tool selected. ports: ", ports)
 

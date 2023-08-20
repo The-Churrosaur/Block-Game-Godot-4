@@ -1,21 +1,21 @@
 class_name Weapon
 extends Node2D
 
-export var bullet_prefab = preload("res://Scenes/character/weapons/bullet.tscn")
-export var muzzle_path : NodePath
-export var shooter_path : NodePath
-export var muzzle_vel = 300.0 
-export var cycle_interval : float = 1 # seconds, rate of fire
-export var is_automatic = false
-export var num_projectiles = 1
-export var spread = 0.1
-export var inherit_velocity = false
-export var velocity_minimum = false # if inherit velocity, absolute velocity will not drop below impulse 
-export var recoil_shake = 10
+@export var bullet_prefab = preload("res://Scenes/character/weapons/bullet.tscn")
+@export var muzzle_path : NodePath
+@export var shooter_path : NodePath
+@export var muzzle_vel = 300.0 
+@export var cycle_interval : float = 1 # seconds, rate of fire
+@export var is_automatic = false
+@export var num_projectiles = 1
+@export var spread = 0.1
+@export var inherit_velocity = false
+@export var velocity_minimum = false # if inherit velocity, absolute velocity will not drop below impulse 
+@export var recoil_shake = 10
 
 # bullet handler
 
-onready var bullet_handler = get_node("/root/BulletHandler") # singleton
+@onready var bullet_handler = get_node("/root/BulletHandler") # singleton
 signal bullet_spawned(weapon, bullet, id)
 
 # gun logic
@@ -30,9 +30,9 @@ var trigger_held : bool = false
 # current projectile
 var current_projectile = null
 # shooter
-onready var shooter = get_node(shooter_path)
+@onready var shooter = get_node(shooter_path)
 # random gen
-onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
+@onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
 # assigns bullet to group
 var bullet_group = null
@@ -53,7 +53,7 @@ func fire_projectile():
 	
 	# spawn projectile
 	
-	var projectile = bullet_prefab.instance()
+	var projectile = bullet_prefab.instantiate()
 	projectile.global_position = muzzle.global_position
 	
 	# handler handles parenting to level
@@ -105,7 +105,7 @@ func fire_projectile():
 	# connect projectile
 	
 	current_projectile = projectile
-	projectile.connect("bullet_impacted", self, "on_bullet_impact")
+	projectile.connect("bullet_impacted", Callable(self, "on_bullet_impact"))
 
 func pull_trigger():
 	trigger_held = true
@@ -126,7 +126,7 @@ func try_fire():
 		in_battery = false
 		
 		# yield timer while cycling
-		yield(get_tree().create_timer(cycle_interval), "timeout")
+		await get_tree().create_timer(cycle_interval).timeout
 		
 		in_battery = true
 		

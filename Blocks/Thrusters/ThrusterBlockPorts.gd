@@ -7,11 +7,11 @@ extends PortBlockBase
 # FIELDS ----------------------------------------------------------------------
 
 
-export var magnitude = 10
+@export var magnitude = 10
 
-export(NodePath) onready var flame_sprite = get_node(flame_sprite) as Sprite 
-export(NodePath) onready var trigger_port = get_node(trigger_port) as IOPort
-export(NodePath) onready var particles = get_node(particles) as CPUParticles2D
+@export var flame_sprite : Sprite2D
+@export var trigger_port : IOPort
+@export var particles : CPUParticles2D
 
 signal emit_force(pos, mag, central)
 
@@ -43,8 +43,8 @@ func _process(delta):
 
 
 func on_added_to_grid(center_coord, block, grid):
-	.on_added_to_grid(center_coord, block, grid)
-	connect("emit_force", shipBody, "on_force_requested")
+	super.on_added_to_grid(center_coord, block, grid)
+	connect("emit_force", Callable(shipBody, "on_force_requested"))
 
 
 func fire_thruster():

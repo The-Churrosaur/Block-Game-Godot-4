@@ -1,10 +1,10 @@
 class_name Block_Storage
 extends StorageBase
 
-export var grid_path = ""
-export var center_grid_coord : Vector2
-export var shipBody_path = ""
-export var saved_name = ""
+@export var grid_path = ""
+@export var center_grid_coord : Vector2
+@export var shipBody_path = ""
+@export var saved_name = ""
 
 # currently half redundant
 func get_data(parent):

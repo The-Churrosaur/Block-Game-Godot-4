@@ -1,29 +1,29 @@
 extends CanvasLayer
 
 # TODO look into viewports?
-export var camera_path : NodePath
-export var player_path : NodePath
-export var health_bar_path : NodePath = "/Hud/HealthBar"
+@export var camera_path : NodePath
+@export var player_path : NodePath
+@export var health_bar_path : NodePath = "/Hud/HealthBar"
 
-onready var camera = get_node(camera_path)
-onready var player = get_node(player_path)
-onready var health_bar = get_node(health_bar_path)
+@onready var camera = get_node(camera_path)
+@onready var player = get_node(player_path)
+@onready var health_bar = get_node(health_bar_path)
 
-onready var pip_template = preload("res://Scenes/character/hud/pip.tscn")
+@onready var pip_template = preload("res://Scenes/character/hud/pip.tscn")
 
 # hud components
 
-onready var jump_pips = $Hud/MarginContainer/JumpPips
+@onready var jump_pips = $Hud/MarginContainer/JumpPips
 
 func _ready():
-	player.connect("jumping", self, "on_player_jump")
-	player.connect("entered_platform", self, "on_player_land")
+	player.connect("jumping", Callable(self, "on_player_jump"))
+	player.connect("entered_platform", Callable(self, "on_player_land"))
 
 # test hud, add and remove pips
 
 func add_pips(num):
 	for i in num:
-		var pip = pip_template.instance()
+		var pip = pip_template.instantiate()
 		jump_pips.add_child(pip)
 
 func remove_pip(num):

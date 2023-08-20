@@ -7,11 +7,11 @@ extends PortBlockBase
 # FIELDS ----------------------------------------------------------------------
 
 
-export var port_path : NodePath 
+@export var port_path : NodePath 
 
-onready var port = get_node(port_path)
-onready var gun = $DefaultGunBase
-onready var muzzleFX = $MuzzleFX
+@onready var port = get_node(port_path)
+@onready var gun = $DefaultGunBase
+@onready var muzzleFX = $MuzzleFX
 
 
 # CALLBACKS --------------------------------------------------------------------

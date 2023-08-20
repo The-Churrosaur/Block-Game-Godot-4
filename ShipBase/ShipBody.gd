@@ -14,20 +14,20 @@ extends RigidBody2D
 # FIELDS =======================================================================
 
 
-export var editor_mode = false
+@export var editor_mode = false
 
-export var save_directory = "res://Ships/"
-export var display_name = "MyShip" # set by player, ingame name
+@export var save_directory = "res://Ships/"
+@export var display_name = "MyShip" # set by player, ingame name
 # UNIQUE, set by player or by root ship for subships
 # used for save directory
-export var ship_id : String 
-export var default_mass = 0.01
+@export var ship_id : String 
+@export var default_mass = 0.01
 
-export var selected = false
+@export var selected = false
 
 #onready var ship_save = load("res://ShipBase/ShipSave.gdns").new()
 # TESTING GDSCRIPT
-onready var ship_save = Ship_SaverLoader_GDS.new()
+@onready var ship_save = Ship_SaverLoader_GDS.new()
 
 func call_test(param):
 	print("method called: ", param)
@@ -41,29 +41,29 @@ func call_test(param):
 # 0 for base ship, subships iterate, 0001 for second subship thrice nested
 # injected by parent ship on prompting from pinblock
 # TODO maybe this is terrible
-onready var subShip_id = 0
+@onready var subShip_id = 0
 
-onready var grid = $GridBase
+@onready var grid = $GridBase
 # ShipBody changes position with COM because godot
 # grid position moves with ShipBody BUT
 # grid position remains relative to ShipBody at original scene origin
 
-onready var tilemap : TileMap = $ShipTileMap
+@onready var tilemap : TileMap = $ShipTileMap
 
 # DEPREC
-onready var io_manager = $IOManager
+@onready var io_manager = $IOManager
 
-onready var ship_systems = $ShipSystems
+@onready var ship_systems = $ShipSystems
 
 # for calculating total imparted acceleration
-onready var previous_velocity = linear_velocity
-onready var acceleration = linear_velocity - previous_velocity
+@onready var previous_velocity = linear_velocity
+@onready var acceleration = linear_velocity - previous_velocity
 
-# use grid position for ship local coordinates/origin
-var grid_origin setget ,grid_origin
-func grid_origin():
-	#grid_origin = grid.global_position
-	return grid_origin
+## use grid position for ship local coordinates/origin
+#var _grid_origin : get = _grid_origin
+#func grid_origin():
+#	#grid_origin = grid.global_position
+#	return _grid_origin
 
 # most recent collision, updated every tick
 var collision_pos : Vector2
@@ -117,9 +117,9 @@ func _ready():
 	
 	# just in case
 	if grid != null:
-		grid.connect("block_added", self, "on_grid_block_added")
-		grid.connect("block_removed", self, "on_grid_block_removed")
-		grid.connect("grid_empty", self, "on_grid_empty")
+		grid.connect("block_added", Callable(self, "on_grid_block_added"))
+		grid.connect("block_removed", Callable(self, "on_grid_block_removed"))
+		grid.connect("grid_empty", Callable(self, "on_grid_empty"))
 	
 	input_pickable = true
 	
@@ -127,7 +127,7 @@ func _ready():
 #	print("subships: ", subShips)
 	
 	# collision handling
-	connect("body_shape_entered", self, "on_body_shape_entered")
+	connect("body_shape_entered", Callable(self, "on_body_shape_entered"))
 	
 	# setup systems / children 
 	# currently just io
@@ -179,7 +179,7 @@ func _print_shape_owners():
 # collider input callback
 # finds and tells blocks when clicked
 func _input_event(viewport, event, shape_idx):
-#	print("\nSHIPBODY INPUT CALLBACK. shape_idx: ", shape_idx)
+	print("\nSHIPBODY INPUT CALLBACK. shape_idx: ", shape_idx)
 	
 #	_print_shape_owners()
 	
@@ -296,8 +296,8 @@ func new_subShip_ship_id(ship) -> String:
 
 
 # called by supership when moved (new block)
-func on_superShip_moved(super):
-	grid.on_superShip_moved(super)
+func on_superShip_moved(superShip):
+	grid.on_superShip_moved(superShip)
 	# just useful for now
 
 
@@ -369,7 +369,7 @@ func add_shape(col_shape : CollisionShape2D, pos : Vector2, block_rot) -> Collis
 	
 	var collision_shape = CollisionShape2D.new()
 	collision_shape.shape = shape_2d
-	collision_shape.position = .to_local(pos)
+	collision_shape.position = super.to_local(pos)
 	collision_shape.rotation = block_rot
 	
 	add_child(collision_shape)
@@ -483,7 +483,7 @@ func get_block(coord : Vector2):
 	if grid.block_dict.has(coord):
 		return grid.block_dict[coord]
 	else:
-		 return null
+		return null
 
 
 # kinda slow, iterates to find closest block to point
@@ -529,7 +529,7 @@ func on_force_requested(pos, magnitude, central = false):
 	if central:
 		apply_central_impulse(magnitude)
 	else:
-		apply_impulse(grid.position + pos, magnitude)
+		apply_impulse(magnitude, grid.position + pos)
 	pass
 
 

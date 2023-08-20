@@ -8,17 +8,17 @@ extends PinHeadBase
 # FIELDS ----------------------------------------------------------------------
 
 
-export var physics_material : PhysicsMaterial
+@export var physics_material : PhysicsMaterial
 
 
 # CALLBACKS --------------------------------------------------------------------
 
 
 func _ready():
-	._ready()
+	super._ready()
 	
 	# bad but eh for now
-	yield(get_tree(),"idle_frame")
+	await get_tree().idle_frame
 	
 	if !shipBody: return
 	

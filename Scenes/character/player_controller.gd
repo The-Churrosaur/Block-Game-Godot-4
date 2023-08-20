@@ -1,38 +1,38 @@
 class_name PlayerController
 extends Node2D
 
-export var character_path : NodePath
-export var anim_path : NodePath
-export var rig_path : NodePath
+@export var character_path : NodePath
+@export var anim_path : NodePath
+@export var rig_path : NodePath
 
-export var weapon_paths = []
-export var grapple_path : NodePath
+@export var weapon_paths = []
+@export var grapple_path : NodePath
 
-export var camera_path : NodePath
-export var hud_path : NodePath = "../Hud"
-export var health_path : NodePath = "../CharacterHealth"
+@export var camera_path : NodePath
+@export var hud_path : NodePath = "../Hud"
+@export var health_path : NodePath = "../CharacterHealth"
 
-export var relative_directional_magwalk = false
-export var mouse_camera_rotation = false
+@export var relative_directional_magwalk = false
+@export var mouse_camera_rotation = false
 
-export var invul_time = 0.7
+@export var invul_time = 0.7
 
-export var dodging = false # while true, ignores bullets
+@export var dodging = false # while true, ignores bullets
 
 # the controlees
 
 # watch for circular reference
-onready var character : Node2D = get_node(character_path)
-onready var animator : AnimationTree = get_node(anim_path)
-onready var rig : Node2D = get_node(rig_path)
+@onready var character : Node2D = get_node(character_path)
+@onready var animator : AnimationTree = get_node(anim_path)
+@onready var rig : Node2D = get_node(rig_path)
 
-onready var weapons = []
-onready var weapon = null
-onready var grapple = get_node(grapple_path)
+@onready var weapons = []
+@onready var weapon = null
+@onready var grapple = get_node(grapple_path)
 
-onready var camera = get_node(camera_path)
-onready var hud : CanvasLayer = get_node(hud_path)
-onready var health = get_node(health_path)
+@onready var camera = get_node(camera_path)
+@onready var hud : CanvasLayer = get_node(hud_path)
+@onready var health = get_node(health_path)
 
 var shooting = false
 
@@ -44,10 +44,10 @@ var magwalk_right = Vector2.RIGHT
 func _ready():
 	
 	# character connections
-	character.connect("entered_platform", self, "on_player_enter_platform")
-	character.connect("left_platform", self, "on_player_left_platform")
-	character.connect("player_hit", self, "on_player_hit")
-	health.connect("health_zero", self, "on_player_killed")
+	character.connect("entered_platform", Callable(self, "on_player_enter_platform"))
+	character.connect("left_platform", Callable(self, "on_player_left_platform"))
+	character.connect("player_hit", Callable(self, "on_player_hit"))
+	health.connect("health_zero", Callable(self, "on_player_killed"))
 	
 	# setup weapons array from paths
 	for path in weapon_paths:
@@ -140,12 +140,12 @@ func jump():
 	
 	character.get_node("JetLight").enabled = true
 	print("jetflash")
-	yield(get_tree().create_timer(0.1), "timeout")
+	await get_tree().create_timer(0.1).timeout
 	character.get_node("JetLight").enabled = false
 
 func invul(time : float):
 	dodging = true
-	yield(get_tree().create_timer(time), "timeout")
+	await get_tree().create_timer(time).timeout
 	dodging = false
 
 func _process(delta):
@@ -199,7 +199,7 @@ func on_player_enter_platform(platform, normal : Vector2):
 	if relative_directional_magwalk:
 		
 		# set projected player rotation as negative tangent to normal
-		var player_rot = (normal.tangent() * -1).angle()
+		var player_rot = (normal.orthogonal() * -1).angle()
 		
 		magwalk_left = camera_relative_vector(Vector2.LEFT, player_rot)
 		magwalk_right = magwalk_left * -1
@@ -236,7 +236,7 @@ func on_player_hit(body):
 func temp_hitflash():
 	var sprite = get_node("../KinematicCharacter/Sprite2")
 	sprite.visible = true
-	yield(get_tree().create_timer(0.2), "timeout")
+	await get_tree().create_timer(0.2).timeout
 	sprite.visible = false
 
 func on_player_killed():
@@ -253,7 +253,7 @@ func on_weapon_recoiled(amp):
 # equip weapon
 func equip_weapon(new_weapon : Node2D):
 	new_weapon.bullet_group = "PlayerBullet"
-	new_weapon.connect("weapon_recoiled", self, "on_weapon_recoiled")
+	new_weapon.connect("weapon_recoiled", Callable(self, "on_weapon_recoiled"))
 	weapon = new_weapon
 	# equip to rig
 	rig.parent_to_left_hand(new_weapon.get_path())

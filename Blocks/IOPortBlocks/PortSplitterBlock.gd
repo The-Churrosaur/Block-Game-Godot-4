@@ -7,10 +7,10 @@ extends PortBlockBase
 # FIELDS ----------------------------------------------------------------------
 
 
-export var port_in_path : NodePath
-export(Array, NodePath) var out_ports_paths
+@export var port_in_path : NodePath
+@export var out_ports_paths # (Array, NodePath)
 
-onready var port_in = get_node(port_in_path)
+@onready var port_in = get_node(port_in_path)
 
 # populated in ready
 var out_ports = []
