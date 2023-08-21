@@ -9,7 +9,6 @@ script = ExtResource("1")
 input_strings = ["ui_left", "ui_right"]
 port_paths = [NodePath("BlockSystems/PortManager/IOPort")]
 port_manager_path = NodePath("BlockSystems/PortManager")
-size_grid = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(1, 1)])
 class_type = "PortInputBlock"
 display_name = "Input"
 

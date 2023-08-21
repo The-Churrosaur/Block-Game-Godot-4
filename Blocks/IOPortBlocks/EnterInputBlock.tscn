@@ -7,12 +7,13 @@
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(32, 32)
 
-[node name="EnterInputBlock" instance=ExtResource("1")]
+[node name="EnterInputBlock" node_paths=PackedStringArray("hitbox_colliders") instance=ExtResource("1")]
 input_strings = ["ui_accept"]
 size_grid = Array[Vector2i]([Vector2i(0, 0)])
 description = "Outputs a signal when space is pressed"
 class_type = "EnterInputBlock"
 display_name = "[Space] Input"
+hitbox_colliders = [NodePath("CollisionShape2D")]
 
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(2, 2)

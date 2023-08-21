@@ -1,34 +1,32 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=7 format=3 uid="uid://b6xtjh7avnvvb"]
 
-[ext_resource path="res://Assets/frame2.png" type="Texture2D" id=1]
-[ext_resource path="res://ShipBase/GridBase/block.gd" type="Script" id=2]
-[ext_resource path="res://UI/BlockPopup.tscn" type="PackedScene" id=4]
-[ext_resource path="res://BlockSystems/BlockSystems_Manager.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Blocks/BlockSizeHelper.tscn" type="PackedScene" id=6]
+[ext_resource type="Texture2D" uid="uid://0a2wglb73lbf" path="res://Assets/frame2.png" id="1"]
+[ext_resource type="Script" path="res://ShipBase/GridBase/block.gd" id="2"]
+[ext_resource type="PackedScene" path="res://UI/BlockPopup.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://BlockSystems/BlockSystems_Manager.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://Blocks/BlockSizeHelper.tscn" id="6"]
 
-[sub_resource type="RectangleShape2D" id=1]
-size = Vector2( 32, 32 )
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(32, 32)
 
-[node name="TestBlockBase" type="Node2D"]
-script = ExtResource( 2 )
+[node name="TestBlockBase" type="Node2D" node_paths=PackedStringArray("hitbox_colliders")]
+script = ExtResource("2")
+size_grid = Array[Vector2i]([Vector2i(0, 0)])
 class_type = "TestBlock"
 display_name = "Basic Block"
-hitbox_colliders = [ NodePath("CollisionShape2D") ]
+hitbox_colliders = [NodePath("CollisionShape2D")]
 block_systems_manager_path = NodePath("BlockSystems")
 
-[node name="BlockPopup" parent="." instance=ExtResource( 4 )]
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 96.0
-offset_bottom = 185.0
+[node name="BlockPopup" parent="." instance=ExtResource("4")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource( 1 )
+texture = ExtResource("1")
 
-[node name="BlockSystems" parent="." instance=ExtResource( 5 )]
+[node name="BlockSystems" parent="." instance=ExtResource("5")]
 
-[node name="SizeHelper" parent="." instance=ExtResource( 6 )]
-tile_data = PackedInt32Array( 0, 0, 0 )
+[node name="SizeHelper" parent="." instance=ExtResource("6")]
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource("1")

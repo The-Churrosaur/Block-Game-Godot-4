@@ -19,7 +19,7 @@ extends PortBlockBase
 
 
 func _ready():
-	pass
+	super._ready()
 
 
 func _process(delta):

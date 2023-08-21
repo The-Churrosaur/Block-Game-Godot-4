@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://72drysw0o6c" path="res://Assets/puter.png" id="6"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(32, 64)
+size = Vector2(64, 128)
 
 [node name="VAxisInputBlock" node_paths=PackedStringArray("port_paths", "hitbox_colliders") instance=ExtResource("2")]
 script = ExtResource("1")
@@ -15,19 +15,9 @@ input_strings = ["ui_up", "ui_down"]
 port_paths = [NodePath("BlockSystems/PortManager/IOPortUp"), NodePath("BlockSystems/PortManager/IOPortDown")]
 port_manager_path = NodePath("BlockSystems/PortManager")
 size_grid = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
-mass = 10
-cost = 100
 description = "Outputs a signal from the up/down input to ports"
-destruction_velocity = 5
-destructable = true
-health = 100
-acceleration_limit = 1
-acceleration_damage_mult = 1
 class_type = "v_axis_input_block"
 display_name = "Vertical Input"
-tile_id = 0
-enabled = true
-popup_path = NodePath("BlockPopup")
 hitbox_colliders = [NodePath("CollisionShape2D")]
 
 [node name="Sprite2D" parent="." index="0"]

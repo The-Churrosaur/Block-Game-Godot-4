@@ -20,6 +20,7 @@ extends PortBlockBase
 
 
 func _ready():
+	super._ready()
 	
 	# add input->port by index
 	for i in input_strings.size():

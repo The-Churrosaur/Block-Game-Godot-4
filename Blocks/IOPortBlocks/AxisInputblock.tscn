@@ -13,7 +13,7 @@ size = Vector2(32, 32)
 [sub_resource type="RectangleShape2D" id="2"]
 size = Vector2(64, 32)
 
-[node name="AxisInputBlock" node_paths=PackedStringArray("port_paths") instance=ExtResource("2")]
+[node name="AxisInputBlock" node_paths=PackedStringArray("port_paths", "hitbox_colliders") instance=ExtResource("2")]
 script = ExtResource("1")
 input_strings = ["ui_left", "ui_right"]
 port_paths = [NodePath("BlockSystems/PortManager/IOPortLeft"), NodePath("BlockSystems/PortManager/IOPortRight")]
@@ -22,6 +22,7 @@ size_grid = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
 description = "Outputs a signal from left/right inputs to left/right ports"
 class_type = "axis_input_block"
 display_name = "Horizontal Input"
+hitbox_colliders = [NodePath("CollisionShape2D")]
 
 [node name="Sprite2D" parent="." index="0"]
 visible = false

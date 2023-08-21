@@ -12,7 +12,7 @@ func _ready():
 	
 	# display child
 	var instance = block.instantiate()
-	print("printing isntance, ", instance)
+#	print("printing isntance, ", instance)
 	if instance.display_name != null:
 		$Label.text = instance.display_name
 	else:

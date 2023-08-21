@@ -13,8 +13,6 @@ extends Node2D
 @export var zoom_time = 1
 
 @onready var camera = get_node(camera_path)
-@onready var zoom_tween = $Zoomtween
-
 @onready var target : Node2D = null
 
 
@@ -53,6 +51,8 @@ func set_target(new_target):
 
 
 func zoom_to(target_zoom, time = zoom_time):
+	
+	var zoom_tween = get_tree().create_tween()
 	
 	zoom_tween.interpolate_property(camera, 
 										"zoom", 

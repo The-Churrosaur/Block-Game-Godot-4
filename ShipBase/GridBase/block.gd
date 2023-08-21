@@ -3,7 +3,7 @@
 class_name Block
 extends Node2D
 
-
+# TODO SET HITBOXES FOR ALL BLOCKS
 
 # FIELDS -----------------------------------------------------------------------
 
@@ -106,6 +106,7 @@ func get_block_type():
 
 
 func _ready():
+	print("block ready")
 	_sanitize_name()
 	_set_hitbox_collision_shapes()
 
