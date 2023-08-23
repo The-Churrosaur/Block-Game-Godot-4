@@ -18,7 +18,7 @@ func _ready():
 	super._ready()
 	
 	# bad but eh for now
-	await get_tree().idle_frame
+	await get_tree().
 	
 	if !shipBody: return
 	

@@ -1,9 +1,4 @@
 res://default_env.tres
-res://Blocks/IOPortBlocks/PortBlockTester.tscn
-res://Blocks/IOPortBlocks/GunPortBlock.tscn
-res://Blocks/IOPortBlocks/EnterInputBlock.tscn
-res://Blocks/IOPortBlocks/AxisInputblock.tscn
-res://Blocks/TestBlock.tscn
 res://Scenes/Main.tscn
 res://ShipBase/ShipBody.tscn
 res://ShipBase/GridBase/Block.tscn
@@ -15,12 +10,6 @@ res://ControlSystems/ShipSelector.tscn
 res://ControlSystems/IOCableTool.tscn
 res://Blocks/IOPortBlocks/IOPortBlock.tscn
 res://Scenes/TestScene.tscn
-res://Scenes/BlockSelectButton.gd
-res://Scenes/testgetarea.gd
-res://Blocks/IOPortBlocks/VAxisInputblock.tscn
-res://ShipBase/GridBase/block.gd
-res://Blocks/IOPortBlocks/PortBlockBase.gd
-res://Blocks/IOPortBlocks/PortInputBlock.tscn
-res://Blocks/IOPortBlocks/PortInputBlock.gd
-res://Blocks/IOPortBlocks/PortBlockTester.gd
-res://UI/ShipCamera.gd
+res://Blocks/IOPortBlocks/PortBlockTester.tscn
+res://ShipBase/Ship_SaverLoader_GDS.gd
+res://Blocks/LandingBlocks/WheelHead.gd

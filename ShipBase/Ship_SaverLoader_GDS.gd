@@ -79,7 +79,7 @@ func save(ship : Node2D, name : String, directory : String) -> String:
 	# SAVE RESOURCE TO DISK
 	
 	print("saving to disc: " + file)
-	ResourceSaver.save(file, save_resource)
+	ResourceSaver.save(save_resource, file)
 	
 	return file
 
