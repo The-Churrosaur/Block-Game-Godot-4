@@ -134,28 +134,12 @@ func attach(pinHead, repos = true):
 		return false
 	subShip = ship
 	
-	# move subship to current position
-	# move subship to align pinhead with current position
-#	reposition_subShip(pinHead)
-	# THIS IS DONE IN PHYSICS PROCESS NOW (queue pin)
-	
-#	yield(get_tree().create_timer(0.0001), "timeout")
-	
-	# TODO
-#	print("?!?!", global_position, subShip.global_position, subShip.grid.global_position)
-#	for block in subShip.grid.block_dict.values():
-#		print(block.center_grid_coord, block.position, block.global_position)
-#	print(subShip.grid.get_parent())
-	
 	# setup pinhead field
 	self.pinHead = pinHead
 	pinHead_coord = pinHead.center_grid_coord
 	
-#	print("***AJDSFKASpre-pin position: ", pinJoint.global_position, global_position)
 	queue_pin = true
 	if repos: queue_repos = true
-#	pin_subShip()
-#	subShip.angular_velocity = 1
 	
 	emit_signal("subShip_pinned", subShip, self, pinHead)
 	return true
@@ -233,29 +217,9 @@ func reattach(pinHead, repos = true):
 
 
 func reposition_subShip(pinHead): 
-	# first centers subship on self
 	subShip.global_position = global_position
-	
-	# moves subship to place pinhead on old center
-	shift_subship_pos_to_pinhead(pinHead)
-
-
-# moves subship to place pinhead where com was
-func shift_subship_pos_to_pinhead(pinHead):
-	
-	# get displacement of pinhead
-	var disp
-	
-	# gets subship(com) -> pinhead in global coords
-	if pinHead.get("pin_point"):
-		disp = pinHead.pin_point.global_position - subShip.global_position
-	else:
-		disp = pinHead.global_position - subShip.global_position
-	
-	# moves subship inverse of this displacement
-	subShip.position -= disp
-	
-	print("subship moved: ", disp)
+	print("MOVING SUBSHIP: ", global_position, ", ", subShip.global_position)
+	queue_repos = false
 
 
 # SAVING AND LOADING ===========================================================

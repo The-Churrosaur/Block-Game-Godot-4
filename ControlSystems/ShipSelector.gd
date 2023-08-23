@@ -5,7 +5,7 @@ var selected_ships = []
 
 signal new_ship_selected(ship)
 
-func _unhandled_input(event):
+func _input(event):
 	
 	if event.is_action_pressed("ui_lclick") and active:
 		var ship 

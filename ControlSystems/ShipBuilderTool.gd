@@ -32,6 +32,8 @@ func find_ships_at(global_pos) -> Array:
 	var query_params = PhysicsPointQueryParameters2D.new()
 	query_params.position = global_pos
 	var intersections = state.intersect_point(query_params)
+	print("Selector physics intersections: ", intersections)
 	for hit in intersections:
+		print("physics intersection hit!: ", hit)
 		if hit["collider"] is ShipBody: hits.append(hit["collider"])
 	return hits

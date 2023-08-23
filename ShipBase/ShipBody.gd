@@ -393,12 +393,10 @@ func rejigger_shapes():
 	
 #	_print_shape_owners()
 
-# moves grid, also updates mass, and updates colliders
-# returns old position
-# everything that moves when the grid moves is in here for now
-func update_com(block, invert = false): # also updates mass
-	if !(block is Block):
-		return
+
+# GODOT 4 UPDATE!!!! simply moves COM fuck you
+# invert for negative mass (removal)
+func update_com(block : Block, invert = false): # also updates mass
 	
 	print("BLOCK UPDATING COM: ", block.name)
 	
@@ -431,40 +429,15 @@ func update_com(block, invert = false): # also updates mass
 	com_y = round(com_y)
 	
 	com_relative = Vector2(com_x, com_y)
+	print("RELATIVE COM CALCULATED: ", com_relative)
 	
-#	print("com vec: ", com_relative)
-#	print("old grid pos: ", grid.position, grid.global_position)
-#	print("grid mass: ", mass)
-#	print("old ship position", position, global_position)
-	
-	# rotationally, both grid and com vec are in reference frame under ship
-	grid.position -= com_relative
-	
-	# move colliders along with grid
-	for collider in collision_shapes.keys():
-#		print("shifting collider: ", collider)
-		collider.position -= com_relative
-	
-	var old_pos = position
-	
-	# put com vector in reference frame alongside ship
-	var com_global = com_relative.rotated(rotation)
-	position += com_global
+	center_of_mass += com_relative
 	
 	mass = combined_mass
 	
-#	print("new mass: ", mass)
-#	print("block: ",block.position, block.global_position)
-#	print("mass: ", block.mass)
-#	print("mass shifting ship position", position, global_position)
-#	print("grid position: ", grid.position, grid.global_position)
+	emit_signal("ship_com_shifted", global_position, com_relative)
 	
-	
-	# tells whoever else needs to know that we moved
-	# ie. pinblocks
-	emit_signal("ship_com_shifted", old_pos, com_relative)
-	
-	return old_pos
+	return global_position
 
 
 func on_grid_block_removed(coord, block, grid, update_com):

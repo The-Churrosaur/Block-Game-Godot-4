@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://3yp56t1aro4q"]
 
-[ext_resource type="PackedScene" path="res://ControlSystems/ShipBuilderTool.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://dgcrowjrt5u72" path="res://ControlSystems/ShipBuilderTool.tscn" id="1"]
 [ext_resource type="Script" path="res://ControlSystems/ShipSelector.gd" id="2"]
 
 [node name="ShipSelector" instance=ExtResource("1")]

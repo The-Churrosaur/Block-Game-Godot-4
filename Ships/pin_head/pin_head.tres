@@ -1,23 +1,22 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" script_class="ShipSaveResource" load_steps=2 format=3 uid="uid://bayajdkh0dku2"]
 
-[ext_resource path="res://ShipBase/ShipSave_Resource.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://ShipBase/ShipSave_Resource.gd" id="1"]
 
 [resource]
-script = ExtResource( 1 )
+script = ExtResource("1")
 block_types = {
 "PinHead": "res://Blocks/Joints/PinHead.tscn"
 }
-blocks = [ {
+blocks = [{
 "block_id": 0,
 "facing": 0,
-"pos": Vector2( 0, 0 ),
+"pos": Vector2(0, 0),
 "type": "PinHead"
-} ]
+}]
 ship_data = {
-"displacement": Vector2( 0, 0 ),
+"displacement": Vector2(0, 0),
 "id": "pin_head",
-"io_connections": {
-},
+"io_connections": {},
 "is_subShip": true,
 "mass": 10.0,
 "name": "pinhead",
