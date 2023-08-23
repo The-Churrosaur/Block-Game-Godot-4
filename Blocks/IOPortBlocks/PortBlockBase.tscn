@@ -1,11 +1,12 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://crxjigmvi5ker"]
 
-[ext_resource path="res://ShipBase/GridBase/Block.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Blocks/IOPortBlocks/PortBlockBase.gd" type="Script" id=2]
-[ext_resource path="res://BlockSystems/IOPorts/PortManager.tscn" type="PackedScene" id=3]
+[ext_resource type="PackedScene" uid="uid://tqjh4teuuu2e" path="res://ShipBase/GridBase/Block.tscn" id="1"]
+[ext_resource type="Script" path="res://Blocks/IOPortBlocks/PortBlockBase.gd" id="2"]
+[ext_resource type="PackedScene" path="res://BlockSystems/IOPorts/PortManager.tscn" id="3"]
 
-[node name="PortBlockBase" instance=ExtResource( 1 )]
-script = ExtResource( 2 )
+[node name="PortBlockBase" instance=ExtResource("1")]
+script = ExtResource("2")
+port_manager_path = NodePath("BlockSystems/PortManager")
 display_name = ""
 
-[node name="PortManager" parent="BlockSystems" index="0" instance=ExtResource( 3 )]
+[node name="PortManager" parent="BlockSystems" index="0" instance=ExtResource("3")]

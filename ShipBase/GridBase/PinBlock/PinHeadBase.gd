@@ -9,6 +9,10 @@ signal pin_grid_changed(pinHead, changed_block)
 # pinblock will pin this ship at the position of the pinpoint node
 @onready var pin_point = get_node(pin_point_path)
 
+
+func _ready():
+	super._ready()
+
 func on_added_to_grid(center_coord, block, grid):
 	super.on_added_to_grid(center_coord, block, grid)
 	

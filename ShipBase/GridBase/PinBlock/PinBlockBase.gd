@@ -1,3 +1,6 @@
+
+# TODO remove portblockbase class this is gross
+
 class_name PinBlockBase
 extends PortBlockBase
 

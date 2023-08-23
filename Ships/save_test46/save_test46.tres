@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="ShipSaveResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://ShipBase/ShipSave_Resource.gd" id="1_mkedj"]
+
+[resource]
+script = ExtResource("1_mkedj")
+block_types = {
+"MotorBlock": "res://Blocks/Joints/MotorBlock.tscn",
+"PortBlockTester": "res://Blocks/IOPortBlocks/PortBlockTester.tscn"
+}
+blocks = [{
+"address": "res://Blocks/Joints/MotorBlock.tscn",
+"block_id": 0,
+"facing": 1,
+"pinHead_coord": Vector2(0, 0),
+"pos": Vector2(0, 0),
+"subShip_id": "pin_head_systems",
+"subShip_resource_path": "res://Ships/save_test46/SubShips/pin_head_systems/pin_head_systems.tres",
+"systems": {
+"port_manager": {
+"elements": {
+"default": {
+"active": true,
+"text": ""
+},
+"throttle": {
+"active": true,
+"text": ""
+}
+}
+}
+},
+"type": "MotorBlock"
+}, {
+"address": "res://Blocks/IOPortBlocks/PortBlockTester.tscn",
+"block_id": 1,
+"facing": 1,
+"pos": Vector2(-3, 0),
+"systems": {
+"port_manager": {
+"elements": {
+"test_in": {
+"active": true,
+"text": ""
+},
+"test_out": {
+"active": true,
+"text": ""
+}
+}
+}
+},
+"type": "PortBlockTester"
+}]
+ship_data = {
+"displacement": Vector2(91, 0),
+"id": "save_test46",
+"io_connections": {},
+"is_subShip": false,
+"mass": 21.0,
+"name": &"save_test46",
+"ship_systems": {
+"fuel_cable_manager": {
+"cables": []
+},
+"io_cable_manager": {
+"cables": [{
+"receiver_port": {
+"block": Vector2(0, 0),
+"port": "throttle",
+"ship": "save_test46"
+},
+"sender_port": {
+"block": Vector2(-3, 0),
+"port": "test_out",
+"ship": "save_test46"
+}
+}]
+}
+},
+"subShip_counter": 1,
+"subShip_id": 0
+}
