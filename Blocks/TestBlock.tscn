@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" path="res://Blocks/BlockSizeHelper.tscn" id="6"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(32, 32)
+size = Vector2(64, 64)
 
 [node name="TestBlockBase" type="Node2D" node_paths=PackedStringArray("hitbox_colliders")]
 script = ExtResource("2")
