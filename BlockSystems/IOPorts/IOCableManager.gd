@@ -108,6 +108,18 @@ func remove_cable(cable):
 	cable.queue_free()
 
 
+# -- CABLE VISIBILITY
+
+
+func hide_cables():
+	for cable in cables.keys():
+		cable.hide_cable()
+
+func show_cables():
+	for cable in cables.keys():
+		cable.show_cable()
+
+
 # PRIVATE ----------------------------------------------------------------------
 
 
@@ -222,6 +234,7 @@ func _cable_elbow_nudge(cable0, cable1) -> Vector2:
 	if y : nudge += Vector2(0,1)
 	
 	return nudge
+
 
 # -- CABLE DATA TRANSMISSION
 

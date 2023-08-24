@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" path="res://ShipBase/ShipTileMap.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://BlockSystems/IO/IOManager.tscn" id="7"]
 [ext_resource type="PackedScene" path="res://ShipBase/ShipSystemsManager.tscn" id="8"]
-[ext_resource type="PackedScene" path="res://BlockSystems/IOPorts/IOCableManager.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://dhg0mew30sumy" path="res://BlockSystems/IOPorts/IOCableManager.tscn" id="9"]
 [ext_resource type="PackedScene" path="res://ShipBase/BumpDetector.tscn" id="10"]
 [ext_resource type="PackedScene" path="res://BlockSystems/FuelPorts/FuelCableManager.tscn" id="11"]
 

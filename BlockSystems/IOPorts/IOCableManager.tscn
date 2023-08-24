@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://dhg0mew30sumy"]
 
-[ext_resource path="res://BlockSystems/IOPorts/IOCableManager.gd" type="Script" id=1]
-[ext_resource path="res://BlockSystems/IOPorts/IOCable.tscn" type="PackedScene" id=2]
+[ext_resource type="Script" path="res://BlockSystems/IOPorts/IOCableManager.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://cheacav1gc4mm" path="res://BlockSystems/IOPorts/IOCable.tscn" id="2"]
 
 [node name="IOCableManager" type="Node"]
-script = ExtResource( 1 )
+script = ExtResource("1")
+cable_scene = ExtResource("2")
 system_id = "io_cable_manager"
-cable_scene = ExtResource( 2 )

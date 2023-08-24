@@ -47,23 +47,18 @@ func _process(delta):
 # PRIVATE ----------------------------------------------------------------------
 
 
-# ???
-func on_toggle_input(state):
-	print("CABLETOOL TOGGLED")
-	super.on_toggle_input(state)
-
 
 func activate_tool():
 	super.activate_tool()
-	
-	print("CABLE TOOL A CTIVATATED")
 	find_all_grid_ports()
 	activate_all_ports()
+	show_cables()
 
 
 func deactivate_tool():
 	super.deactivate_tool()
 	deactivate_all_ports()
+	hide_cables()
 
 
 # searches the ship for all grid ports and adds them (linear search)
@@ -87,6 +82,22 @@ func deactivate_all_ports():
 	for manager in port_managers: _deactivate_ports(manager)
 
 
+func show_cables():
+	var ships = current_ship.get_all_ships_in_tree()
+	for ship in ships:
+		var cable_manager : IOCableManager 
+		cable_manager = ship.ship_systems.get_system(cable_system_id)
+		cable_manager.show_cables()
+
+
+func hide_cables():
+	var ships = current_ship.get_all_ships_in_tree()
+	for ship in ships:
+		var cable_manager : IOCableManager 
+		cable_manager = ship.ship_systems.get_system(cable_system_id)
+		cable_manager.hide_cables()
+
+
 # -- SIGNAL INPUT LISTENING
 
 
@@ -97,7 +108,6 @@ func on_ship_reported_clicked(ship, block):
 	print("CABLETOOL REGISTERING CLICK")
 	
 	if !active: return
-
 
 
 # called when a port that this tool is listening to (has selected) is selected

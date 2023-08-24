@@ -73,6 +73,18 @@ func cut_cable():
 	emit_signal("_cable_cut", self)
 
 
+# -- CABLE VISIBILITY
+
+
+func hide_cable():
+	visible = false
+
+
+func show_cable():
+	visible = true
+
+
+
 # PRIVATE ----------------------------------------------------------------------
 
 
