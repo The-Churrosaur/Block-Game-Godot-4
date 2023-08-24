@@ -9,7 +9,7 @@ func _input(event):
 	
 	if event.is_action_pressed("ui_lclick") and active:
 		var ship 
-		ship = select_new_ship(get_global_mouse_position(), scene.current_ship)
+		ship = select_new_ship(get_global_mouse_position(), level.current_ship)
 		print("Selector selected new ship: ", ship)
 		
 		if ship == null: return

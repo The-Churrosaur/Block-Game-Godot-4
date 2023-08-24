@@ -1,5 +1,5 @@
 class_name TestScene
-extends Node2D
+extends Level
 
 @onready var current_ship
 @onready var test_grid
@@ -61,6 +61,9 @@ func select_ship(ship):
 	camera.set_target(ship)
 	
 	ship.select_ship()
+	
+	emit_signal("new_ship_selected", ship)
+
 
 func on_new_ship(ship : RigidBody2D, select = true):
 	

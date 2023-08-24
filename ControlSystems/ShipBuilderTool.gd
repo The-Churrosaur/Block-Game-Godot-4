@@ -6,19 +6,31 @@ extends Node2D
 
 @export var active = false
 
-var scene = null
+
+# injected by manager
+var level : Level = null
+
+# injected by manager
+var current_ship : ShipBody = null
+
 
 # call me ;)
 func setup(current_scene):
-	scene = current_scene
-	scene.connect("ship_clicked", Callable(self, "on_ship_reported_clicked"))
+	pass
+	# redundant to manager here because lazy
 
-func on_toggle_input(state):
-	set_active(state)
+func on_toggle_input(state : bool):
+	if state == true: activate_tool()
+	if state == false: deactivate_tool()
 
-func set_active(state):
-	active = state
+# override me
+func activate_tool():
+	active = true
 	print("tool set: ", name, ", ", active)
+
+# override me
+func deactivate_tool():
+	active = false
 
 # listens for ships self-reporting being clicked
 func on_ship_reported_clicked(ship, block):

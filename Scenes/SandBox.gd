@@ -1,4 +1,4 @@
-extends Node2D
+extends Level
 
 @onready var camera = $CameraBase
 var current_ship

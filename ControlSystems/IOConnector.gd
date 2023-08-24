@@ -4,7 +4,6 @@ extends ShipBuilderTool
 @onready var hud = $CanvasLayer/HudDolly/IOHud
 @onready var hud_dolly = $CanvasLayer/HudDolly
 
-var current_ship = null
 var waiting = false # for signal from button
 
 var coord_one = null
@@ -24,19 +23,19 @@ func _ready():
 
 func _unhandled_input(event):
 	
-	# tries to find block on scene's current ship, set io
+	# tries to find block on level's current ship, set io
 	if event.is_action_pressed("ui_lclick") and active and !waiting:
-		print("ioconnector clicked ", scene.current_ship)
+		print("ioconnector clicked ", level.current_ship)
 		var pos = get_global_mouse_position()
-		var block = scene.current_ship.grid.get_blockFromPoint(pos)
-		set_io(scene.current_ship, block)
+		var block = level.current_ship.grid.get_blockFromPoint(pos)
+		set_io(level.current_ship, block)
 	
 	# cancel selection
 	if event.is_action_pressed("ui_cancel"):
 		print(" ioconnector cancelling")
 		emit_signal("end_waiting_for_port", 0, -1)
 
-# signal hooks into ship -> scene
+# signal hooks into ship -> level
 func on_ship_reported_clicked(ship, block):
 	super.on_ship_reported_clicked(ship, block)
 	

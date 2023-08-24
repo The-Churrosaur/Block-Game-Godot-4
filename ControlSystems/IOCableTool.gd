@@ -23,6 +23,9 @@ extends ShipBuilderTool
 # a port has previously been selected, this is that port
 var selected_port = null
 
+# keeps track of all ports the tool can currently access
+var port_managers : Array[PortManager]
+
 
 # CALLBACKS --------------------------------------------------------------------
 
@@ -44,6 +47,46 @@ func _process(delta):
 # PRIVATE ----------------------------------------------------------------------
 
 
+# ???
+func on_toggle_input(state):
+	print("CABLETOOL TOGGLED")
+	super.on_toggle_input(state)
+
+
+func activate_tool():
+	super.activate_tool()
+	
+	print("CABLE TOOL A CTIVATATED")
+	find_all_grid_ports()
+	activate_all_ports()
+
+
+func deactivate_tool():
+	super.deactivate_tool()
+	deactivate_all_ports()
+
+
+# searches the ship for all grid ports and adds them (linear search)
+# eh TODO think about
+func find_all_grid_ports():
+	
+	port_managers.clear()
+	
+	var ships = current_ship.get_all_ships_in_tree()
+	for ship in ships:
+		var blocks = ship.grid.blocks_id.values()
+		for block in blocks:
+			_try_add_port_manager(block)
+
+
+func activate_all_ports():
+	for manager in port_managers: _activate_ports(manager)
+
+
+func deactivate_all_ports():
+	for manager in port_managers: _deactivate_ports(manager)
+
+
 # -- SIGNAL INPUT LISTENING
 
 
@@ -54,21 +97,7 @@ func on_ship_reported_clicked(ship, block):
 	print("CABLETOOL REGISTERING CLICK")
 	
 	if !active: return
-	
-	# try get port
-	# TODO blocks should all inherit or something
-	var systems_manager = block.block_systems_manager
-	if systems_manager == null: return
-	var port_manager = systems_manager.get_system(port_system_id)
-	if port_manager == null: return
-	
-	print("CABLETOOL ACTIVATING BLOCK PORTS: ", block)
-	
-	# listen for ports on this block	
-	port_manager.connect("port_button_pressed", Callable(self, "_on_listening_pressed"))
-	
-	# tell block it's been clicked by the cable tool
-	port_manager.tool_selected()
+
 
 
 # called when a port that this tool is listening to (has selected) is selected
@@ -115,6 +144,40 @@ func _on_listening_pressed(port : IOPort, block : Block):
 # -- HELPERS / UI ENTRY POINTS
 
 
+# tries to find port manager, adds to manager list, returns manager or null
+func _try_add_port_manager(block : Block) -> PortManager:
+	
+	var systems_manager = block.block_systems_manager
+	if systems_manager == null: return null
+	var port_manager = systems_manager.get_system(port_system_id)
+	if port_manager == null: return null
+	else:
+		
+		# appends to list
+		port_managers.append(port_manager) 
+		return port_manager
+
+
+# activates manager's ports
+func _activate_ports(port_manager : PortManager):
+	
+	print("CABLETOOL ACTIVATING BLOCK PORTS: ", port_manager.block)
+	
+	# listen for ports on this block	
+	port_manager.connect("port_button_pressed", Callable(self, "_on_listening_pressed"))
+	
+	# tell block it's been clicked by the cable tool
+	port_manager.tool_selected()
+
+
+# deactivates manager's ports
+func _deactivate_ports(port_manager : PortManager):
+	
+	print("CABLETOOL CLOSING BLOCK PORTS: ", port_manager.block)
+	port_manager.tool_deselected()
+
+
+
 func _draw_helper_line():
 	
 	# draw line
@@ -128,3 +191,6 @@ func _draw_helper_line():
 
 func _clear_selected_port():
 	selected_port = null
+
+
+

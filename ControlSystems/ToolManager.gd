@@ -11,12 +11,12 @@ extends Node
 # FIELDS ----------------------------------------------------------------------
 
 
+# tools
+@export var tools : Array[ShipBuilderTool]
 
-@export (Array, NodePath) var tool_paths
+# level
+@export var level : Level # TODO
 
-
-# id -> tool, populated from paths on ready
-var tools = {}
 
 # selected ship to work on
 var selected_ship : ShipBody
@@ -29,10 +29,13 @@ var selected_ship : ShipBody
 
 func _ready():
 	
-	# populate tool dict
-	for path in tool_paths:
-		var node = get_node_or_null(path)
-		if node is ShipBuilderTool: tools[node.tool_id] = node
+	# inject data into tools (scene, clicked signal)
+	for tool in tools: 
+		tool.level = level
+		level.connect("ship_clicked", Callable(tool, "on_ship_reported_clicked"))
+	
+	# listen for new ships
+	level.connect("new_ship_selected", Callable(self, "_on_new_ship_selected"))
 
 
 
@@ -50,6 +53,13 @@ func _process(delta):
 # PRIVATE ----------------------------------------------------------------------
 
 
+
+func _on_new_ship_selected(ship):
+	selected_ship = ship
+	
+	# inject into tools
+	for tool in tools:
+		tool.current_ship = ship
 
 
 

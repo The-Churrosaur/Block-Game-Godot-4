@@ -43,7 +43,7 @@ func call_test(param):
 # TODO maybe this is terrible
 @onready var subShip_id = 0
 
-@onready var grid = $GridBase
+@onready var grid : GridBase = $GridBase
 # ShipBody changes position with COM because godot
 # grid position moves with ShipBody BUT
 # grid position remains relative to ShipBody at original scene origin
@@ -253,6 +253,26 @@ func get_subShip_recursive(id) -> ShipBody:
 # get any ship in tree, traverses to root then finds subship
 func get_ship_in_tree(id) -> ShipBody:
 	return get_rootShip().get_subShip_recursive(id)
+
+
+# returns a list of self and all lower ships in tree (recursive bfs)
+func get_all_child_ships() -> Array:
+	var ships = []
+	
+	for child in subShips.values():
+		ships.append_array(child.get_all_child_ships())
+	
+	# base case
+	ships.append(self)
+	
+	print("getting child ships: ", ships)
+	
+	return ships
+
+
+# returns a list of all ships in tree
+func get_all_ships_in_tree() -> Array:
+	return get_rootShip().get_all_child_ships()
 
 
 func on_new_subShip(ship, pinBlock, pinHead): # called by pinblocks
