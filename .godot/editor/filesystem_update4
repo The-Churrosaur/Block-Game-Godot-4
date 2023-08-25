@@ -5,16 +5,9 @@ res://ShipBase/ShipBody.tscn
 res://Scenes/TestScene.tscn
 res://ShipBase/GridBase/Block.tscn
 res://ShipBase/GridBase/GridBase.tscn
-res://ControlSystems/ShipSelector.tscn
-res://ControlSystems/ShipBuilderTool.tscn
 res://ControlSystems/IOCableTool.tscn
 res://BlockSystems/IOPorts/PortManager.tscn
 res://BlockSystems/IOPorts/IOPort.tscn
 res://ControlSystems/ToolManager.tscn
-res://Scenes/level.tscn
 res://BlockSystems/IOPorts/IOCableManager.tscn
 res://BlockSystems/IOPorts/IOCable.tscn
-res://BlockSystems/IOPorts/IOPort.gd
-res://BlockSystems/IOPorts/IOCable.gd
-res://BlockSystems/IOPorts/IOCableManager.gd
-res://ControlSystems/IOCableTool.gd
