@@ -113,9 +113,6 @@ func on_ship_reported_clicked(ship, block):
 # called when a port that this tool is listening to (has selected) is selected
 func _on_listening_pressed(port : IOPort, block : Block):
 	
-	# is the port available?
-	if port.cable: return
-	
 	# if no port selected, new trail
 	if selected_port == null: 
 		selected_port = port

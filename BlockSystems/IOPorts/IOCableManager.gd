@@ -81,8 +81,8 @@ func new_cable(sender_port, receiver_port):
 	cable.sender_port = sender_port
 	cable.receiver_port = receiver_port
 	
-	sender_port.cable = cable
-	receiver_port.cable = cable
+	sender_port.cables[cable] = true
+	receiver_port.cables[cable] = true
 	
 	# listen for deletion
 	cable.connect("_cable_cut", Callable(self, "_on_cable_cut"))
@@ -102,8 +102,8 @@ func remove_cable(cable):
 	
 	cables.erase(cable)
 	
-	cable.sender_port.cable = null
-	cable.receiver_port.cable = null
+	cable.sender_port.cables.erase(cable)
+	cable.receiver_port.cables.erase(cable)
 	
 	cable.queue_free()
 

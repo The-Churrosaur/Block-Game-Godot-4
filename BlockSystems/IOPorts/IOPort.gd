@@ -35,11 +35,7 @@ signal port_button_pressed(port)
 # the data associated with this port
 @onready var data = 0.0
 
-# occupying cable (injected by cable)
-# also used for determing availability
-@onready var cable = null
-
-# dict of cables (injected) cable->bool
+# this port's cables (injected) cable -> true
 @onready var cables = {}
 
 # this port's manager (injected by manager)
@@ -100,11 +96,10 @@ func tool_deselected():
 	select_button.visible = false
 
 
-# cuts cable if there is one
+# cuts all cables
 func cut_cable():
-	if !cable : return false
-	cable.cut_cable()
-	return true
+	for cable in cables.keys():
+		if cable is IOCable: cable.cut_cable()
 
 
 # for testing purposes rn
