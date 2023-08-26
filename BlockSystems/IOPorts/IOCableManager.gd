@@ -241,5 +241,11 @@ func _cable_elbow_nudge(cable0, cable1) -> Vector2:
 
 # transmits data on all cables
 func _transmit_cable_data():
+	
+	# reset ports to 0 (ports evaluate all inputs in a tick)
+	for cable in cables.keys():
+		cable.override_data(0)
+	
+	# transmit data
 	for cable in cables.keys():
 		cable.send_data()

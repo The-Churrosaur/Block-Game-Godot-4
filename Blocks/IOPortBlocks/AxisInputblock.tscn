@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://d4inut1f8px5h"]
 
 [ext_resource type="Script" path="res://Blocks/IOPortBlocks/PortInputBlock.gd" id="1"]
-[ext_resource type="PackedScene" path="res://Blocks/IOPortBlocks/PortBlockBase.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://crxjigmvi5ker" path="res://Blocks/IOPortBlocks/PortBlockBase.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://2t3bkom3e7bj" path="res://BlockSystems/IOPorts/IOPort.tscn" id="3"]
 [ext_resource type="Texture2D" uid="uid://72drysw0o6c" path="res://Assets/puter.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://b5lgsowf3x5oc" path="res://Assets/Corridor.png" id="5"]
@@ -17,7 +17,6 @@ size = Vector2(64, 32)
 script = ExtResource("1")
 input_strings = ["ui_left", "ui_right"]
 port_paths = [NodePath("BlockSystems/PortManager/IOPortLeft"), NodePath("BlockSystems/PortManager/IOPortRight")]
-port_manager_path = NodePath("BlockSystems/PortManager")
 size_grid = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
 description = "Outputs a signal from left/right inputs to left/right ports"
 class_type = "axis_input_block"

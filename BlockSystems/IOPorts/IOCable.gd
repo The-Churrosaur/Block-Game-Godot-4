@@ -68,6 +68,20 @@ func send_data():
 	_line_color(sender_port.data)
 
 
+# force overrides output data
+func override_data(data):
+	
+	# check null
+	if (receiver_port == null) or (sender_port == null): return 
+	
+	# check active
+	if !(receiver_port.is_active) or !(sender_port.is_active): return
+	
+	print("cable overriding data!: ", data)
+	
+	receiver_port.override_data(data)
+
+
 # requests cut cable
 func cut_cable():
 	emit_signal("_cable_cut", self)

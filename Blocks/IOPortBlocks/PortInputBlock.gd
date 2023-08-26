@@ -39,9 +39,9 @@ func _input(event):
 		for input in input_strings:
 		
 			if event.is_action_pressed(input):
-				ports[input].set_data(100)
+				ports[input].override_data(100)
 			if event.is_action_released(input):
-				ports[input].set_data(0)
+				ports[input].override_data(0)
 	
 
 

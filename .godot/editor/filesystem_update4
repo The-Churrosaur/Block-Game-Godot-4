@@ -11,3 +11,8 @@ res://BlockSystems/IOPorts/IOPort.tscn
 res://ControlSystems/ToolManager.tscn
 res://BlockSystems/IOPorts/IOCableManager.tscn
 res://BlockSystems/IOPorts/IOCable.tscn
+res://BlockSystems/IOPorts/IOPort.gd
+res://BlockSystems/IOPorts/IOCableManager.gd
+res://BlockSystems/IOPorts/IOCable.gd
+res://Blocks/IOPortBlocks/AxisInputblock.tscn
+res://Blocks/IOPortBlocks/PortInputBlock.gd

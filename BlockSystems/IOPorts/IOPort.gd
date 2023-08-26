@@ -76,8 +76,15 @@ func _process(delta):
 # PUBLIC -----------------------------------------------------------------------
 
 
-func set_data(level):
-	data = min(level, max_data)
+# if compare is set, updates data if new input is higher
+func set_data(level, compare = true):
+	var new = min(level, max_data)
+	data = max(new, data)
+
+
+func override_data(new_data):
+	data = new_data
+
 
 func get_data() -> float:
 	return min(data, max_data)
