@@ -77,8 +77,6 @@ func override_data(data):
 	# check active
 	if !(receiver_port.is_active) or !(sender_port.is_active): return
 	
-	print("cable overriding data!: ", data)
-	
 	receiver_port.override_data(data)
 
 

@@ -53,16 +53,10 @@ func set_target(new_target):
 func zoom_to(target_zoom, time = zoom_time):
 	
 	var zoom_tween = get_tree().create_tween()
+	zoom_tween.set_ease(Tween.EASE_IN_OUT)
+	zoom_tween.set_trans(Tween.TRANS_SINE)
 	
-	zoom_tween.interpolate_property(camera, 
-										"zoom", 
-										camera.zoom, 
-										target_zoom, 
-										time, 
-										Tween.TRANS_SINE, 
-										Tween.EASE_IN_OUT)
-	
-	zoom_tween.start()
+	zoom_tween.tween_property(camera, "zoom", target_zoom, time) 
 
 
 # PRIVATE ----------------------------------------------------------------------

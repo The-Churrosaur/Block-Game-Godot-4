@@ -18,7 +18,7 @@ func _ready():
 	super._ready()
 	
 	# bad but eh for now
-	await get_tree().
+#	await get_tree().process_frame
 	
 	if !shipBody: return
 	
