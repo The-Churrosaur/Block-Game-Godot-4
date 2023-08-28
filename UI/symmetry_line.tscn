@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5vt53au8wvwk"]
+
+[ext_resource type="Script" path="res://UI/symmetry_line.gd" id="1_c25dk"]
+[ext_resource type="Texture2D" uid="uid://bn2hj0tidjoo5" path="res://icon.png" id="2_6jgr6"]
+
+[node name="symmetry_line" type="Node2D" node_paths=PackedStringArray("line")]
+script = ExtResource("1_c25dk")
+line = NodePath("Line2D")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 200)
+texture = ExtResource("2_6jgr6")
+texture_mode = 1

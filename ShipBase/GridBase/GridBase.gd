@@ -4,6 +4,8 @@ class_name GridBase
 extends Node2D
 
 @export var grid_size = 64 # base
+@export var x_symmetry = false
+@export var x_symmetry_line = 0
 
 # TODO do these by path exports?
 @onready var shipBody = get_parent()
@@ -31,6 +33,7 @@ signal block_added(coord, block, grid, update_com)
 signal block_removed(coord, block, grid, update_com) 
 signal grid_empty(grid)
 signal superShip_moved(superShip)
+signal symmetry_set(state)
 # be wary of holding the reference to a dying block
 
 func _ready():
@@ -45,6 +48,13 @@ func _ready():
 
 func _enter_tree():
 	print("GRID ENTERED TREE")
+
+
+# for testing
+func _input(event):
+	if event.is_action_pressed("ui_flip"):
+		set_symmetry(!x_symmetry)
+
 
 #func set_vars_from_info(info):
 #	if info is ShipInfo:
@@ -129,6 +139,15 @@ func add_block(block, center_coord, facing, check_blocked = true, update_com = t
 	
 	num_blocks += 1
 	gross_blocks += 1
+	
+	# symmetry
+	if x_symmetry == true:
+		var to_symmetry = x_symmetry_line - center_coord.x
+		var mirror_coord = Vector2(x_symmetry_line + to_symmetry, center_coord.y)
+		
+		print("PLACING MIRRORED BLOCK: ", to_symmetry, mirror_coord)
+		add_block(block.duplicate_block(),mirror_coord, facing)
+	
 	return true
 
 
@@ -170,6 +189,15 @@ func remove_block(pos : Vector2) -> bool:
 			print("GRID EMPTY")
 			emit_signal("grid_empty", self)
 		
+		
+		# flip symmetry
+		if x_symmetry == true:
+			var to_symmetry = x_symmetry_line - pos.x
+			var mirror_coord = Vector2(x_symmetry_line + to_symmetry, pos.y)
+			
+			print("REMOVING MIRRORED BLOCK: ", to_symmetry, mirror_coord)
+			remove_block(mirror_coord)
+		
 		return true
 	else:
 		print("block to remove not found!")
@@ -189,6 +217,12 @@ func get_gridFromPoint(point : Vector2):
 	grid_coord = (grid_coord / grid_size).round()
 	print("getting grid coordinate ", grid_coord)
 	return grid_coord
+
+
+# relative to grid
+func get_pointFromGrid(coord : Vector2):
+	return coord * grid_size
+
 
 func get_blockFromPoint(point : Vector2):
 	return get_block(get_gridFromPoint(point))
@@ -218,6 +252,12 @@ func post_load_block_setup():
 	# iterate through blocks, call setup
 	for pos in block_dict.keys():
 		block_dict[pos].post_load_setup()
+
+
+# toggle symmetry
+func set_symmetry(state : bool):
+	x_symmetry = state
+	emit_signal("symmetry_set", state)
 
 
 # called by ship
@@ -262,21 +302,6 @@ func save(folder):
 	packed_scene.pack(self)
 	ResourceSaver.save(address, packed_scene)
 
-# MOTHER FUCK TODO
-var tim = 100
-func _process(delta):
-#	tim -= 1
-#	if tim == 0:
-#		print("==============================")
-#		print(self, position, global_position)
-#		print(shipBody.subShips)
-#		for ship in shipBody.subShips.values():
-#			print("parent: ", ship.get_parent())
-#			print("grid: ",ship.grid)
-#			for block in ship.grid.block_dict.values():
-#				print(block)
-#		tim = 100
-		pass
 
 func load_in(folder, ship):
 	
