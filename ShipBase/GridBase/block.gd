@@ -118,7 +118,7 @@ func _ready():
 
 # returns a copy of this block
 func duplicate_block() -> Block:
-	return duplicate(7)
+	return load(scene_file_path).instantiate()
 
 
 # -- BLOCK PLACEMENT
