@@ -4,6 +4,10 @@ extends Level
 var current_ship
 
 
+func _ready():
+	pass
+
+
 func on_new_ship(ship):
 	
 	if is_instance_valid(current_ship): current_ship.deselect_ship()

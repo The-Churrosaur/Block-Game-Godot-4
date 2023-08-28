@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://jc63msdbqp6g"]
 
-[ext_resource type="PackedScene" path="res://Blocks/IOPortBlocks/PortBlockBase.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://crxjigmvi5ker" path="res://Blocks/IOPortBlocks/PortBlockBase.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://2t3bkom3e7bj" path="res://BlockSystems/IOPorts/IOPort.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://bn2hj0tidjoo5" path="res://icon.png" id="3"]
 [ext_resource type="Script" path="res://Blocks/Thrusters/ThrusterBlockPorts.gd" id="4"]
@@ -18,11 +18,10 @@ size = Vector2(32, 32)
 
 [node name="ThrusterBase" node_paths=PackedStringArray("flame_sprite", "trigger_port", "particles") instance=ExtResource("1")]
 script = ExtResource("4")
-magnitude = 100
+magnitude = 300
 flame_sprite = NodePath("FlameSprite")
 trigger_port = NodePath("BlockSystems/PortManager/IOPort")
 particles = NodePath("CPUParticles2D")
-port_manager_path = NodePath("BlockSystems/PortManager")
 size_grid = Array[Vector2i]([Vector2i(0, 0)])
 description = "Fires when given an input signal"
 class_type = "ThrusterBlockPorts"

@@ -69,6 +69,7 @@ func select_ship(ship):
 func on_new_ship(ship : RigidBody2D, select = true):
 	
 	add_child(ship)
+	ship.freeze = true
 	print("CONNECTING SIGNALS ", ship)
 	ship.connect("on_clicked", Callable(self, "on_ship_clicked"))
 	ship.connect("new_subShip", Callable(self, "on_new_subShip"))

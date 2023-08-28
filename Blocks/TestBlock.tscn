@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://0a2wglb73lbf" path="res://Assets/frame2.png" id="1"]
 [ext_resource type="Script" path="res://ShipBase/GridBase/block.gd" id="2"]
-[ext_resource type="PackedScene" path="res://UI/BlockPopup.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://bhgch1840pw0s" path="res://UI/BlockPopup.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://BlockSystems/BlockSystems_Manager.tscn" id="5"]
 [ext_resource type="PackedScene" path="res://Blocks/BlockSizeHelper.tscn" id="6"]
 
@@ -12,6 +12,7 @@ size = Vector2(64, 64)
 [node name="TestBlockBase" type="Node2D" node_paths=PackedStringArray("hitbox_colliders")]
 script = ExtResource("2")
 size_grid = Array[Vector2i]([Vector2i(0, 0)])
+destruction_velocity = 20
 class_type = "TestBlock"
 display_name = "Basic Block"
 hitbox_colliders = [NodePath("CollisionShape2D")]

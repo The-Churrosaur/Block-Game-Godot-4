@@ -28,7 +28,7 @@ window/size/fullscreen=true
 
 [global]
 
-gravity=false
+gravity=true
 console=false
 
 [input]
@@ -117,7 +117,7 @@ limits/debugger/max_chars_per_second=4096
 
 [physics]
 
-2d/default_gravity=0
+2d/default_gravity=300
 
 [rendering]
 
