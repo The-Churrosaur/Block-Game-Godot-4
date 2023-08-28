@@ -1,83 +1,53 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://bhgch1840pw0s"]
 
-[ext_resource path="res://icon.png" type="Texture2D" id=1]
-[ext_resource path="res://smokesprite.png" type="Texture2D" id=2]
-[ext_resource path="res://UI/BlockPopup.gd" type="Script" id=3]
+[ext_resource type="Texture2D" uid="uid://bn2hj0tidjoo5" path="res://icon.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://c5ip1pr6grjha" path="res://smokesprite.png" id="2"]
+[ext_resource type="Script" path="res://UI/BlockPopup.gd" id="3"]
 
 [node name="BlockPopup" type="PopupPanel"]
-offset_right = 102.0
-offset_bottom = 156.0
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+size = Vector2i(421, 100)
+script = ExtResource("3")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 98.0
-offset_bottom = 177.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_right = 417.0
+offset_bottom = 96.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
-modulate = Color( 1, 1, 1, 0.227451 )
-offset_right = 94.0
-offset_bottom = 173.0
-texture = ExtResource( 1 )
+modulate = Color(1, 1, 1, 0.227451)
+layout_mode = 2
+texture = ExtResource("1")
 patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
-offset_right = 94.0
-offset_bottom = 173.0
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_top = 4
+layout_mode = 2
 theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 90.0
-offset_bottom = 169.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
-offset_right = 86.0
-offset_bottom = 14.0
+layout_mode = 2
 
 [node name="NinePatchRect2" type="NinePatchRect" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer2"]
-offset_right = 86.0
-offset_bottom = 14.0
-texture = ExtResource( 2 )
+layout_mode = 2
+texture = ExtResource("2")
 patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="LabelTitle" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer2"]
-offset_right = 86.0
-offset_bottom = 14.0
+layout_mode = 2
 text = "BLOCK TYPE"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="LabelDesc" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer"]
-offset_top = 18.0
-offset_right = 86.0
-offset_bottom = 117.0
+layout_mode = 2
 text = "Block description lorem ipsum etc tet siareijafjdsaio "
-autowrap = true

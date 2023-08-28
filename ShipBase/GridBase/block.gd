@@ -227,7 +227,9 @@ func ship_body_entered(body : CollisionObject2D, pos):
 
 
 func ship_clicked(event : InputEvent):
-	if event.is_action_pressed("ui_lclick"):
+	
+	# TODO make this a tool-triggered action
+	if event.is_action_pressed("ui_mclick"):
 		_set_popup()
 
 
@@ -303,6 +305,7 @@ func _set_hitbox_collision_shapes():
 
 
 func _set_popup():
+	print("BLOCK SETTING POPUP, ", self)
 	if popup != null:
 		popup.show_popup(self)
 

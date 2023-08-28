@@ -50,7 +50,8 @@ func select_ship(ship):
 	elif !(ship is ShipBody):
 		print("ship clicked: no shipbody returned")
 		return
-
+	
+	ship.deselect_ship()
 	
 	current_ship = ship
 	print("hooking up ship to testscene: ", ship)

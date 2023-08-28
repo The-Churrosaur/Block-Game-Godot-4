@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Blocks/LandingBlocks/WheelHead.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://bn2hj0tidjoo5" path="res://icon.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://hyqnadaisg1w" path="res://godont.png" id="4"]
-[ext_resource type="PhysicsMaterial" path="res://Resources/PhysicsMaterials/WheelMaterial.tres" id="5"]
+[ext_resource type="PhysicsMaterial" uid="uid://d07wrae44kdnu" path="res://Resources/PhysicsMaterials/WheelMaterial.tres" id="5"]
 [ext_resource type="PackedScene" path="res://BlockSystems/BlockSystems_Manager.tscn" id="6"]
 
 [sub_resource type="CircleShape2D" id="1"]

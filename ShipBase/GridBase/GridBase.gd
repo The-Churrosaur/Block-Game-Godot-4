@@ -53,7 +53,8 @@ func _enter_tree():
 # for testing
 func _input(event):
 	if event.is_action_pressed("ui_flip"):
-		set_symmetry(!x_symmetry)
+		if shipBody.selected:
+			set_symmetry(!x_symmetry)
 
 
 #func set_vars_from_info(info):

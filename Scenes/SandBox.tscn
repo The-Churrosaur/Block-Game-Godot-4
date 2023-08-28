@@ -33,6 +33,8 @@ script = ExtResource("3")
 position = Vector2(1110.25, 335.621)
 collision_mask = 7
 priority = 1
+gravity_space_override = 1
+gravity = 400.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("1")
@@ -105,6 +107,9 @@ shape = SubResource("3")
 position = Vector2(0, 25)
 scale = Vector2(32, 1)
 texture = ExtResource("1")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Geometry/StaticBody2D"]
+polygon = PackedVector2Array(587.85, 12.076, 991.85, 16.076, 1019.85, 76.076, -900.15, 72.076, -1388.15, 60.076, -2864.15, 252.076, -2968.15, 137.076, -1482.15, -84.924, -944.15, -11.924, -938.15, 17.076, -268.15, 11.076, -242.15, -84.924, 300.85, -16.924, 320.85, 3.07599)
 
 [node name="StaticBody2D10" type="StaticBody2D" parent="Geometry"]
 position = Vector2(1159.69, 604.356)
