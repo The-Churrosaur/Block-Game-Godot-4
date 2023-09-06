@@ -195,12 +195,6 @@ func load_ship(	ship_base : RigidBody2D,
 	
 	# HANDLE SHIP SAVE DATA
 	
-	# set position from data
-	var displacement = save_resource.ship_data["displacement"]
-	print("grid displacement: ", displacement)
-	grid.set_position(displacement)
-	print("grid position: ", grid.get_position())
-	
 	ship_base.load_saved_data(save_resource.ship_data)
 	
 	# unfreeze

@@ -595,7 +595,6 @@ func get_save_data() -> Dictionary :
 	
 	data["name"] = self.name
 	data["id"] = ship_id
-	data["displacement"] = grid.get_position() # relative to ship
 	data["mass"] = mass
 	data["io_connections"] = io_manager.connections
 	data["subShip_counter"] = subShip_counter
@@ -638,10 +637,6 @@ func load_saved_data(data : Dictionary):
 	# restore this to know if this ship is root/base case
 	is_subShip = data["is_subShip"]
 	print("THIS SHIP IS SUBSHIP: ", is_subShip)
-	
-	# restore collider positions from displacement
-	for collider in collision_shapes:
-		collider.position += data["displacement"]
 	
 	# if this ship is the root, do systems connection pass
 	if !is_subShip: load_systems_after_blocks()
