@@ -14,6 +14,7 @@ blocks = [{
 "type": "PinHead"
 }]
 ship_data = {
+"com": Vector2(0, 0),
 "displacement": Vector2(0, 0),
 "id": "pin_head",
 "io_connections": {},

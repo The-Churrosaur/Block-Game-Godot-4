@@ -17,10 +17,12 @@
 collision_layer = 7
 collision_mask = 9
 input_pickable = true
+mass = 0.01
 center_of_mass_mode = 1
 max_contacts_reported = 5
 contact_monitor = true
 script = ExtResource("1")
+default_mass = 0.0
 
 [node name="GridBase" parent="." instance=ExtResource("2")]
 

@@ -595,6 +595,7 @@ func get_save_data() -> Dictionary :
 	
 	data["name"] = self.name
 	data["id"] = ship_id
+	data["com"] = center_of_mass
 	data["mass"] = mass
 	data["io_connections"] = io_manager.connections
 	data["subShip_counter"] = subShip_counter
@@ -624,12 +625,8 @@ func load_saved_data(data : Dictionary):
 	
 	mass = data["mass"]
 	
-	# get deprecated mf
-	# restore iomanager connections
-#	io_manager.connections = data["io_connections"]
-#	print("IO MANAGER CONNECTIONS RESTORED")
-#	print(io_manager.connections)
-
+	# backwards compat
+	if data.has("com"):	center_of_mass = data["com"]
 	
 	# restore subship counter to properly track new subships
 	subShip_counter = data["subShip_counter"]

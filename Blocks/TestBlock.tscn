@@ -11,7 +11,7 @@ size = Vector2(64, 64)
 
 [node name="TestBlockBase" type="Node2D" node_paths=PackedStringArray("hitbox_colliders")]
 script = ExtResource("2")
-size_grid = [Vector2i(0, 0)]
+size_grid = Array[Vector2i]([Vector2i(0, 0)])
 destruction_velocity = 20
 class_type = "TestBlock"
 display_name = "Basic Block"

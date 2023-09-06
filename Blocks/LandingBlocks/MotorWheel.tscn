@@ -1,17 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://dgiw06j72r0s5"]
 
-[ext_resource path="res://Blocks/Joints/MotorBlock.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Ships/wheel_head/wheel_head.tres" type="Resource" id=2]
-[ext_resource path="res://Blocks/LandingBlocks/MotorWheel.gd" type="Script" id=3]
+[ext_resource type="PackedScene" uid="uid://bv0yeing52kkr" path="res://Blocks/Joints/MotorBlock.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://vsf3eueexb7f" path="res://Ships/wheel_head/wheel_head.tres" id="2"]
+[ext_resource type="Script" path="res://Blocks/LandingBlocks/MotorWheel.gd" id="3"]
 
-[node name="MotorWheel" instance=ExtResource( 1 )]
-script = ExtResource( 3 )
+[node name="MotorWheel" instance=ExtResource("1")]
+script = ExtResource("3")
+torque_impulse = 10000
+damping = false
+default_subShip_resource = ExtResource("2")
 description = "For building wheeled vehicles - throttle input at top port, reverse throttle at bottom port"
 class_type = "MotorWheel"
 display_name = "Wheel Motor"
-default_subShip_resource = ExtResource( 2 )
-torque_impulse = 10000
-damping = false
 
 [node name="ReversePort" parent="BlockSystems/PortManager" index="1"]
 port_id = "reverse"
