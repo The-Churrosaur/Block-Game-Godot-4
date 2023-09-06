@@ -1,8 +1,10 @@
 res://default_env.tres
-res://Scenes/Main.tscn
 res://Ships/pin_head/pin_head.tres
-res://ShipBase/ShipBody.tscn
+res://ControlSystems/ship_load_dialog.tscn
+res://ControlSystems/ship_load_dialog.gd
 res://Scenes/TestScene.tscn
+res://Scenes/Main.tscn
+res://ShipBase/ShipBody.tscn
 res://ShipBase/GridBase/Block.tscn
 res://ShipBase/GridBase/GridBase.tscn
 res://ControlSystems/IOCableTool.tscn
@@ -13,9 +15,8 @@ res://BlockSystems/IOPorts/IOCableManager.tscn
 res://BlockSystems/IOPorts/IOCable.tscn
 res://Blocks/IOPortBlocks/AxisInputblock.tscn
 res://Blocks/LandingBlocks/WheelHead.tscn
+res://UI/symmetry_line.tscn
 res://ShipBase/Ship_SaverLoader_GDS.tscn
 res://Scenes/SandBox.tscn
 res://Blocks/Thrusters/ThrusterBlockPorts.tscn
 res://Blocks/TestBlock.tscn
-res://UI/symmetry_line.tscn
-res://ShipBase/ShipBody.gd

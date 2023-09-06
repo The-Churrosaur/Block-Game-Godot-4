@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1693983859
+::res://::1693983946
 base_thruster.png::CompressedTexture2D::847228629422301478::1667364677::1692561336::1::::<><>::
 character_health.gd::GDScript::-1::1692561318::0::1::::CharacterHealth<>Node<>::
 default_env.tres::Environment::6581300265767266789::1693983807::0::1::::<><>::
