@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://0a2wglb73lbf" path="res://Assets/frame2.png" id="1"]
 [ext_resource type="Script" path="res://ShipBase/GridBase/block.gd" id="2"]
-[ext_resource type="PackedScene" uid="uid://bhgch1840pw0s" path="res://UI/BlockPopup.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://UI/BlockPopup.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://BlockSystems/BlockSystems_Manager.tscn" id="5"]
 [ext_resource type="PackedScene" path="res://Blocks/BlockSizeHelper.tscn" id="6"]
 

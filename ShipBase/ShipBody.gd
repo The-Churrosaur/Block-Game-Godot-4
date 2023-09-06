@@ -429,7 +429,8 @@ func update_com(block : Block, invert = false): # also updates mass
 	else:
 		combined_mass = mass + block.mass
 	
-	var block_vec = grid.position + block.position # from here (from ship)
+	# offset from center of mass
+	var block_vec =  block.position - center_of_mass
 	
 	# relative COM calculation
 	var com_relative

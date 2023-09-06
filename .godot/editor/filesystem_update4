@@ -16,8 +16,6 @@ res://Blocks/LandingBlocks/WheelHead.tscn
 res://ShipBase/Ship_SaverLoader_GDS.tscn
 res://Scenes/SandBox.tscn
 res://Blocks/Thrusters/ThrusterBlockPorts.tscn
-res://UI/symmetry_line.tscn
-res://UI/BlockPopup.tscn
-res://Scenes/SandBox.gd
-res://Scenes/TestScene.gd
 res://Blocks/TestBlock.tscn
+res://UI/symmetry_line.tscn
+res://ShipBase/ShipBody.gd
