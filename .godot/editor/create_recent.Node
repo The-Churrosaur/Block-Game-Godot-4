@@ -1,5 +1,6 @@
-MarginContainer
+ShipLoadDialog
 Button
+MarginContainer
 FileDialog
 CollisionPolygon2D
 Sprite2D

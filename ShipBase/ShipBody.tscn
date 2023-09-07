@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c6qc8s1tp1xrb"]
+[gd_scene load_steps=11 format=3 uid="uid://c6qc8s1tp1xrb"]
 
 [ext_resource type="Script" path="res://ShipBase/ShipBody.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://ct85vp0kwufxy" path="res://ShipBase/GridBase/GridBase.tscn" id="2"]
@@ -10,8 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://dhg0mew30sumy" path="res://BlockSystems/IOPorts/IOCableManager.tscn" id="9"]
 [ext_resource type="PackedScene" path="res://ShipBase/BumpDetector.tscn" id="10"]
 [ext_resource type="PackedScene" path="res://BlockSystems/FuelPorts/FuelCableManager.tscn" id="11"]
-
-[sub_resource type="CircleShape2D" id="1"]
 
 [node name="ShipBody" type="RigidBody2D" groups=["Platform", "ShipBody"]]
 collision_layer = 7
@@ -40,9 +38,6 @@ ship = NodePath("..")
 
 [node name="IOManager" parent="." instance=ExtResource("7")]
 ship_path = NodePath("..")
-
-[node name="GravityCollider" type="CollisionShape2D" parent="."]
-shape = SubResource("1")
 
 [node name="ShipSystems" parent="." instance=ExtResource("8")]
 shipBody_path = NodePath("..")

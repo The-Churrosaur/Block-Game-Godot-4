@@ -1,12 +1,12 @@
 [gd_scene load_steps=15 format=3 uid="uid://de43g8o80d21x"]
 
 [ext_resource type="Texture2D" uid="uid://bn2hj0tidjoo5" path="res://icon.png" id="1"]
-[ext_resource type="Script" path="res://Scenes/ShipLoaderTest.gd" id="2"]
 [ext_resource type="Script" path="res://Scenes/SandBox.gd" id="3"]
-[ext_resource type="PackedScene" path="res://UI/ShipCamera.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://b2y8keki47mkh" path="res://UI/ShipCamera.tscn" id="4"]
 [ext_resource type="Script" path="res://Scenes/SceneSwitcher.gd" id="5"]
 [ext_resource type="Texture2D" uid="uid://bckgrxnokodcq" path="res://Assets/Background.png" id="6"]
 [ext_resource type="PackedScene" path="res://GameplaySystems/ShipSpawner.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://dae6yph8ugndr" path="res://ControlSystems/ship_load_dialog.tscn" id="7_rk6r3"]
 [ext_resource type="Resource" path="res://Ships/cargo_crate/cargo_crate.tres" id="8"]
 [ext_resource type="Resource" path="res://Ships/shootable_thing/shootable_thing.tres" id="9"]
 [ext_resource type="AudioStream" uid="uid://d4gmq3mtxpig8" path="res://Assets/study_in_cm_.mp3" id="10"]
@@ -42,16 +42,6 @@ texture = ExtResource("1")
 [node name="Camera2D" parent="CameraBase" index="0"]
 zoom = Vector2(0.5, 0.5)
 
-[node name="Zoomtween" parent="CameraBase" index="1"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-editor_description = ""
-script = null
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CameraBase"]
 stream = ExtResource("10")
 volume_db = -14.56
@@ -63,21 +53,19 @@ autoplay = true
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Label2" type="Label" parent="CanvasLayer/VBoxContainer"]
-layout_mode = 2
-text = "Load a ship here"
-
-[node name="LineEditLoad" type="LineEdit" parent="CanvasLayer/VBoxContainer"]
-show_behind_parent = true
-layout_mode = 2
-script = ExtResource("2")
-spawn_owner_path = NodePath("../../..")
-
 [node name="editor return" type="Button" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 text = "Return to Editor"
 script = ExtResource("5")
 scene = "res://Scenes/TestScene.tscn"
+
+[node name="load button" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Load Ship"
+
+[node name="ship_load_dialog" parent="CanvasLayer" node_paths=PackedStringArray("level") instance=ExtResource("7_rk6r3")]
+visible = false
+level = NodePath("../..")
 
 [node name="Geometry" type="Node2D" parent="."]
 
@@ -307,5 +295,7 @@ ship_resource = ExtResource("8")
 [node name="ShipSpawnerBase2" parent="." instance=ExtResource("7")]
 position = Vector2(1827.18, 496.278)
 ship_resource = ExtResource("9")
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/load button" to="CanvasLayer/ship_load_dialog" method="_on_show_requested"]
 
 [editable path="CameraBase"]

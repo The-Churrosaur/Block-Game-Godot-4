@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://ShipBase/GridBase/GridBase.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://bn2hj0tidjoo5" path="res://icon.png" id="2"]
 [ext_resource type="PackedScene" path="res://ShipBase/GridBase/GridBase_Storage.tscn" id="3"]
-[ext_resource type="PackedScene" uid="uid://b5vt53au8wvwk" path="res://UI/symmetry_line.tscn" id="4_13k7i"]
+[ext_resource type="PackedScene" path="res://UI/symmetry_line.tscn" id="4_13k7i"]
 
 [sub_resource type="CircleShape2D" id="1"]
 
