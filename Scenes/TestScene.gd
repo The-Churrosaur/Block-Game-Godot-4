@@ -1,7 +1,6 @@
 class_name TestScene
 extends Level
 
-@onready var current_ship
 @onready var test_grid
 
 @onready var io_tool = $IOPicker

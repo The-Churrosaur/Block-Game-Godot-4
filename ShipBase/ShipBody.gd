@@ -16,7 +16,7 @@ extends RigidBody2D
 
 @export var editor_mode = false
 
-@export var save_directory = "res://Ships/"
+@export var save_directory = "res://Ships"
 @export var display_name = "MyShip" # set by player, ingame name
 # UNIQUE, set by player or by root ship for subships
 # used for save directory

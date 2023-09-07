@@ -9,6 +9,7 @@ visible = true
 ok_button_text = "Open"
 file_mode = 0
 root_subfolder = "Ships"
+filters = PackedStringArray("*.tres")
 script = ExtResource("1_01ova")
 
 [connection signal="dir_selected" from="." to="." method="_on_dir_selected"]

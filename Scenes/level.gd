@@ -9,3 +9,5 @@ extends Node2D
 
 
 signal new_ship_selected(ship)
+
+var current_ship : ShipBody

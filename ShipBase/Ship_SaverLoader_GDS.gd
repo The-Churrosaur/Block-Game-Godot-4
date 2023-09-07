@@ -52,7 +52,7 @@ func save(ship : Node2D, name : String, directory : String) -> String:
 	dir.make_dir("SubShips") # TODO case issues? 
 
 	# create file
-	var file = directory + name + "/" + name + ".tres"
+	var file = directory + "/" + name + "/" + name + ".tres"
 	
 	# UPDATE RESOURCE FROM SHIP
 

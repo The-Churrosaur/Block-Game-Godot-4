@@ -1,7 +1,6 @@
 extends Level
 
 @onready var camera = $CameraBase
-var current_ship
 
 
 func _ready():

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://wx35s4hhlrur"]
+
+[ext_resource type="Script" path="res://ControlSystems/ship_save_dialog.gd" id="1_vawu6"]
+
+[node name="ship_save_dialog" type="FileDialog"]
+initial_position = 1
+size = Vector2i(450, 500)
+visible = true
+ok_button_text = "Save"
+root_subfolder = "Ships"
+script = ExtResource("1_vawu6")
+
+[connection signal="dir_selected" from="." to="." method="_on_dir_selected"]
+[connection signal="file_selected" from="." to="." method="_on_file_selected"]
