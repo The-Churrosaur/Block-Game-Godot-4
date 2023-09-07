@@ -57,7 +57,7 @@ func save(ship : Node2D, name : String, directory : String) -> String:
 	# UPDATE RESOURCE FROM SHIP
 
 	# RECURSIVELY SAVE SUBSHIPS
-	save_subShips(ship, directory + name + "/SubShips/")
+	save_subShips(ship, directory + "/" + name + "/SubShips/")
 	
 	# save blocks
 	# TODO appending to array may be slow - consider resizing in advance

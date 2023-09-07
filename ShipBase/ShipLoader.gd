@@ -47,4 +47,4 @@ func thread_load(ship, ship_save : Resource, subship = false):
 	emit_signal("ship_loaded", ship)
 
 func _exit_tree():
-	loading_thread.wait_to_finish()
+	if (loading_thread != null): loading_thread.wait_to_finish()

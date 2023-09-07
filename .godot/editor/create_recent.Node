@@ -1,5 +1,5 @@
-ShipLoadDialog
 Button
+ShipLoadDialog
 MarginContainer
 FileDialog
 CollisionPolygon2D

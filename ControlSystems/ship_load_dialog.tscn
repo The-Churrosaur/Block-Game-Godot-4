@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://ControlSystems/ship_load_dialog.gd" id="1_01ova"]
 
 [node name="ship_load_dialog" type="FileDialog"]
-title = "Load Ship"
+title = "Open a File"
 initial_position = 1
 size = Vector2i(450, 500)
 visible = true
