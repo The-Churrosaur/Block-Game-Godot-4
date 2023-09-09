@@ -12,7 +12,10 @@ res://Scenes/TestScene.tscn
 res://Blocks/TestBlock.tscn
 res://Scenes/level.tscn
 res://Scenes/SandBox.tscn
-res://ShipBase/Ship_SaverLoader_GDS.gd
-res://ControlSystems/self_release_button.gd
+res://GameplaySystems/CompanyData.tscn
+res://GameplaySystems/CompanyData.gd
+res://GameplaySystems/CompanySave_Resource.gd
 res://ControlSystems/quit_button.gd
-res://ShipBase/ShipLoader.gd
+res://Saves/Save.tres
+res://GameplaySystems/CompanySaveDialog.tscn
+res://GameplaySystems/CompanySaveDialog.gd

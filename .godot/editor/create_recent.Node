@@ -1,7 +1,7 @@
+FileDialog
 Button
 ShipLoadDialog
 MarginContainer
-FileDialog
 CollisionPolygon2D
 Sprite2D
 Line2D

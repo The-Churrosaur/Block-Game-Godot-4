@@ -7,4 +7,7 @@ func _ready():
 
 
 func _on_pressed():
+	
+	CompanyData.save_data()
+	
 	get_tree().quit()

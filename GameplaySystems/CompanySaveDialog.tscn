@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtp41afm1384h"]
+
+[ext_resource type="Script" path="res://GameplaySystems/CompanySaveDialog.gd" id="1_4p83b"]
+
+[node name="CompanySaveDialog" type="FileDialog"]
+script = ExtResource("1_4p83b")

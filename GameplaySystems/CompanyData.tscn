@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://3t7clx6gum1m"]
 
-[ext_resource path="res://GameplaySystems/CompanyData.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://GameplaySystems/CompanyData.gd" id="1"]
 
 [node name="Company" type="Node"]
-script = ExtResource( 1 )
+script = ExtResource("1")

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="CompanySaveResource" load_steps=2 format=3 uid="uid://cj7ntp4dp7s24"]
+
+[ext_resource type="Script" path="res://GameplaySystems/CompanySave_Resource.gd" id="1_pke4o"]
+
+[resource]
+script = ExtResource("1_pke4o")
+funds = 50
