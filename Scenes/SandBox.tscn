@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bn2hj0tidjoo5" path="res://icon.png" id="1"]
 [ext_resource type="Script" path="res://Scenes/SandBox.gd" id="3"]
-[ext_resource type="PackedScene" uid="uid://b2y8keki47mkh" path="res://UI/ShipCamera.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://UI/ShipCamera.tscn" id="4"]
 [ext_resource type="Script" path="res://Scenes/SceneSwitcher.gd" id="5"]
 [ext_resource type="Texture2D" uid="uid://bckgrxnokodcq" path="res://Assets/Background.png" id="6"]
 [ext_resource type="Script" path="res://ControlSystems/self_release_button.gd" id="6_b847q"]

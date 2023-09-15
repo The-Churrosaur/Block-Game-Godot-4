@@ -8,6 +8,10 @@ extends Node
 # FIELDS ----------------------------------------------------------------------
 
 
+@export_category("Starting Values")
+@export var starting_funds = 10000
+
+
 @export var funds = 100000
 
 @export var save_dir = "res://Saves"
@@ -26,6 +30,15 @@ func _process(delta):
 
 
 # PUBLIC -----------------------------------------------------------------------
+
+
+# resets all saved values to defauts
+func reset_data():
+	save_name = "Save"
+	funds = starting_funds
+
+
+# -- SAVING LOADING
 
 
 func save_data(path : String = save_dir):

@@ -19,6 +19,7 @@ config/icon="res://icon.png"
 
 ShipLoader="*res://ShipBase/ShipLoader.tscn"
 CompanyData="*res://GameplaySystems/CompanyData.tscn"
+LevelManager="*res://ControlSystems/level_manager.tscn"
 
 [display]
 

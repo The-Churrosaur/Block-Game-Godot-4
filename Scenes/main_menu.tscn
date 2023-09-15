@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://bohc4knj17h25"]
+
+[ext_resource type="PackedScene" uid="uid://c05b742nyf4x7" path="res://ControlSystems/new_save_window.tscn" id="1_rego2"]
+[ext_resource type="PackedScene" path="res://GameplaySystems/ShipSpawner.tscn" id="2_2cf4b"]
+[ext_resource type="Resource" path="res://Ships/rockhopper3/rockhopper3.tres" id="3_uto70"]
+[ext_resource type="Texture2D" uid="uid://cn5ai65dgkrfx" path="res://Assets/info_box.png" id="4_0qsd7"]
+[ext_resource type="Texture2D" uid="uid://72drysw0o6c" path="res://Assets/puter.png" id="5_pvnn0"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j6p16"]
+
+[node name="main_menu" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.7, 0.7)
+
+[node name="title spawner" parent="." instance=ExtResource("2_2cf4b")]
+position = Vector2(-742, -114)
+ship_resource = ExtResource("3_uto70")
+
+[node name="floor" type="StaticBody2D" parent="."]
+position = Vector2(644, 626)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
+shape = SubResource("WorldBoundaryShape2D_j6p16")
+
+[node name="new_save_window" parent="." instance=ExtResource("1_rego2")]
+visible = false
+
+[node name="UI CANVAS" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="UI CANVAS"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -69.0
+offset_top = -53.0
+offset_right = 73.0
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI CANVAS/CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI CANVAS/CenterContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="UI CANVAS/CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "NEW GAME
+"
+icon = ExtResource("4_0qsd7")
+
+[node name="Button2" type="Button" parent="UI CANVAS/CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "LOAD GAME"
+icon = ExtResource("5_pvnn0")
+
+[connection signal="pressed" from="UI CANVAS/CenterContainer/MarginContainer/VBoxContainer/Button" to="new_save_window" method="_on_show_requested"]
