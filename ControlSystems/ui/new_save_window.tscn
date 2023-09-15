@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://c05b742nyf4x7"]
+
+[ext_resource type="Script" path="res://ControlSystems/ui/new_save_window.gd" id="1_x10o2"]
+[ext_resource type="PackedScene" uid="uid://2q2w5q3kesdb" path="res://Scenes/TestScene.tscn" id="2_6kd61"]
+
+[node name="new_save_window" type="PopupPanel" node_paths=PackedStringArray("line_edit")]
+initial_position = 1
+size = Vector2i(179, 109)
+visible = true
+script = ExtResource("1_x10o2")
+line_edit = NodePath("MarginContainer/VBoxContainer/LineEdit")
+load_scene = ExtResource("2_6kd61")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 175.0
+offset_bottom = 105.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Enter save name"
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[connection signal="text_submitted" from="MarginContainer/VBoxContainer/LineEdit" to="." method="_on_line_entered"]

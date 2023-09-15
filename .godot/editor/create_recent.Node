@@ -1,7 +1,9 @@
+Label
+Button
+FileDialog
 MarginContainer
 CanvasLayer
 CenterContainer
-Button
 VBoxContainer
 HBoxContainer
 Camera2D
@@ -9,9 +11,7 @@ CollisionShape2D
 StaticBody2D
 Node
 LineEdit
-Label
 PopupPanel
-FileDialog
 ShipLoadDialog
 CollisionPolygon2D
 Sprite2D

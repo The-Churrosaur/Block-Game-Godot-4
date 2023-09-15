@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp3px2ovvexfb"]
+
+[ext_resource type="Script" path="res://ControlSystems/player_save/player_load_dialog.gd" id="1_g4hpn"]
+[ext_resource type="PackedScene" uid="uid://2q2w5q3kesdb" path="res://Scenes/TestScene.tscn" id="2_kw4ce"]
+
+[node name="player_load_dialog" type="FileDialog"]
+title = "Load Save"
+initial_position = 1
+size = Vector2i(392, 500)
+visible = true
+ok_button_text = "Open"
+file_mode = 0
+root_subfolder = "Saves"
+script = ExtResource("1_g4hpn")
+load_scene = ExtResource("2_kw4ce")
+
+[connection signal="file_selected" from="." to="." method="_on_file_selected"]

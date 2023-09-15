@@ -1,0 +1,635 @@
+[33mcommit 730444f0f756e02b98bda0f7d764847eb7dd634a[m[33m ([m[1;36mHEAD -> [m[1;32mgodot_4[m[33m, [m[1;31mgithub/godot_4[m[33m)[m
+Author: Daichi <daichi@murokami.com>
+Date:   Fri Sep 15 09:07:01 2023 -0700
+
+    new save dialog, menu scene
+
+[33mcommit 75cf157af89f06a2422afbaa2a9cc63b2b9edf5b[m
+Author: Daichi <daichi@murokami.com>
+Date:   Sat Sep 9 02:26:44 2023 -0700
+
+    added a company/player data save resource
+
+[33mcommit 12b73d20e39218d189ddc31cf73ffbb46bc2e5eb[m
+Author: Daichi <daichi@murokami.com>
+Date:   Thu Sep 7 03:39:49 2023 -0700
+
+    fixed saving subships in arbitrary folders, added quit button
+
+[33mcommit 47e08c767374568d051cbd0c5bd9fa0d9639b64d[m
+Author: Daichi <daichi@murokami.com>
+Date:   Thu Sep 7 03:09:00 2023 -0700
+
+    sandbox uses load dialog, removed gravity collider from shipbody (??)
+
+[33mcommit eb6d5d03e562f148e7f12069154ac9f44df82c11[m
+Author: Daichi <daichi@murokami.com>
+Date:   Thu Sep 7 02:58:36 2023 -0700
+
+    added save dialog, fixed saving/loading from an arbitrary directory, added some margins (theme->constants)
+
+[33mcommit f6dbbdea6d524c76fc6faa08cbf95e38680c839e[m
+Author: Daichi <daichi@murokami.com>
+Date:   Wed Sep 6 01:35:20 2023 -0700
+
+    fixed com loading (added a com field to the save/load dictionary)
+
+[33mcommit 47df1a6ffac344099a61a56eef6737b1caccf1ad[m
+Author: Daichi <daichi@murokami.com>
+Date:   Wed Sep 6 01:22:30 2023 -0700
+
+    removed saving displacement - com is still loading funny
+
+[33mcommit dd82d2cec9a38412955fa1c0af1e472aded33d77[m
+Author: Daichi <daichi@murokami.com>
+Date:   Wed Sep 6 01:17:51 2023 -0700
+
+    loading ships uses a dialog now
+
+[33mcommit 059ac42142957da12c404de09af8eff2bc60a880[m
+Author: Daichi <daichi@murokami.com>
+Date:   Wed Sep 6 00:05:27 2023 -0700
+
+    fixed COM calculation (was calculating offset from ship pos instead of COM)
+
+[33mcommit ad2a80d673b9a27b770811df2fb2fe76e0be3f9c[m
+Author: Daichi <daichi@murokami.com>
+Date:   Mon Aug 28 05:36:16 2023 -0700
+
+    messing with parallax background, uses global gravity now (something weird with gravity areas)
+
+[33mcommit 94631a3999980f7736473e5eb25a5d298c0110cd[m
+Author: Daichi <daichi@murokami.com>
+Date:   Mon Aug 28 04:40:05 2023 -0700
+
+    only toggles symmetry if ship is selected, node popup default to mclick, TODO hitboxes and COM are wonky
+
+[33mcommit 1c0a5917c522f6299ddb530ae17c496f635a9c9b[m
+Author: Daichi <daichi@murokami.com>
+Date:   Mon Aug 28 04:15:22 2023 -0700
+
+    fixed most blocks not working when mirror-placed (copying block instances a new copy from file)
+
+[33mcommit 74fd3236a808fb02126840d689485878868cd505[m
+Author: Daichi <daichi@murokami.com>
+Date:   Mon Aug 28 04:05:54 2023 -0700
+
+    grid attempts to place block symmetrical to line. F to enable symmetry on a grid, currently fucks export vars and blocks that have multiple blocks in X asymmetrically
+
+[33mcommit 43e873544f203a0d0a1fe1b84be5f07efc47e93c[m
+Author: Daichi <daichi@murokami.com>
+Date:   Fri Aug 25 18:23:55 2023 -0700
+
+    fixed wheel block and camera zoom
+
+[33mcommit 7c0dd5445341c5e28b7c24b69066bff3ac07ae9f[m
+Author: Daichi <daichi@murokami.com>
+Date:   Fri Aug 25 17:53:39 2023 -0700
+
+    ports compare and update with highest value, cablemanager resets values to 0 each tick
+
+[33mcommit 97fc3c1d0934c27ec7e6f38d50f1b93e25a5fa27[m
+Author: Daichi <daichi@murokami.com>
+Date:   Fri Aug 25 16:10:19 2023 -0700
+
+    oops, reverting to previous work (multi-cables worksish)
+
+[33mcommit 1710dbfb37d0c2a639bb7fae1a80de3038b86008[m
+Author: Daichi <daichi@murokami.com>
+Date:   Fri Aug 25 03:48:57 2023 -0700
+
+    ports can accept multiple cables (buggy, data transfer order)
+
+[33mcommit a9af32f4a52c35b538375010960e018564868479[m
+Author: Daichi <daichi@murokami.com>
+Date:   Thu Aug 24 04:49:46 2023 -0700
+
+    cable tool now hides and shows cables when selected/deselected
+
+[33mcommit 82ab7891036d194f40bdf1769673ef530c30e73a[m
+Author: Daichi <daichi@murokami.com>
+Date:   Thu Aug 24 04:38:39 2023 -0700
+
+    selector tool now activates all ports on activation. added tool manager, ship method to get all children, other things to achieve this
+
+[33mcommit 7edf980110de87a8115f8853db1b573bd5a6c8a9[m
+Author: Daichi <daichi@murokami.com>
+Date:   Wed Aug 23 01:58:25 2023 -0700
+
+    fixed test block hitbox (selection works better than I thought)
+
+[33mcommit c962b237757c00f9b7aadcf0147de4f9485aaecf[m
+Author: Daichi <daichi@murokami.com>
+Date:   Wed Aug 23 01:54:14 2023 -0700
+
+    cross-ship selection works (badly)
+
+[33mcommit 6d2c9ab820a1661c31928c85975f5af61d3b6dd9[m[33m ([m[1;31mgithub/altio[m[33m, [m[1;32maltio[m[33m)[m
+Author: Daichi <daichi@murokami.com>
+Date:   Wed Aug 23 00:47:16 2023 -0700
+
+    grid selection and subgrid selection working again
+
+[33mcommit fdf8fde50278cfdba9959be5ff563a04239af426[m
+Author: Daichi <daichi@murokami.com>
+Date:   Wed Aug 23 00:29:19 2023 -0700
+
+    saving basic ships and io works
+
+[33mcommit 00f29424d450dbbd1a1c0e31e7537de55340e962[m
+Author: Daichi <daichi@murokami.com>
+Date:   Sun Aug 20 17:37:04 2023 -0700
+
+    fixed ports (inherited ready)
+
+[33mcommit e661b5399a2262bf574e4c68413e0462a2524a83[m
+Author: Daichi <daichi@murokami.com>
+Date:   Sun Aug 20 16:44:22 2023 -0700
+
+    ran conversion tool, done a little conversion
+
+[33mcommit 6ccc7f6d81469ef6dbf20d7fcc9b211b41cdd8d7[m
+Author: Daichi <daichi@murokami.com>
+Date:   Sun Aug 20 12:11:47 2023 -0700
+
+    backup before migrating to godot 4
+
+[33mcommit 69a62a163a54124b307128bd7a4f71dcd346abf8[m
+Author: Daichi <daichi@murokami.com>
+Date:   Wed May 31 10:23:49 2023 -0700
+
+    old ships broken by build :( , loadlines don't crash on misspellings now
+
+[33mcommit d73672ad3b3ddfb80fe5d604c03d3325b38095e0[m
+Author: Daichi <daichi@murokami.com>
+Date:   Wed May 31 10:00:55 2023 -0700
+
+    fixed the stupid persistent wheels bug, added music
+
+[33mcommit 4d9f241b45e781c68b7951d6971979cd8af9d243[m
+Author: Daichi <daichi@murokami.com>
+Date:   Wed May 31 08:23:35 2023 -0700
+
+    QOL - better tooltips, port colors, mini-blocks on build
+
+[33mcommit 68224efef955a14413bb7d1a7629260fb1161286[m
+Author: Daichi <daichi@murokami.com>
+Date:   Wed May 31 07:41:13 2023 -0700
+
+    tweaks - sprites, rotor power, durability
+
+[33mcommit 6530dca8ad7667bae6fec7be06ed08003bfeba54[m
+Author: Daichi <daichi@murokami.com>
+Date:   Wed May 31 05:07:12 2023 -0700
+
+    fixed crash from invalid ship systems in pinheads, gunfx
+
+[33mcommit 23645ea362f05a8030f81330e6b3cfebe8f83cf4[m
+Author: Daichi <daichi@murokami.com>
+Date:   Wed May 31 03:28:59 2023 -0700
+
+    COM sprite, removed 'ouch' label
+
+[33mcommit a26a43add18245ff904aaf750bc6523743f9961f[m
+Author: Daichi <daichi@murokami.com>
+Date:   Wed May 31 02:55:28 2023 -0700
+
+    added some textures
+
+[33mcommit 984c9462d3d26fedfd5c66e7956d4c289d2e8d59[m
+Author: Daichi <daichi@murokami.com>
+Date:   Wed May 31 02:26:36 2023 -0700
+
+    think I fixed the weird crashing on loading ships (test block misname)
+
+[33mcommit 58b080c117836e9dcbab77579777fdbcd45573f0[m[33m ([m[1;32ma83493a86e185717cfefa4925ee4331cd2579403[m[33m)[m
+Author: Daichi <daichi@murokami.com>
+Date:   Thu May 25 16:50:07 2023 -0700
+
+    stash before rollback
+
+[33mcommit c458bb1fffe592626e1c21031833bdf7af3f2c88[m
+Author: Daichi <daichi@murokami.com>
+Date:   Wed May 24 19:06:13 2023 -0700
+
+    gun fires correctly
+
+[33mcommit a83493a86e185717cfefa4925ee4331cd2579403[m
+Author: Daichi <daichi@murokami.com>
+Date:   Wed May 24 18:27:11 2023 -0700
+
+    reworked gunbase quickly
+
+[33mcommit b6c9a1cd8f52056fbc4625fe3b299e3096931980[m
+Author: Daichi <daichi@murokami.com>
+Date:   Wed May 24 16:57:39 2023 -0700
+
+    added ship spawner
+
+[33mcommit 4eb50a2adbfa4252b742e5598f3f50da64dd979e[m
+Author: Daichi <daichi@murokami.com>
+Date:   Mon May 22 17:37:47 2023 -0700
+
+    ship deletes when last block is destroyed, when not in 'editor mode'
+
+[33mcommit aca508bdac3ba93ca934f67b5f2437aca8b01dbf[m
+Author: Daichi <daichi@murokami.com>
+Date:   Mon May 22 17:12:15 2023 -0700
+
+    proper detaching of pinned grids when pinhead is destroyed
+
+[33mcommit 781e668ccd06b4d2bd8158105265afb23ea2b229[m
+Author: Daichi <daichi@murokami.com>
+Date:   Mon May 22 16:04:21 2023 -0700
+
+    ???
+
+[33mcommit 9f65c9b00fff04b4ab128bd338416557c6cf8cb7[m
+Author: Daichi <daichi@murokami.com>
+Date:   Mon May 22 16:00:24 2023 -0700
+
+    grabber grabs offset, can detach
+
+[33mcommit 611a256f4fdf90f0cfbe6e66714d7beddc79eee6[m
+Author: Daichi <daichi@murokami.com>
+Date:   Fri May 19 17:45:06 2023 -0700
+
+    grabber pinblock works!
+
+[33mcommit ec070c36e7d4fb3e790423c59e31b5a620a1d7bd[m
+Author: Daichi <daichi@murokami.com>
+Date:   Sun Apr 9 22:16:42 2023 -0700
+
+    pushing before adding multiple cables/port
+
+[33mcommit 7420d4c4b9c69ce0d951e1d8c487b4f913997a9a[m
+Author: Daichi <daichi@murokami.com>
+Date:   Sat Mar 18 04:52:50 2023 -0700
+
+    cable automatic visual spacing with elbows
+
+[33mcommit 68cb760c82f2453c4b9cf7bbf2dda17b9db9cb83[m
+Author: Daichi <daichi@murokami.com>
+Date:   Wed Mar 15 06:08:07 2023 -0700
+
+    fixed collision detection after block deletion... phew
+
+[33mcommit 68ba575826cad8fc12e5ef6c7fcaba3bb2cff82b[m
+Author: Daichi <daichi@murokami.com>
+Date:   Tue Mar 14 02:44:54 2023 -0700
+
+    fixed shipbody collision finding the right block collider - onbodyenter returns a shapeowner index, owner_get_owner can be used to get the collisionobject2d from the shape
+
+[33mcommit 73b57cd94b752d2cdc10aa5ea3ee11fc4808937d[m
+Author: Daichi <daichi@murokami.com>
+Date:   Mon Mar 13 05:33:49 2023 -0700
+
+    fixed large block rotation
+
+[33mcommit 2435ca6865c6c68ec00fa28ceb612c536ba60bc9[m
+Author: Daichi <daichi@murokami.com>
+Date:   Mon Mar 13 02:55:29 2023 -0700
+
+    collision and destruction testing
+
+[33mcommit 64f23cd0fabb04b6a39a76b777d8640f6743db45[m
+Author: Daichi <daichi@murokami.com>
+Date:   Mon Mar 13 01:58:16 2023 -0700
+
+    ???? also input block script is now modular to ports
+
+[33mcommit fea4ce101e47de17bde955af1a8bbbfdcab6b713[m
+Author: Daichi <daichi@murokami.com>
+Date:   Tue Mar 7 23:56:40 2023 -0800
+
+    ship collider deletion, large blocks and editor helper tilemap
+
+[33mcommit 5950d661234c8a3705db3a07531d4f84da832db7[m
+Author: Daichi <daichi@murokami.com>
+Date:   Tue Mar 7 22:39:07 2023 -0800
+
+    fixed subship displacement when placing new blocks on main grid and subship
+
+[33mcommit 08d4257eb809d08932ce0903c78fb1b869627500[m
+Author: Daichi <daichi@murokami.com>
+Date:   Tue Mar 7 21:46:41 2023 -0800
+
+    started fixing subship pinning bug - was formerly pinning to grid anchor leading to improper behavior / physics interactions between A and B
+
+[33mcommit 66b1c3e06181873aee9f6f69f7bd1a835a82e17a[m
+Author: Daichi <daichi@murokami.com>
+Date:   Sun Mar 5 21:37:15 2023 -0800
+
+    new hitbox system! block takes collisionshapes in editor, ship adds those shapes as children. These shapes are moved into place with COM adjustment and on load
+
+[33mcommit 7b406ac78b5ff5c246a85dcbac71f860440c1337[m
+Author: Daichi <daichi@murokami.com>
+Date:   Fri Mar 3 22:38:26 2023 -0800
+
+    smoke sprite, fuel pressure cables works and saves, abstract blocksystem handles load/save for block systems and holds system elements
+
+[33mcommit fdab9c6b48cce56f755c54b1062def9281ca66c8[m
+Author: Daichi <daichi@murokami.com>
+Date:   Fri Feb 24 18:52:24 2023 -0800
+
+    fuel system added (untested), blocksystem recursive save framework
+
+[33mcommit b5476e4e75a9eed3bb6134864eab4c0b0450cfb5[m
+Author: Daichi <daichi@murokami.com>
+Date:   Sun Jan 22 22:31:16 2023 -0800
+
+    fixed io crash on delete, added splitter, moving camera, sandbox tweaks
+
+[33mcommit e3c208eb35c654956fe87fe22ab218920b485e70[m
+Author: Daichi <daichi@murokami.com>
+Date:   Wed Jan 11 18:44:52 2023 -0800
+
+    added input block
+
+[33mcommit 7dc9e3fdadaf7193cfaa0af0abbce1eca5f98c61[m
+Author: Daichi <daichi@murokami.com>
+Date:   Thu Dec 15 17:53:00 2022 -0800
+
+    line colors and angles
+
+[33mcommit 81016a29ada8592bd32dfa84a1f03ed54e4e933f[m
+Author: Daichi <daichi@murokami.com>
+Date:   Thu Dec 15 17:17:53 2022 -0800
+
+    added temp lines for ioports and iotool
+
+[33mcommit 91041790c0908814203fc65c961df3655c2061ae[m
+Author: Daichi <daichi@murokami.com>
+Date:   Thu Dec 15 16:11:10 2022 -0800
+
+    fixed pinjoint behavior, new iosystem successfully saves across grids
+
+[33mcommit 9697ca4e900604f692171b26710ead88f6b6fb9c[m
+Author: Daichi <daichi@murokami.com>
+Date:   Sat Dec 10 20:13:39 2022 -0800
+
+    new port system running ingame
+
+[33mcommit 197630d7ad93e295e711fcd327da9c873ef1f433[m
+Author: Daichi <daichi@murokami.com>
+Date:   Sat Dec 10 17:26:37 2022 -0800
+
+    new io slog
+
+[33mcommit ad583ad918d6b6753d57aa079df59e2728e65cac[m
+Author: Daichi <daichi@murokami.com>
+Date:   Mon Nov 7 01:27:30 2022 -0800
+
+    added class prototypes for new io system
+
+[33mcommit b9f644aa56ee30bf3b4cc837b7c60bfa7f6a370f[m[33m ([m[1;32mmaster[m[33m)[m
+Author: Daichi <daichi@murokami.com>
+Date:   Wed Nov 2 02:31:06 2022 -0700
+
+    pre-playtest futzing, going to branch new io system
+
+[33mcommit 5f2d96bae8f02e11a37eefceeb6a7e7f9746d4ab[m
+Author: Daichi <daichi@murokami.com>
+Date:   Wed Oct 19 20:06:40 2022 -0700
+
+    gds load works
+
+[33mcommit 4f53e71399f6fb56dbc92835c549e2f9f6f6bd78[m
+Author: Daichi <daichi@murokami.com>
+Date:   Wed Oct 19 03:52:40 2022 -0700
+
+    renamed shipsaverloader
+
+[33mcommit 5da4baec9098c3c2a69db4d229498abfb7ecb7f5[m
+Author: Daichi <daichi@murokami.com>
+Date:   Wed Oct 19 03:29:44 2022 -0700
+
+    gds saving works for BASE SAVING ONLY not subgrids yet
+
+[33mcommit 107031f23a2fe31b3d174171d3a64660cc5fc4f9[m
+Author: Daichi <daichi@murokami.com>
+Date:   Wed Oct 5 19:18:12 2022 -0700
+
+    dusting off cobwebs, base before capstone
+
+[33mcommit b3abce6622276af6d17bec4fc2ebad397fd3f99c[m
+Author: Daichi <daichi@murokami.com>
+Date:   Mon Mar 21 16:08:04 2022 -0700
+
+    splitter and inverter blocks
+
+[33mcommit eb5a0663e16e281c8c1f67a255402cd7407ae4f7[m
+Author: Daichi <daichi@murokami.com>
+Date:   Mon Mar 21 15:32:05 2022 -0700
+
+    multi-grid io
+
+[33mcommit cc2c9d76be0fcfa86a2fe5190b1eebf2f62c32d8[m
+Author: Daichi <daichi@murokami.com>
+Date:   Mon Mar 14 00:06:45 2022 -0700
+
+    frankly it's been a while. You can select things now
+
+[33mcommit 1c148dcc06ea6f4b94a5a7b00e5dd8ef09ea0488[m
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Sat Aug 28 03:45:13 2021 -0700
+
+    io system for block, test connection on pinblocks, starting hud for io/wires
+
+[33mcommit cce4c8c6782568ff3db9ecb4b1a44be6e834027f[m
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Thu Mar 11 02:44:16 2021 -0800
+
+    last commit for now, moving to separate hex project. Added entry point in block for block collision detection by tilemap hitbox, and post-load block setup
+
+[33mcommit 7acc6374f2e83aeb75da9617271b43608a91fd19[m
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Wed Mar 10 02:49:18 2021 -0800
+
+    tilemap drawing. Grids don't do COM calculations on load and now load super fast
+
+[33mcommit da109a1e8f6e0b056714e75eba1aa585dd230637[m
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Tue Mar 9 03:06:51 2021 -0800
+
+    working branch, subship save and load, rotation
+
+[33mcommit 6d1c208d58793bf6074ebe2d8f33d64b78884893[m
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Tue Aug 4 12:06:46 2020 -0700
+
+    clean before rewriting saving. subship placement/pinning works
+
+[33mcommit ae48f9674868680ef3f8508673a000541de43651[m
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Mon Aug 3 12:44:15 2020 -0700
+
+    pushing for evan
+
+[33mcommit d828dc96a54981059ac526d9652805e665eadcce[m
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Sat Aug 1 14:33:17 2020 -0700
+
+    BLOCK/COM DYNAMIC IN ALL REFERENCE FRAMES :CHEFSKISS: turret is static on pinhead
+
+[33mcommit bd4a931d1e25e50d0e202e764ae5bfadac3f459b[m
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Fri Jul 31 02:57:57 2020 -0700
+
+    can add blocks to subship and it doesn't freak yay!
+    fixed issues with saved pos/mass values doubling when replacing blocks
+
+[33mcommit ab9b8387eebd3d98410d9a34c366dc12fe8b5d30[m
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Thu Jul 30 17:48:36 2020 -0700
+
+    rejiggered block loading path - goes through grid block placement now.
+    can switch between subships with tab
+    TODO fix block placement COM issues with subships
+
+[33mcommit 981c0e7fee264a28ed787a7b8114bf15eb58540a[m
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Wed Jul 29 19:20:41 2020 -0700
+
+    fixed subship saving, added subship array to shipbody
+
+[33mcommit 17e475b2d072c2b4a983322e2991e1965d9b19ed[m
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Wed Jul 29 18:37:52 2020 -0700
+
+    pushing stragglers
+
+[33mcommit 18b8de424fa5421fb2c4e8b6c325e4ff212fb831[m
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Wed Jul 29 18:36:57 2020 -0700
+
+    save/load functional for subgrids!
+    fixed bugs, added name sanitization
+
+[33mcommit 1d5be4af414fde836fc1564cc10ce2310813a2dc[m
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Sat Jul 4 15:08:33 2020 -0700
+
+    redoing save/load system
+    folder hierarchy in save file
+    command hierarchy of saving ship->grid->blocks
+    TODO implement loading
+    TODO slow as balls. rewrite in c# later
+
+[33mcommit 5086d6b56d9efef0a45f2dbf3c5571864431e7fb[m
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Fri Jul 3 15:09:46 2020 -0700
+
+    progress on saving fields
+    TODO think up a better system
+
+[33mcommit 7661b9b63946c4d70b0ebca57f3388715af17773[m
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Fri Jul 3 00:11:43 2020 -0700
+
+    ships save as folder hierarchy
+    signals for transmitting save commands
+    todo preserve fields on load
+
+[33mcommit 3e1a5a75dd2e37d96fedf145733e93800948f2aa[m
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Thu Jun 25 01:16:54 2020 -0700
+
+    sleepy can't remember
+    fixed thrusters
+
+[33mcommit 438416f787bb1f66f9e2511c5b02633ef3d1e93d[m
+Merge: 6e9fa2f 3ba0b94
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Wed Jun 24 16:45:42 2020 -0700
+
+    Merge branch 'master' of https://github.com/The-Churrosaur/Block-Game.git
+
+[33mcommit 6e9fa2f1d66b8ba7dde407f693327973edfe4445[m
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Wed Jun 24 16:45:37 2020 -0700
+
+    how do git work
+
+[33mcommit ef485b7323ab9ce47d30eab9e8ee6bf9c40c3cb0[m
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Wed Jun 24 16:37:29 2020 -0700
+
+    testing scaling
+
+[33mcommit 3ba0b94073503858c30efa26eacf9e1fd42fe118[m
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Wed Jun 24 16:28:22 2020 -0700
+
+    to avoid conflicts
+
+[33mcommit ef10bc881240df55f75502c0f15185841987b886[m
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Wed Jun 24 15:46:01 2020 -0700
+
+    fixed pin block to use saved grids/deal with COM changes
+    gridBase now has anchor body child to hook things onto (sigh)
+
+[33mcommit 7bb7d5b72e39675934655f0caa141e1e5745477d[m
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Wed Jun 24 12:28:10 2020 -0700
+
+    dynamic center of mass through moving ShipBody
+    loading and saving ShipBody scenes
+
+[33mcommit e416959b119525e1a9369427707a2f8e3a3996cc[m
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Sat Jun 13 23:01:23 2020 -0700
+
+    Testing subgrid selection, bringing up to date
+
+[33mcommit 8d87618446009637c40de3a1fc5213b8e4213f67[m
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Fri Apr 10 00:52:15 2020 -0700
+
+    added block select, subgrids, structure
+
+[33mcommit 97c5ab5a10496cc97a724d4c84ca32d57d876deb[m
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Sat Apr 4 02:24:28 2020 -0700
+
+    Blocks add shapes to parent rigidbody on add
+
+[33mcommit 001f853b214f206ab8f7485e84d3c67392ce7854[m
+Merge: eaaaa80 055206d
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Wed Apr 1 15:28:00 2020 -0700
+
+    Merge branch 'master' of https://github.com/The-Churrosaur/Block-Game.git
+
+[33mcommit eaaaa80ead73e6e1e91257dfef12f6cbedb7374f[m
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Wed Apr 1 15:27:55 2020 -0700
+
+    check
+
+[33mcommit 2c24e47bd5e82e91e95373c15d4186525db1a9de[m
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Tue Mar 31 19:26:51 2020 -0700
+
+    Minor update
+
+[33mcommit 055206dadd2f1faeb1d13423eae7eeab9fbd4cea[m
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Tue Mar 31 19:22:57 2020 -0700
+
+    added rotational compatibility to grid, gun block goes pew
+
+[33mcommit 2cff8074c74aa9d4ffe5f12fd9819023f56d6ba8[m
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Mon Mar 30 12:33:48 2020 -0700
+
+    blocks are placed in grid! added system for variable sized blocks:
+    - takes relative local vector grid of block size
+    - on place, translates it to grid space, attempts to place
+
+[33mcommit b0de85f315a37bcf72721ea2aa89c167879533a8[m
+Author: Daichi Murokami <daichi@murokami.com>
+Date:   Sat Mar 28 14:20:21 2020 -0700
+
+    initial commit
