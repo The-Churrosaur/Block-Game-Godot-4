@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bohc4knj17h25"]
+[gd_scene load_steps=9 format=3 uid="uid://bohc4knj17h25"]
 
 [ext_resource type="PackedScene" uid="uid://c05b742nyf4x7" path="res://ControlSystems/ui/new_save_window.tscn" id="1_rego2"]
 [ext_resource type="PackedScene" path="res://GameplaySystems/ShipSpawner.tscn" id="2_2cf4b"]
 [ext_resource type="Resource" path="res://Ships/rockhopper3/rockhopper3.tres" id="3_uto70"]
 [ext_resource type="Texture2D" uid="uid://cn5ai65dgkrfx" path="res://Assets/info_box.png" id="4_0qsd7"]
+[ext_resource type="Script" path="res://ControlSystems/ui/quit_button.gd" id="5_0xvde"]
 [ext_resource type="PackedScene" uid="uid://bp3px2ovvexfb" path="res://ControlSystems/player_save/player_load_dialog.tscn" id="5_1aiba"]
 [ext_resource type="Texture2D" uid="uid://72drysw0o6c" path="res://Assets/puter.png" id="5_pvnn0"]
 
@@ -65,9 +66,10 @@ layout_mode = 2
 [node name="Button" type="Button" parent="UI CANVAS/CenterContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "QUIT"
+script = ExtResource("5_0xvde")
+save = false
 
 [node name="player_load_dialog" parent="." instance=ExtResource("5_1aiba")]
-title = "Open a File"
 visible = false
 
 [node name="new_save_window" parent="." instance=ExtResource("1_rego2")]

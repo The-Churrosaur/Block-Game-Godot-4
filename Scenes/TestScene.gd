@@ -8,9 +8,9 @@ extends Level
 @onready var cable_tool = $IOCableTool
 @onready var fuel_tool = $FuelCableTool
 
-@onready var io_tool_button = $CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/IOToolButton
-@onready var selector_tool_button = $CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/SelectorButton
-@onready var cable_tool_button = $CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/CableToolButton
+@export var io_tool_button : Button
+@export var selector_tool_button : Button
+@export var cable_tool_button : Button
 
 @onready var camera = $CameraBase
 

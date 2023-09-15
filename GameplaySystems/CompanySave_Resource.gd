@@ -6,4 +6,5 @@ extends Resource
 # FIELDS ==========
 
 @export var funds : int
+@export var player_name : String
  

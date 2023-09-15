@@ -8,6 +8,9 @@ extends Node
 # FIELDS ----------------------------------------------------------------------
 
 
+signal data_changed()
+
+
 @export_category("Starting Values")
 @export var starting_funds = 10000
 
@@ -50,6 +53,7 @@ func save_data(path : String = save_dir):
 	# save data
 	
 	res.funds = funds
+	res.player_name = save_name
 	
 	var file = path + "/" + save_name + ".tres" # yes you have to add the .tres
 	ResourceSaver.save(res, file)
@@ -63,6 +67,7 @@ func load_data(path : String = save_dir + "/" + save_name):
 	# load data
 	
 	funds = res.funds
+	save_name = res.player_name
 
 
 # PRIVATE ----------------------------------------------------------------------

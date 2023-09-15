@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://2q2w5q3kesdb" path="res://Scenes/TestScene.tscn" id="2_kw4ce"]
 
 [node name="player_load_dialog" type="FileDialog"]
-title = "Load Save"
+title = "Open a File"
 initial_position = 1
 size = Vector2i(392, 500)
 visible = true
