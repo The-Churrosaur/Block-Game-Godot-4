@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://dmqnycfx0l8ej"]
 
-[ext_resource path="res://ControlSystems/ShipBuilderTool.tscn" type="PackedScene" id=1]
-[ext_resource path="res://ControlSystems/BlockPlacer.gd" type="Script" id=2]
+[ext_resource type="PackedScene" uid="uid://dgcrowjrt5u72" path="res://ControlSystems/ShipBuilderTool.tscn" id="1"]
+[ext_resource type="Script" path="res://ControlSystems/BlockPlacer.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://b6xtjh7avnvvb" path="res://Blocks/TestBlock.tscn" id="3_aurdc"]
 
-[node name="Tool" instance=ExtResource( 1 )]
-script = ExtResource( 2 )
+[node name="BlockPlacerTool" instance=ExtResource("1")]
+script = ExtResource("2")
+block_template = ExtResource("3_aurdc")

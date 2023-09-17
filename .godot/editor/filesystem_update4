@@ -11,10 +11,10 @@ res://Scenes/level.tscn
 res://Scenes/SandBox.tscn
 res://GameplaySystems/CompanyData.tscn
 res://ControlSystems/ui/new_save_window.tscn
-res://Scenes/TestScene.tscn
 res://ControlSystems/player_save/player_load_dialog.tscn
 res://ControlSystems/ui/player_stats.tscn
+res://Scenes/TestScene.tscn
+res://ControlSystems/BlockPlacer.tscn
+res://ControlSystems/BlockPlacer.gd
 res://Scenes/TestScene.gd
-res://ControlSystems/ui/player_stats.gd
-res://GameplaySystems/CompanyData.gd
-res://GameplaySystems/CompanySave_Resource.gd
+res://ControlSystems/ShipBuilderTool.tscn
