@@ -37,10 +37,11 @@ func _input(event):
 	# zoom
 	
 	if (event.is_action_pressed("ui_scroll_down")):
-		zoom_to(camera.zoom * zoom_mult)
+		zoom_to(camera.zoom / zoom_mult)
 	
 	if (event.is_action_released("ui_scroll_up")):
-		zoom_to(camera.zoom / zoom_mult)
+		zoom_to(camera.zoom * zoom_mult)
+
 
 # PUBLIC -----------------------------------------------------------------------
 

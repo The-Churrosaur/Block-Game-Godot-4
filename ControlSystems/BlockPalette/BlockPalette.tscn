@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://bn2hj0tidjoo5" path="res://icon.png" id="2_di80x"]
 
 [node name="BlockPalette" type="MarginContainer" node_paths=PackedStringArray("button", "label")]
-theme_override_constants/margin_left = 5
+theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
+theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 5
 script = ExtResource("1_rxvxu")
 button = NodePath("MarginContainer/VBoxContainer/TextureButton")
