@@ -1,3 +1,4 @@
+Sprite2D
 Label
 VBoxContainer
 MarginContainer
@@ -8,7 +9,6 @@ TextureButton
 PanelContainer
 Button
 TextureRect
-Sprite2D
 HBoxContainer
 FileDialog
 CanvasLayer

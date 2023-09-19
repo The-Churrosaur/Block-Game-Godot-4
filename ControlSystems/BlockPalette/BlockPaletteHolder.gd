@@ -36,11 +36,17 @@ func _ready():
 
 
 func disable_palettes():
+	
+	modulate = Color.DARK_GRAY
+	
 	for palette in palettes:
 		palette.disable_button()
 
 
 func enable_palettes():
+	
+	modulate = Color.WHITE
+	
 	for palette in palettes:
 		palette.enable_button()
 

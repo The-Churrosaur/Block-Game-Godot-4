@@ -1,12 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmqnycfx0l8ej"]
+[gd_scene load_steps=5 format=3 uid="uid://dmqnycfx0l8ej"]
 
 [ext_resource type="PackedScene" uid="uid://dgcrowjrt5u72" path="res://ControlSystems/ShipBuilderTool.tscn" id="1"]
 [ext_resource type="Script" path="res://ControlSystems/BlockPlacer.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://b6xtjh7avnvvb" path="res://Blocks/TestBlock.tscn" id="3_aurdc"]
+[ext_resource type="Texture2D" uid="uid://bn2hj0tidjoo5" path="res://icon.png" id="4_5kksm"]
 
 [node name="BlockPlacerTool" instance=ExtResource("1")]
 script = ExtResource("2")
 block_template = ExtResource("3_aurdc")
 display_name = "Build Tool"
 description = "Place and destroy blocks"
+cursor_shape = 6
 tool_id = "build_tool"
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+rotation = 0.785398
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_5kksm")

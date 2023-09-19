@@ -7,3 +7,4 @@
 script = ExtResource("2")
 display_name = "Ship Selector"
 description = "Switch between subships"
+cursor_shape = 2

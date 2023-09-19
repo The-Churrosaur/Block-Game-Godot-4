@@ -9,13 +9,18 @@ extends Node2D
 
 # FIELDS ==========
 
-@export_category("Tab Labels")
+
+
+@export_category("Tool info")
 @export var display_name = "Default Tool"
 @export var description = "you can't do anything here"
 
+@export_category("Cursor")
+@export var custom_cursor : Resource
+@export var cursor_shape : Input.CursorShape
+@export var cursor_sprite : Sprite2D
 
 @export_category("")
-# unique identifier
 @export var tool_id = "default_tool"
 @export var active = false
 
@@ -31,6 +36,23 @@ var current_ship : ShipBody = null
 # CALLBACKS ==========
 
 
+
+func _ready():
+	pass
+
+
+func _input(event):
+	pass
+
+
+func _process(delta):
+	
+	# backup cursor sprite 
+	# currently the engine cursor change only works for the nested control 
+	# layer that calls it
+
+	if cursor_sprite != null:
+		cursor_sprite.global_position = get_global_mouse_position()
 
 
 # PUBLIC ==========
@@ -55,10 +77,18 @@ func find_ships_at(global_pos) -> Array:
 func activate_tool():
 	active = true
 	print("tool set: ", name, ", ", active)
+	
+	if cursor_sprite != null: cursor_sprite.visible = true
+	Input.set_custom_mouse_cursor(custom_cursor, cursor_shape)
+	Input.set_default_cursor_shape(cursor_shape)
+
 
 # override me
 func deactivate_tool():
 	active = false
+	
+	if cursor_sprite != null: cursor_sprite.visible = false
+	Input.set_custom_mouse_cursor(null)
 
 
 

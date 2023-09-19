@@ -6,6 +6,7 @@
 script = ExtResource("1")
 display_name = "Cable Tool"
 description = "Connect IO ports"
+cursor_shape = 3
 tool_id = "io_cable_tool"
 active = true
 

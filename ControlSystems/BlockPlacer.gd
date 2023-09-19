@@ -18,7 +18,8 @@ extends ShipBuilderTool
 # also controls rotation
 var display_block : Block
 
-
+# switches to last used block
+var last_block : PackedScene
 
 
 # CALLBACKS ===========
@@ -26,6 +27,7 @@ var display_block : Block
 
 
 func _ready():
+	super._ready()
 	
 	# testing
 	_on_new_palette(block_template)
@@ -34,7 +36,7 @@ func _ready():
 	palette_holder.connect("template_button_pressed", Callable(_on_new_palette))
 
 
-func _input(event):
+func _unhandled_input(event):
 	
 	# process input if tool is active
 	
@@ -55,6 +57,7 @@ func _input(event):
 
 
 func _process(delta):
+	super._process(delta)
 	
 	# move display block
 	if display_block != null:
@@ -70,11 +73,16 @@ func _process(delta):
 func activate_tool():
 	super.activate_tool()
 	palette_holder.enable_palettes()
+	
+	# reset last used block
+	if last_block != null:
+		_on_new_palette(last_block)
 
 
 func deactivate_tool():
 	super.deactivate_tool()
 	palette_holder.disable_palettes()
+	_cancel_block()
 
 
 
@@ -85,6 +93,7 @@ func deactivate_tool():
 func _on_new_palette(template : PackedScene):
 	
 	block_template = template
+	last_block = template
 	
 	# sets display block
 	if display_block is Block:
