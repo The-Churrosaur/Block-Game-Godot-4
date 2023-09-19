@@ -12,6 +12,7 @@ extends ShipBuilderTool
 
 
 @export var block_template : PackedScene
+@export var palette_holder : BlockPaletteHolder
 
 
 # also controls rotation
@@ -19,7 +20,9 @@ var display_block : Block
 
 
 
+
 # CALLBACKS ===========
+
 
 
 func _ready():
@@ -57,6 +60,7 @@ func _process(delta):
 
 
 # PRIVATE ============
+
 
 
 func _on_new_palette(template : PackedScene):

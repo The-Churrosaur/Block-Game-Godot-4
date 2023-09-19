@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj1gwofxpdacj"]
+
+[ext_resource type="Script" path="res://ControlSystems/BlockPalette/BlockPalette.gd" id="1_rxvxu"]
+[ext_resource type="Texture2D" uid="uid://bn2hj0tidjoo5" path="res://icon.png" id="2_di80x"]
+
+[node name="BlockPalette" type="Control" node_paths=PackedStringArray("button")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_rxvxu")
+button = NodePath("TextureButton")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("2_di80x")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_template_button_pressed"]

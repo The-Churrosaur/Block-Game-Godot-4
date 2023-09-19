@@ -1,5 +1,6 @@
-res://Blocks/IOPortBlocks
 res://Blocks
+res://ControlSystems/BlockPalette
+res://Blocks/IOPortBlocks
 res://ControlSystems/ui
 res://Scenes
 res://Ships/rockhopper3
