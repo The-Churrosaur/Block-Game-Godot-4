@@ -7,4 +7,4 @@ extends Resource
 
 @export var funds : int
 @export var player_name : String
- 
+@export var blocks : Array[String]

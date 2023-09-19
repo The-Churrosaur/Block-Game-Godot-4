@@ -3,16 +3,37 @@
 [ext_resource type="Script" path="res://ControlSystems/BlockPalette/BlockPalette.gd" id="1_rxvxu"]
 [ext_resource type="Texture2D" uid="uid://bn2hj0tidjoo5" path="res://icon.png" id="2_di80x"]
 
-[node name="BlockPalette" type="Control" node_paths=PackedStringArray("button")]
-layout_mode = 3
-anchors_preset = 0
+[node name="BlockPalette" type="MarginContainer" node_paths=PackedStringArray("button", "label")]
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
 script = ExtResource("1_rxvxu")
-button = NodePath("TextureButton")
+button = NodePath("MarginContainer/VBoxContainer/TextureButton")
+label = NodePath("MarginContainer/VBoxContainer/Label")
 
-[node name="TextureButton" type="TextureButton" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "huihjkjkhhjk"
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture_normal = ExtResource("2_di80x")
 
-[connection signal="pressed" from="TextureButton" to="." method="_on_template_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TextureButton" to="." method="_on_template_button_pressed"]

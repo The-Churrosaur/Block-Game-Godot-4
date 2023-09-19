@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CompanySaveResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://GameplaySystems/CompanySave_Resource.gd" id="1_iii4j"]
+
+[resource]
+script = ExtResource("1_iii4j")
+funds = 10000
+player_name = ""
+blocks = Array[String]([])

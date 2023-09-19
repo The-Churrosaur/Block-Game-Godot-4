@@ -22,6 +22,15 @@ signal template_button_pressed(template : PackedScene)
 
 
 
+# CALLBACKS ==========
+
+
+
+func _ready():
+	_add_palettes_from_data()
+
+
+
 # PUBLIC ==========
 
 
@@ -36,6 +45,12 @@ func enable_palettes():
 		palette.enable_button()
 
 
+# delete all and re-add from companydata
+func refresh_palettes():
+	for palette in palettes: palette.queue_free()
+	_add_palettes_from_data()
+
+
 
 # PRIVATE ==========
 
@@ -43,7 +58,7 @@ func enable_palettes():
 
 func _add_palette_from_type(block_type : String):
 	
-	var template = load(blocks_directory + "/" + block_type)
+	var template = load(blocks_directory + "/" + block_type + ".tscn")
 	var palette = palette_template.instantiate()
 	palette.block_template = template
 	
@@ -55,7 +70,7 @@ func _add_palette_from_type(block_type : String):
 
 
 func _add_palettes_from_data():
-	pass
+	for block in CompanyData.blocks: _add_palette_from_type(block)
 
 
 func _on_toggle_palettes_requested(state : bool):

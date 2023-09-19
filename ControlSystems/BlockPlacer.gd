@@ -29,6 +29,9 @@ func _ready():
 	
 	# testing
 	_on_new_palette(block_template)
+	
+	# listen to palette
+	palette_holder.connect("template_button_pressed", Callable(_on_new_palette))
 
 
 func _input(event):
@@ -56,6 +59,22 @@ func _process(delta):
 	# move display block
 	if display_block != null:
 		display_block.global_position = get_global_mouse_position()
+
+
+
+
+# PUBLIC ==========
+
+
+
+func activate_tool():
+	super.activate_tool()
+	palette_holder.enable_palettes()
+
+
+func deactivate_tool():
+	super.deactivate_tool()
+	palette_holder.disable_palettes()
 
 
 

@@ -14,12 +14,17 @@ signal data_changed()
 @export_category("Starting Values")
 @export var starting_funds = 10000
 
-
-@export var funds = 100000
-
+@export_category("Save info")
 @export var save_dir = "res://Saves"
 @export var save_name = "Save"
 
+@export_category("Data")
+@export var funds = 100000
+@export var blocks = [  "TestBlock", 
+						"LandingBlocks/MotorWheel",
+						"IOPortBlocks/EnterInputBlock",
+						"IOPortBlocks/AxisInputBlock",
+						"IOPortBlocks/VAxisInputblock"  ]
 
 # CALLBACKS --------------------------------------------------------------------
 

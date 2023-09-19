@@ -1,13 +1,13 @@
 VBoxContainer
+MarginContainer
+Panel
+Label
 Control
 TextureButton
-MarginContainer
 PanelContainer
-Panel
 Button
 TextureRect
 Sprite2D
-Label
 HBoxContainer
 FileDialog
 CanvasLayer
