@@ -3,6 +3,9 @@
 # stores and delegates tool usage
 # also manages currently selected ship
 
+# does not manage tool activation (should it?)
+
+
 class_name ToolManager
 extends Node
 

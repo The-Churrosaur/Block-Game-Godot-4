@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3hon32hvuj4d"]
+
+[ext_resource type="Script" path="res://ControlSystems/ui/tool_descriptor_tab.gd" id="1_2q4ig"]
+
+[node name="tool_descriptor_tab" type="MarginContainer" node_paths=PackedStringArray("description")]
+script = ExtResource("1_2q4ig")
+description = NodePath("VBoxContainer/description")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="description" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "TOOL DESCRIPTION"
+horizontal_alignment = 1
+vertical_alignment = 1

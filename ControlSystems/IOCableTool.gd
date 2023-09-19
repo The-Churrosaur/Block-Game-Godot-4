@@ -83,6 +83,7 @@ func deactivate_all_ports():
 
 
 func show_cables():
+	if current_ship == null: return
 	var ships = current_ship.get_all_ships_in_tree()
 	for ship in ships:
 		var cable_manager : IOCableManager 
@@ -91,6 +92,7 @@ func show_cables():
 
 
 func hide_cables():
+	if current_ship == null: return
 	var ships = current_ship.get_all_ships_in_tree()
 	for ship in ships:
 		var cable_manager : IOCableManager 

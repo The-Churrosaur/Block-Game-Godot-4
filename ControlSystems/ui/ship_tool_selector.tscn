@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://btu1t85pghn8p"]
+
+[ext_resource type="Script" path="res://ControlSystems/ui/ship_tool_selector.gd" id="1_cmxfj"]
+[ext_resource type="PackedScene" uid="uid://b3hon32hvuj4d" path="res://ControlSystems/ui/tool_descriptor_tab.tscn" id="2_c3oe4"]
+
+[node name="ship_tool_selector" type="TabContainer"]
+clip_tabs = false
+script = ExtResource("1_cmxfj")
+tab_template = ExtResource("2_c3oe4")
+
+[connection signal="tab_changed" from="." to="." method="_on_tab_changed"]

@@ -7,3 +7,6 @@
 [node name="BlockPlacerTool" instance=ExtResource("1")]
 script = ExtResource("2")
 block_template = ExtResource("3_aurdc")
+display_name = "Build Tool"
+description = "Place and destroy blocks"
+tool_id = "build_tool"

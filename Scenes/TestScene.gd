@@ -3,14 +3,6 @@ extends Level
 
 @onready var test_grid
 
-@onready var io_tool = $IOPicker
-@onready var selector_tool = $ShipSelector
-@onready var cable_tool = $IOCableTool
-@onready var fuel_tool = $FuelCableTool
-
-@export var io_tool_button : Button
-@export var selector_tool_button : Button
-@export var cable_tool_button : Button
 
 @onready var camera = $CameraBase
 
@@ -32,13 +24,8 @@ func _ready():
 	select_ship(ship)
 	
 	current_ship.position = Vector2(500,500)
-	
-	# setup tools
-	setup_tools()
-	
-	# connect buttons
-	io_tool_button.connect("toggled", Callable(io_tool, "on_toggle_input"))
-	selector_tool_button.connect("toggled", Callable(selector_tool, "on_toggle_input"))
+
+
 
 func select_ship(ship):
 	
@@ -88,40 +75,13 @@ func on_new_subShip(ship, subShip, pinBlock):
 	print("TESTSCENE NEW SUBSHIP")
 	on_new_ship(subShip, false)
 
-func setup_tools():
-	
-	# TODO some tool manager?
-	io_tool.setup(self)
-	selector_tool.setup(self)
-	selector_tool.connect("new_ship_selected", Callable(self, "on_selector_new_ship"))
-	cable_tool.setup(self)
-	cable_tool.active = true
-	fuel_tool.setup(self)
-	fuel_tool.active = true
 
 func on_selector_new_ship(ship):
 	select_ship(ship)
+
 
 func on_ship_clicked(shipBody, block, event):
 	print("scene: shipclicked")
 	emit_signal("ship_clicked", shipBody, block)
 	
 #	select_ship(shipBody)
-
-func on_io_tool_button_toggled(state):
-	io_tool.set_active(state)
-
-func on_block_select_button_pressed(block):
-	if block is PackedScene:
-		block_template = block
-		if display_block is Block:
-			display_block.queue_free()
-		display_block = block_template.instantiate()
-		add_child(display_block)
-
-func _process(delta):
-	
-	pass
-	
-#	if (Input.is_action_just_pressed("ui_accept")):
-#		current_ship.linear_velocity += Vector2(10,0)

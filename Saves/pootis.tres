@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="CompanySaveResource" load_steps=2 format=3]
-
-[ext_resource type="Script" path="res://GameplaySystems/CompanySave_Resource.gd" id="1_ljfyv"]
-
-[resource]
-script = ExtResource("1_ljfyv")
-funds = 10000

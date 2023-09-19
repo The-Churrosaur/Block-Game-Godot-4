@@ -4,6 +4,9 @@
 
 [node name="IOCableTool" type="Node2D"]
 script = ExtResource("1")
+display_name = "Cable Tool"
+description = "Connect IO ports"
+tool_id = "io_cable_tool"
 active = true
 
 [node name="Line2D" type="Line2D" parent="."]

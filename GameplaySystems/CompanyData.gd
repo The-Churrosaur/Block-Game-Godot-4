@@ -73,6 +73,8 @@ func load_data(path : String = save_dir + "/" + save_name):
 	
 	funds = res.funds
 	save_name = res.player_name
+	
+	print("save name loaded: ", save_name)
 
 
 # PRIVATE ----------------------------------------------------------------------
