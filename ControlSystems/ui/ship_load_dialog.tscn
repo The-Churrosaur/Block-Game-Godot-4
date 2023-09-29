@@ -9,7 +9,7 @@ size = Vector2i(450, 500)
 visible = true
 ok_button_text = "Open"
 file_mode = 0
-root_subfolder = "Ships"
+access = 1
 filters = PackedStringArray("*.tres")
 script = ExtResource("1_83ow5")
 

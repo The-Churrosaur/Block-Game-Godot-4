@@ -1,3 +1,4 @@
+res://GameplaySystems
 res://Blocks
 res://ControlSystems/ui
 res://ControlSystems/BlockPalette
@@ -5,4 +6,3 @@ res://Blocks/IOPortBlocks
 res://Scenes
 res://Ships/rockhopper3
 res://ControlSystems
-res://GameplaySystems

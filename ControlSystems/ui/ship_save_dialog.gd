@@ -15,7 +15,16 @@ extends FileDialog
 @export var level : Level
 
 # TODO why doesn't dir path do this
-@onready var root_path = "res://" + root_subfolder 
+@onready var root_path = DirectoryInfo.get_ship_directory()
+
+
+# CALLBACKS  ==========
+
+
+
+# get directory from autoload
+func _ready():
+	root_subfolder = DirectoryInfo.shipDirectory_user
 
 
 

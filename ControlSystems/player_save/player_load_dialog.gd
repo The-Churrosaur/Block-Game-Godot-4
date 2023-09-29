@@ -10,7 +10,19 @@ extends FileDialog
 # FIELDS ==========
 
 
+
 @export var load_scene : PackedScene
+
+
+
+# CALLBACKS  ==========
+
+
+
+# get directory from autoload
+func _ready():
+	root_subfolder = DirectoryInfo.saveDirectory_user
+
 
 
 # PRIVATE ===========

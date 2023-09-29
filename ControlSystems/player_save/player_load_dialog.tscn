@@ -10,7 +10,7 @@ size = Vector2i(392, 500)
 visible = true
 ok_button_text = "Open"
 file_mode = 0
-root_subfolder = "Saves"
+access = 1
 script = ExtResource("1_g4hpn")
 load_scene = ExtResource("2_kw4ce")
 

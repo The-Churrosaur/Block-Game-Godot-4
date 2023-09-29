@@ -15,8 +15,9 @@ signal data_changed()
 @export var starting_funds = 10000
 
 @export_category("Save info")
-@export var save_dir = "res://Saves"
+@export var save_dir = ""
 @export var save_name = "Save"
+@export var world_save_dir = "res://WorldSaves"
 
 @export_category("Data")
 @export var funds = 100000
@@ -31,6 +32,7 @@ signal data_changed()
 
 func _ready():
 	load_data()
+	save_dir = DirectoryInfo.get_save_directory()
 
 
 func _process(delta):

@@ -8,7 +8,7 @@ initial_position = 1
 size = Vector2i(450, 500)
 visible = true
 ok_button_text = "Save"
-root_subfolder = "Ships"
+access = 1
 script = ExtResource("1_j3a72")
 
 [connection signal="dir_selected" from="." to="." method="_on_dir_selected"]

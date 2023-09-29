@@ -16,6 +16,16 @@ extends FileDialog
 
 
 
+# CALLBACKS  ==========
+
+
+
+# get directory from autoload
+func _ready():
+	root_subfolder = DirectoryInfo.shipDirectory_user
+
+
+
 # PRIVATE ===========
 
 
