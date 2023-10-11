@@ -28,6 +28,10 @@ window/size/viewport_width=1920
 window/size/viewport_height=1200
 window/size/fullscreen=true
 
+[editor]
+
+export/convert_text_resources_to_binary=false
+
 [global]
 
 gravity=true
