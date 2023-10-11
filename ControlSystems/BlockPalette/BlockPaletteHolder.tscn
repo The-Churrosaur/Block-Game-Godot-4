@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://ControlSystems/BlockPalette/BlockPaletteHolder.gd" id="1_8mb1x"]
 [ext_resource type="PackedScene" uid="uid://dj1gwofxpdacj" path="res://ControlSystems/BlockPalette/BlockPalette.tscn" id="2_4tjls"]
 
-[node name="BlockPaletteHolder" type="Control" node_paths=PackedStringArray("palette_container")]
+[node name="BlockPaletteHolder" type="Control" node_paths=PackedStringArray("palette_container", "label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,8 +13,12 @@ grow_vertical = 2
 script = ExtResource("1_8mb1x")
 palette_template = ExtResource("2_4tjls")
 palette_container = NodePath("VBoxContainer")
+label = NodePath("VBoxContainer/Label")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2

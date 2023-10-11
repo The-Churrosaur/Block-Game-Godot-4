@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d4inut1f8px5h"]
+[gd_scene load_steps=8 format=3 uid="uid://d4inut1f8px5h"]
 
 [ext_resource type="Script" path="res://Blocks/IOPortBlocks/PortInputBlock.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://crxjigmvi5ker" path="res://Blocks/IOPortBlocks/PortBlockBase.tscn" id="2"]
@@ -7,11 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://b5lgsowf3x5oc" path="res://Assets/Corridor.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://cdsswda5okpdr" path="res://Assets/CorridorPlush.png" id="6"]
 
-[sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(32, 32)
-
 [sub_resource type="RectangleShape2D" id="2"]
-size = Vector2(64, 32)
+size = Vector2(128, 64)
 
 [node name="AxisInputBlock" node_paths=PackedStringArray("port_paths", "hitbox_colliders") instance=ExtResource("2")]
 script = ExtResource("1")
@@ -28,10 +25,6 @@ visible = false
 scale = Vector2(2, 2)
 texture = ExtResource("5")
 
-[node name="Hitbox" type="CollisionShape2D" parent="." index="1"]
-position = Vector2(32, 0)
-shape = SubResource("1")
-
 [node name="IOPortLeft" parent="BlockSystems/PortManager" index="0" instance=ExtResource("3")]
 position = Vector2(0, 12.9181)
 port_id = "left_out"
@@ -44,10 +37,10 @@ port_id = "right_out"
 port_display_name = "RIGHT"
 is_output = true
 
-[node name="SizeHelper" parent="." index="3"]
+[node name="SizeHelper" parent="." index="2"]
 layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 0, 0)
 
-[node name="Node2D" type="Node2D" parent="." index="4"]
+[node name="Node2D" type="Node2D" parent="." index="3"]
 z_index = 2
 position = Vector2(32, 0)
 
@@ -67,18 +60,18 @@ layout_mode = 2
 text = "INPUT
 <====>"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
 position = Vector2(32, 0)
 shape = SubResource("2")
 
-[node name="Sprite4" type="Sprite2D" parent="." index="7"]
+[node name="Sprite4" type="Sprite2D" parent="." index="6"]
 position = Vector2(30.9186, -27.219)
 scale = Vector2(2, 2)
 texture = ExtResource("4")
 
-[node name="Sprite2" type="Sprite2D" parent="." index="8"]
+[node name="Sprite2" type="Sprite2D" parent="." index="7"]
 position = Vector2(64, 0)
 texture = ExtResource("6")
 
-[node name="Sprite3" type="Sprite2D" parent="." index="9"]
+[node name="Sprite3" type="Sprite2D" parent="." index="8"]
 texture = ExtResource("6")

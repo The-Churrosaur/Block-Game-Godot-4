@@ -21,11 +21,7 @@ signal data_changed()
 
 @export_category("Data")
 @export var funds = 100000
-@export var blocks = [  "TestBlock", 
-						"LandingBlocks/MotorWheel",
-						"IOPortBlocks/EnterInputBlock",
-						"IOPortBlocks/AxisInputBlock",
-						"IOPortBlocks/VAxisInputblock"  ]
+@export var blocks : Array[PackedScene]
 
 # CALLBACKS --------------------------------------------------------------------
 

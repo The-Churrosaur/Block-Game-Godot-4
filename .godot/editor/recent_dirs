@@ -1,11 +1,15 @@
+res://Blocks
+C:/Users/daich/Documents/Godot/BlockVania Copy/BlockVania/Build/webtest
+C:/Users/daich/Documents/Godot/BlockVania Copy/BlockVania/Build/bfweb
+C:/Users/daich/Documents/Godot/BlockVania Copy/BlockVania/Build/bfb2
+C:/Users/daich/Documents/Godot/BlockVania Copy/BlockVania/Build/BunFanBuild
+res://Blocks/IOPortBlocks
 C:/Users/daich/Desktop
 C:/Users/daich/Documents/Godot/BlockVania Copy/BlockVania/Build/TestBuild
 C:/Users/daich/Documents/Godot/BlockVania Copy/BlockVania/Build/Z3Build
 res://GameplaySystems
-res://Blocks
 res://ControlSystems/ui
 res://ControlSystems/BlockPalette
-res://Blocks/IOPortBlocks
 res://Scenes
 res://Ships/rockhopper3
 res://ControlSystems

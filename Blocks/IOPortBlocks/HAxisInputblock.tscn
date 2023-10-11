@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b78b7sgfmojtg"]
+
+[ext_resource type="PackedScene" uid="uid://d4inut1f8px5h" path="res://Blocks/IOPortBlocks/AxisInputblock.tscn" id="1_po2qs"]
+
+[node name="AxisInputBlock" instance=ExtResource("1_po2qs")]
+class_type = "H_axis_input_block"

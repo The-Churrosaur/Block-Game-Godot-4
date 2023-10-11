@@ -27,7 +27,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "huihjkjkhhjk"
+text = "DONOTCLICK"
 horizontal_alignment = 1
 
 [node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer"]

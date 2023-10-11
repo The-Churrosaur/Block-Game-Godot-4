@@ -19,6 +19,7 @@ signal template_button_pressed(template : PackedScene)
 
 @export_category("Runtime")
 @export var palettes : Array[BlockPalette]
+@export var label : Label
 
 
 
@@ -62,11 +63,10 @@ func refresh_palettes():
 
 
 
-func _add_palette_from_type(block_type : String):
+func _add_palette_from_tscn(scene : PackedScene):
 	
-	var template = load(blocks_directory + "/" + block_type + ".tscn")
 	var palette = palette_template.instantiate()
-	palette.block_template = template
+	palette.block_template = scene
 	
 	palette_container.add_child(palette)
 	palettes.append(palette)
@@ -76,7 +76,7 @@ func _add_palette_from_type(block_type : String):
 
 
 func _add_palettes_from_data():
-	for block in CompanyData.blocks: _add_palette_from_type(block)
+	for block in CompanyData.blocks: _add_palette_from_tscn(block)
 
 
 func _on_toggle_palettes_requested(state : bool):

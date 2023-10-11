@@ -39,11 +39,6 @@ signal symmetry_set(state)
 func _ready():
 	print("NEW GRID READY")
 	
-	# setup tilemap transform
-	tilemap_remote.remote_path = tilemap.get_path()
-	# to upper corner of 0,0 block : ergo tile pos == block pos
-	tilemap_remote.position -= Vector2(grid_size/2, grid_size/2)
-	
 	shipBody.connect("on_clicked", Callable(self, "on_ship_clicked"))
 
 func _enter_tree():

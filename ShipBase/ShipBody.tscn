@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://c6qc8s1tp1xrb"]
+[gd_scene load_steps=10 format=3 uid="uid://c6qc8s1tp1xrb"]
 
 [ext_resource type="Script" path="res://ShipBase/ShipBody.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://ct85vp0kwufxy" path="res://ShipBase/GridBase/GridBase.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://c8kijcuyeen0h" path="res://Assets/COM.png" id="4"]
 [ext_resource type="Script" path="res://ShipBase/com_sprite.gd" id="5_2hxrh"]
-[ext_resource type="PackedScene" path="res://ShipBase/ShipTileMap.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://BlockSystems/IO/IOManager.tscn" id="7"]
 [ext_resource type="PackedScene" path="res://ShipBase/ShipSystemsManager.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://dhg0mew30sumy" path="res://BlockSystems/IOPorts/IOCableManager.tscn" id="9"]
@@ -26,10 +25,6 @@ default_mass = 0.0
 
 [node name="icon" parent="GridBase" index="0"]
 visible = false
-
-[node name="ShipTileMap" parent="." instance=ExtResource("6")]
-visible = false
-format = 2
 
 [node name="COM Sprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("ship")]
 texture = ExtResource("4")

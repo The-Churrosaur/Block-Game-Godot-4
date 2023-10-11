@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://3t7clx6gum1m"]
+[gd_scene load_steps=9 format=3 uid="uid://3t7clx6gum1m"]
 
 [ext_resource type="Script" path="res://GameplaySystems/CompanyData.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://b6xtjh7avnvvb" path="res://Blocks/TestBlock.tscn" id="2_qpbpl"]
+[ext_resource type="PackedScene" uid="uid://caad7v2qenskk" path="res://Blocks/IOPortBlocks/EnterInputBlock.tscn" id="3_synsd"]
+[ext_resource type="PackedScene" uid="uid://b78b7sgfmojtg" path="res://Blocks/IOPortBlocks/HAxisInputblock.tscn" id="4_hiuks"]
+[ext_resource type="PackedScene" uid="uid://dxrlxalhneim2" path="res://Blocks/IOPortBlocks/VAxisInputblock.tscn" id="5_o4fka"]
+[ext_resource type="PackedScene" uid="uid://jc63msdbqp6g" path="res://Blocks/Thrusters/ThrusterBlockPorts.tscn" id="6_1ty82"]
+[ext_resource type="PackedScene" uid="uid://dgiw06j72r0s5" path="res://Blocks/LandingBlocks/MotorWheel.tscn" id="7_lyr0g"]
+[ext_resource type="PackedScene" uid="uid://bv0yeing52kkr" path="res://Blocks/Joints/MotorBlock.tscn" id="8_a3meb"]
 
 [node name="Company" type="Node"]
 script = ExtResource("1")
+blocks = Array[PackedScene]([ExtResource("2_qpbpl"), ExtResource("3_synsd"), ExtResource("4_hiuks"), ExtResource("5_o4fka"), ExtResource("6_1ty82"), ExtResource("7_lyr0g"), ExtResource("8_a3meb")])
