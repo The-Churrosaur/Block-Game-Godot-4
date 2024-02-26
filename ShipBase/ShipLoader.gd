@@ -2,8 +2,7 @@
 
 extends Node
 
-@export var new_ship_path = "res://ShipBase/ShipBody.tscn"
-@onready var ship_template = load(new_ship_path)
+@export var ship_template : PackedScene
 @onready var ship_loader = Ship_SaverLoader_GDS.new() # TODO temp
 
 var loading_thread : Thread
@@ -19,7 +18,7 @@ func load_ship( ship_save : Resource,
 	
 	# load ship
 	print("LOADING SHIP...")
-	var ship = load(new_ship_path).instantiate()
+	var ship = ship_template.instantiate()
 	print("NEW SHIP BASE: ", ship)
 	ship.position = position
 	target_parent.add_child(ship)

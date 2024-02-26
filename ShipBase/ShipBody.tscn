@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" path="res://ShipBase/BumpDetector.tscn" id="10"]
 [ext_resource type="PackedScene" path="res://BlockSystems/FuelPorts/FuelCableManager.tscn" id="11"]
 
-[node name="ShipBody" type="RigidBody2D" groups=["Platform", "ShipBody"]]
+[node name="ShipBody" type="RigidBody2D" node_paths=PackedStringArray("grid") groups=["Platform", "ShipBody"]]
 collision_layer = 7
 collision_mask = 9
 input_pickable = true
@@ -20,6 +20,7 @@ max_contacts_reported = 5
 contact_monitor = true
 script = ExtResource("1")
 default_mass = 0.0
+grid = NodePath("GridBase")
 
 [node name="GridBase" parent="." instance=ExtResource("2")]
 

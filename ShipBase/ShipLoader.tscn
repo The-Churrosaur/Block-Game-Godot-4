@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dxvejn32jvarr"]
+[gd_scene load_steps=3 format=3 uid="uid://dxvejn32jvarr"]
 
 [ext_resource type="Script" path="res://ShipBase/ShipLoader.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://c6qc8s1tp1xrb" path="res://ShipBase/ShipBody.tscn" id="2_2tdwp"]
 
 [node name="ShipLoader" type="Node"]
 script = ExtResource("1")
+ship_template = ExtResource("2_2tdwp")

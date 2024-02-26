@@ -12,7 +12,7 @@ config_version=5
 
 config/name="BlockVania"
 run/main_scene="res://Scenes/Main.tscn"
-config/features=PackedStringArray("4.1")
+config/features=PackedStringArray("4.2")
 config/icon="res://icon.png"
 
 [autoload]
@@ -21,6 +21,7 @@ ShipLoader="*res://ShipBase/ShipLoader.tscn"
 CompanyData="*res://GameplaySystems/CompanyData.tscn"
 LevelManager="*res://ControlSystems/level_manager.tscn"
 DirectoryInfo="*res://GameplaySystems/DirectoryInfo.tscn"
+ExampleShipPreloader="*res://GameplaySystems/example_ship_preloader.tscn"
 
 [display]
 

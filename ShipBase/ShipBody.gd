@@ -43,10 +43,7 @@ func call_test(param):
 # TODO maybe this is terrible
 @onready var subShip_id = 0
 
-@onready var grid : GridBase = $GridBase
-# ShipBody changes position with COM because godot
-# grid position moves with ShipBody BUT
-# grid position remains relative to ShipBody at original scene origin
+@export var grid : GridBase
 
 @onready var tilemap : TileMap = $ShipTileMap
 

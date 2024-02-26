@@ -65,14 +65,13 @@ func refresh_palettes():
 
 func _add_palette_from_tscn(scene : PackedScene):
 	
-	var palette = palette_template.instantiate()
+	var palette : BlockPalette = palette_template.instantiate()
 	palette.block_template = scene
 	
 	palette_container.add_child(palette)
 	palettes.append(palette)
 	
-	var call = Callable(self, "_on_palette_pressed")
-	palette.connect("block_palette_selected", call)
+	palette.block_palette_selected.connect(_on_palette_pressed)
 
 
 func _add_palettes_from_data():

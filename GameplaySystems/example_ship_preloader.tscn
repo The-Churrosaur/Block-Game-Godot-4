@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://bu8ihgbf621l1"]
+
+[ext_resource type="Script" path="res://GameplaySystems/example_ship_preloader.gd" id="1_2hhrq"]
+[ext_resource type="Resource" path="res://Ships/examples/buggy2/buggy2.tres" id="2_ev83f"]
+[ext_resource type="Resource" path="res://Ships/examples/hopper2/hopper2.tres" id="3_vgkkx"]
+
+[node name="example_ship_preloader" type="Node"]
+script = ExtResource("1_2hhrq")
+ships = Array[Resource]([ExtResource("2_ev83f"), ExtResource("3_vgkkx")])
+names = Array[String](["Buggy", "Hopper"])

@@ -5,7 +5,9 @@
 extends Node
 
 
+
 # FIELDS ----------------------------------------------------------------------
+
 
 
 signal data_changed()
@@ -23,7 +25,10 @@ signal data_changed()
 @export var funds = 100000
 @export var blocks : Array[PackedScene]
 
+
+
 # CALLBACKS --------------------------------------------------------------------
+
 
 
 func _ready():
@@ -35,7 +40,9 @@ func _process(delta):
 	pass
 
 
+
 # PUBLIC -----------------------------------------------------------------------
+
 
 
 # resets all saved values to defauts
@@ -58,6 +65,9 @@ func save_data(path : String = save_dir):
 	res.funds = funds
 	res.player_name = save_name
 	
+	# save block palette
+	for block in blocks: res.blocks.append(var_to_str(block))
+	
 	var file = path + "/" + save_name + ".tres" # yes you have to add the .tres
 	ResourceSaver.save(res, file)
 
@@ -71,6 +81,12 @@ func load_data(path : String = save_dir + "/" + save_name):
 	
 	funds = res.funds
 	save_name = res.player_name
+	
+	# load blocks
+	print("RES BLOCKS: ", res.blocks)
+	if !res.blocks.is_empty():
+		for block in res.blocks:
+			blocks.append(str_to_var(block))
 	
 	print("save name loaded: ", save_name)
 
